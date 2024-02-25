@@ -1,72 +1,70 @@
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 const Navigation = () => {
+
+    const navigationData =[
+        {
+            name:"Women's & Girl's Fashion",
+            icon_name:'',
+            link:''
+        },
+        {
+            name:"Health & Beauty",
+            icon_name:'',
+            link:''
+        },
+        {
+            name:"Watches, Bags, Jewelry",
+            icon_name:'',
+            link:''
+        },
+        {
+            name:"Men's & Boy's Fashion",
+            icon_name:'',
+            link:''
+        },
+        {
+            name:"Mother & Baby",
+            icon_name:'',
+            link:''
+        },
+        {
+            name:"Electronics Device",
+            icon_name:'',
+            link:''
+        },
+        {
+            name:"TV & Home Appliances",
+            icon_name:'',
+            link:''
+        },
+        {
+            name:"Electronic Accessories",
+            icon_name:'',
+            link:''
+        },
+        {
+            name:"Groceries",
+            icon_name:'',
+            link:''
+        },
+        {
+            name:"Home & Lifestyle",
+            icon_name:'',
+            link:''
+        },
+        {
+            name:"Sports & Outdoors",
+            icon_name:'',
+            link:''
+        },
+    ]
+
     return (
         <ul className="bg-base-100 w-64 rounded-box space-y-2 p-6">
             <li className="group w-full flex justify-between items-center rounded-md">
                 <Link to="/women-fashion" className="flex items-center group-hover:text-bg-primary">
-                    Women&apos;s & Girl&apos;s Fashion
-                    <IoIosArrowForward className="ml-2 hidden group-hover:flex group-hover:text-bg-primary" />
-                </Link>
-            </li>
-            <li className="group w-full flex justify-between items-center rounded-md">
-                <Link to="/women-fashion" className="flex items-center group-hover:text-bg-primary">
-                Health & Beauty
-                    <IoIosArrowForward className="ml-2 hidden group-hover:flex group-hover:text-bg-primary" />
-                </Link>
-            </li>
-    
-            <li className="group w-full flex justify-between items-center rounded-md">
-                <Link to="/women-fashion" className="flex items-center group-hover:text-bg-primary">
-                Watches, Bags, Jewelry
-                    <IoIosArrowForward className="ml-2 hidden group-hover:flex group-hover:text-bg-primary" />
-                </Link>
-            </li>
-            <li className="group w-full flex justify-between items-center rounded-md">
-                <Link to="/women-fashion" className="flex items-center group-hover:text-bg-primary">
-                Men&apos;s & Boy&apos;s Fashion
-                    <IoIosArrowForward className="ml-2 hidden group-hover:flex group-hover:text-bg-primary" />
-                </Link>
-            </li>
-            <li className="group w-full flex justify-between items-center rounded-md">
-                <Link to="/women-fashion" className="flex items-center group-hover:text-bg-primary">
-                Mother & Baby
-                    <IoIosArrowForward className="ml-2 hidden group-hover:flex group-hover:text-bg-primary" />
-                </Link>
-            </li>
-            <li className="group w-full flex justify-between items-center rounded-md">
-                <Link to="/women-fashion" className="flex items-center group-hover:text-bg-primary">
-                Electronics Device
-                    <IoIosArrowForward className="ml-2 hidden group-hover:flex group-hover:text-bg-primary" />
-                </Link>
-            </li>
-            <li className="group w-full flex justify-between items-center rounded-md">
-                <Link to="/women-fashion" className="flex items-center group-hover:text-bg-primary">
-                TV & Home Appliances
-                    <IoIosArrowForward className="ml-2 hidden group-hover:flex group-hover:text-bg-primary" />
-                </Link>
-            </li>
-            <li className="group w-full flex justify-between items-center rounded-md">
-                <Link to="/women-fashion" className="flex items-center group-hover:text-bg-primary">
-                Electronic Accessories
-                    <IoIosArrowForward className="ml-2 hidden group-hover:flex group-hover:text-bg-primary" />
-                </Link>
-            </li>
-            <li className="group w-full flex justify-between items-center rounded-md">
-                <Link to="/women-fashion" className="flex items-center group-hover:text-bg-primary">
-                Groceries
-                    <IoIosArrowForward className="ml-2 hidden group-hover:flex group-hover:text-bg-primary" />
-                </Link>
-            </li>
-            <li className="group w-full flex justify-between items-center rounded-md">
-                <Link to="/women-fashion" className="flex items-center group-hover:text-bg-primary">
-                Home & Lifestyle
-                    <IoIosArrowForward className="ml-2 hidden group-hover:flex group-hover:text-bg-primary" />
-                </Link>
-            </li>
-            <li className="group w-full flex justify-between items-center rounded-md">
-                <Link to="/women-fashion" className="flex items-center group-hover:text-bg-primary">
-                Sports & Outdoors
+                    
                     <IoIosArrowForward className="ml-2 hidden group-hover:flex group-hover:text-bg-primary" />
                 </Link>
             </li>
