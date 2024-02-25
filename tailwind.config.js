@@ -6,13 +6,11 @@ export default {
   ],
   theme: {
     colors: {
-      'bg-color': '#F85606',
-      'white': 'white',
-      'gray': '#8492a6',
-      'text-color':'#757575',
-      'gray-dark': '#273444',
-      '': '',
-      'gray-light': '#d3dce6',
+      'bg-primary': '#F85606',
+      'secondary-text':'#757575',
+      'bg-primary-dark': '#1D232A',
+      'secondary-text-dark': '#A6ADBB',
+     
     },
     extend: {},
   },
