@@ -34,7 +34,7 @@ const Navbar = () => {
             </div>
             <ul
                 tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow rounded-box w-36 text-black bg-base-200 dark:text-white dark:bg-dark-color mt-4"
+                className="dropdown-content z-10 menu p-2 shadow rounded-box w-36 text-black bg-base-200 dark:text-white dark:bg-dark-color mt-4"
             >
                 <li>
                     <a>Bangla</a>
@@ -68,18 +68,18 @@ const Navbar = () => {
                         )}
 
                         {open && (
-                            <ul className="menu absolute pb-5 left-0 top-20 w-full pt-6 px-4 bg-bg-color dark:bg-dark-color duration-200 transition-all text-white p-0 [&_li>*]:rounded-none space-y-5">
+                            <ul className="menu absolute pb-5 left-0 top-20 w-full pt-6 px-4 bg-bg-primary dark:bg-bg-primary-dark duration-200 transition-all text-white p-0 [&_li>*]:rounded-none space-y-5 z-10">
                                 <div className="flex justify-end item-center gap-5">
-                                    {language}{" "}
+                                    {language}
                                     <button>
                                         <CiShoppingCart className="text-4xl hover:bg-orange-600" />
                                     </button>
                                 </div>
                                 <li className="text-xl font-bold hover:border-b-2 pb-1 duration-150 transition-all">
-                                    Login{" "}
+                                    Login
                                 </li>
                                 <li className="text-xl font-bold hover:border-b-2 pb-1 duration-150 transition-all">
-                                    Register{" "}
+                                    Register
                                 </li>
                                 {inputField}
                             </ul>
@@ -99,7 +99,7 @@ const Navbar = () => {
                         <button>
                             <CiShoppingCart className="text-4xl" />
                         </button>
-                      
+
                     </div>
                 </div>
             </div>

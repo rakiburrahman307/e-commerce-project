@@ -1,73 +1,92 @@
-import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowForward, IoMdMan } from "react-icons/io";
+import { GrRestroomWomen, GrSpotify } from "react-icons/gr";
+import { MdHealthAndSafety, MdOutlineWatch, MdOutlineBabyChangingStation, MdDevices, MdHomeMax, MdOutlineShoppingCart, MdHomeMini } from "react-icons/md";
+import { TbBrandElectronicArts } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import React from "react";
 const Navigation = () => {
-
-    const navigationData =[
+    const iconName = {
+        GrRestroomWomen,
+        MdHealthAndSafety,
+        MdOutlineWatch,
+        IoMdMan,
+        MdOutlineBabyChangingStation,
+        MdDevices,
+        MdHomeMax,
+        TbBrandElectronicArts,
+        MdOutlineShoppingCart,
+        MdHomeMini,
+        GrSpotify,
+    };
+    const navigationData = [
         {
-            name:"Women's & Girl's Fashion",
-            icon_name:'',
-            link:''
+            name: "Women's & Girl's Fashion",
+            icon_name: 'GrRestroomWomen',
+            link: ''
         },
         {
-            name:"Health & Beauty",
-            icon_name:'',
-            link:''
+            name: "Health & Beauty",
+            icon_name: 'MdHealthAndSafety',
+            link: ''
         },
         {
-            name:"Watches, Bags, Jewelry",
-            icon_name:'',
-            link:''
+            name: "Watches, Bags, Jewelry",
+            icon_name: 'MdOutlineWatch',
+            link: ''
         },
         {
-            name:"Men's & Boy's Fashion",
-            icon_name:'',
-            link:''
+            name: "Men's & Boy's Fashion",
+            icon_name: 'IoMdMan',
+            link: ''
         },
         {
-            name:"Mother & Baby",
-            icon_name:'',
-            link:''
+            name: "Mother & Baby",
+            icon_name: 'MdOutlineBabyChangingStation',
+            link: ''
         },
         {
-            name:"Electronics Device",
-            icon_name:'',
-            link:''
+            name: "Electronics Device",
+            icon_name: 'MdDevices',
+            link: ''
         },
         {
-            name:"TV & Home Appliances",
-            icon_name:'',
-            link:''
+            name: "TV & Home Appliances",
+            icon_name: 'MdHomeMax',
+            link: ''
         },
         {
-            name:"Electronic Accessories",
-            icon_name:'',
-            link:''
+            name: "Electronic Accessories",
+            icon_name: 'TbBrandElectronicArts',
+            link: ''
         },
         {
-            name:"Groceries",
-            icon_name:'',
-            link:''
+            name: "Groceries",
+            icon_name: 'MdOutlineShoppingCart',
+            link: ''
         },
         {
-            name:"Home & Lifestyle",
-            icon_name:'',
-            link:''
+            name: "Home & Lifestyle",
+            icon_name: 'MdHomeMini',
+            link: ''
         },
         {
-            name:"Sports & Outdoors",
-            icon_name:'',
-            link:''
+            name: "Sports & Outdoors",
+            icon_name: 'GrSpotify',
+            link: ''
         },
     ]
 
     return (
-        <ul className="bg-base-100 w-64 rounded-box space-y-2 p-6">
-            <li className="group w-full flex justify-between items-center rounded-md">
-                <Link to="/women-fashion" className="flex items-center group-hover:text-bg-primary">
-                    
-                    <IoIosArrowForward className="ml-2 hidden group-hover:flex group-hover:text-bg-primary" />
-                </Link>
-            </li>
+        <ul className="bg-base-100 dark:bg-bg-primary-dark w-64 rounded-box space-y-2 p-6 text-secondary-text dark:text-secondary-text-dark">
+            {navigationData.map((navigation, idx) => (
+                <li key={idx} className="group w-full flex gap-2 items-center rounded-md">
+                    {React.createElement(iconName[navigation?.icon_name], { className: "group-hover:text-bg-primary" })}
+                    <Link to={navigation.link} className="flex items-center group-hover:text-bg-primary">
+                        {navigation?.name}
+                        <IoIosArrowForward className="hidden group-hover:flex group-hover:text-bg-primary" />
+                    </Link>
+                </li>
+            ))}
         </ul>
     );
 };
