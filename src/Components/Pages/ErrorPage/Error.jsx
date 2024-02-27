@@ -2,7 +2,7 @@
 const Error = () => {
     return (
         <div>
-            <h2>This is the Error Page</h2>
+            <h2>This is the Erroxr Page</h2>
         </div>
     );
 };
