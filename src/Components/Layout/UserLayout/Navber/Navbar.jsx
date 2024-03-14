@@ -4,11 +4,13 @@ import { CiShoppingCart } from "react-icons/ci";
 import { MdLanguage } from "react-icons/md";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { IoMdClose } from "react-icons/io";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useContextInfo from "../Hooks/useContextInfo";
 
 const Navbar = () => {
     const [open, setOpen] = useState(true);
-
+    const { selectedColor } = useContextInfo();
+    console.log(selectedColor.preferenceColor)
     const inputField = (
         <input
             className="border-none w-52 md:w-[550px] lg:w-[700px] py-2 rounded-lg text-black dark:text-white"
@@ -45,9 +47,12 @@ const Navbar = () => {
             </ul>
         </div>
     );
-
+    useEffect(() => {
+        console.log("Selected color:", selectedColor);
+    }, [selectedColor]);
     return (
-        <nav className="px-2 md:px-10 lg:px-20 py-2 bg-bg-primary text-white dark:bg-dark-color dark:text-dark-color">
+        <nav className={`px-2 md:px-10 lg:px-20 py-2 ${selectedColor?.preferenceColor || 'bg-bg-primary'} text-white dark:bg-dark-color dark:text-dark-color`}>
+
             <div className="flex justify-start">
                 <ul className="flex gap-4">{navSubLinks}</ul>
             </div>

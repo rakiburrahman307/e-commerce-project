@@ -16,7 +16,7 @@ const RightButton = () => {
             style: 'rounded-tr-lg',
         },
     ];
-    console.log(isOpenDrawer);
+
     return (
         <div>
 

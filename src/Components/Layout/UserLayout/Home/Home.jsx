@@ -4,7 +4,6 @@ import Navigation from "./Side Navigation/Navigation";
 import Carousel from "./Swiper/Carousel";
 import Category from "./SomeCategory/Category";
 import HelmetTitle from "../Hooks/HelmetTitle";
-import ColorPalette from "../Utilitys/ColorPalette";
 import RightButton from "../Utilitys/Right Floting Button/RightButton";
 
 
@@ -24,7 +23,6 @@ const Home = () => {
       <About></About>
       <Category></Category>
       <Breadcrumb></Breadcrumb>
-     <ColorPalette></ColorPalette>
      <RightButton></RightButton>
 
      

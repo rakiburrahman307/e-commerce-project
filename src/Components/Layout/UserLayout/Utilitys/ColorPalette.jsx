@@ -1,31 +1,41 @@
 import { useEffect, useState } from "react";
-import { GithubPicker } from "react-color";
-
+import './select.css';
 const ColorPalette = () => {
     const [color, setColor] = useState("");
-
-    const handleColorChange = (selectedColor) => {
-        setColor(selectedColor.hex);
-    };
     useEffect(() => {
         // Store the preferenceColor in the local storage
         localStorage.setItem('Preference', JSON.stringify({ preferenceColor: color }));
     }, [color]);
 
-    // const getStarting = JSON.parse(localStorage.getItem('Preference'));
+    const handleChangeColor = (colors) => {
+        const colorValue = colors.target.value;
+        setColor(colorValue)
 
-    const limitedColors = ["#F85606", "#151269", "#ff0000", "#00ff00", "#0000ff", "#ffc900", "#eaa0a2", "#ffdbdc", "#046169", "#ffd700", "#ffa500", "#ff69b4", "#588c73", "#8c4646", "#00dbdb", "#741b47"];
+    };
+
+    const colors = [
+        { id: 1, value: "", name: "Default" },
+        { id: 2, value: "bg-green-500", name: "Green" },
+        { id: 3, value: "bg-blue-700", name: "Blue" },
+        { id: 4, value: "bg-indigo-700", name: "Indigo" },
+        { id: 5, value: "bg-blue-900", name: "Navy blue" },
+        { id: 6, value: "bg-purple-900", name: "Purple" },
+        { id: 7, value: "bg-pink-600", name: "Pink" },
+        { id: 8, value: "bg-yellow-400", name: "Yellow" }
+    ];
+
     return (
         <div>
             <h2 className="text-xl text-white dark:text-secondary-text-dark my-2">Your Preference</h2>
-            <GithubPicker
-                color={color}
-                onChange={handleColorChange}
-                colors={limitedColors}
-                triangle="hide"
-                width="74%"
-                styles={{ default: { card: { boxShadow: 'none', border: '1px solid #ddd' } } }}
-            />
+            <select onChange={handleChangeColor} className="select-arrow block py-2.5 px-0 w-1/2 text-sm text-white bg-bg-primary border-0 border-b-2 border-white appearance-none dark:text-white dark:border-white focus:outline-none focus:ring-0 focus:border-white">
+                {
+                    colors?.map(color => <option
+                        key={color?.id}
+                        value={color?.value}
+                        onClick={() => handleChangeColor(color)}
+                    >{color?.name}</option>)
+                }
+            </select>
         </div>
     );
 };

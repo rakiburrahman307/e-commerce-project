@@ -1,0 +1,13 @@
+select:not([size]) {
+background-image: url(../../../../assets/colors.png);
+background-position: right 0.75rem center;
+background-repeat: no-repeat;
+background-size: 1.5em 1.5em;
+padding-right: 2.5rem;
+cursor: pointer;
+-webkit-print-color-adjust: exact;
+print-color-adjust: exact;
+}
+select>option {
+   cursor: pointer;
+  }
