@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import useContextInfo from "../../Hooks/useContextInfo";
 
 const FlashSale = ({ targetDate }) => {
-   const { selectedColor } = useContextInfo();
+   const { selectedColor, textColor } = useContextInfo();
+   console.log(textColor)
    const calculateTimeLeft = () => {
       if (!targetDate || isNaN(targetDate.getTime())) {
          return {
@@ -39,16 +40,13 @@ const FlashSale = ({ targetDate }) => {
 
       return () => clearTimeout(timer);
    });
-   console.log(formatTime(timeLeft.hours))
-   console.log(formatTime(timeLeft.minutes))
-   console.log(formatTime(timeLeft.hours))
-   console.log(formatTime(timeLeft.hours))
+
    return (
       <div>
          <Title title='FlashSale'></Title>
          <div className="flex items-center gap-10">
             <div>
-            <h2 className={`text-${selectedColor}`}>One Sale Now</h2>
+               <h2 className={`${textColor}`}>One Sale Now</h2>
             </div>
             <div className="flex items-center gap-5">
                <div>
@@ -58,16 +56,16 @@ const FlashSale = ({ targetDate }) => {
                {
                   timeLeft?.days > 0 ? (
                      <div className="flex items-center gap-3">
-                        <div className={`bg-${selectedColor} px-3 py-2 rounded-md text-white dark:text-secondary-text dark:bg-bg-primary-dark`}>{timeLeft?.days ? timeLeft?.days : "00"}</div>
-                        <div className={`bg-${selectedColor} px-3 py-2 rounded-md text-white dark:text-secondary-text dark:bg-bg-primary-dark`}>{formatTime(timeLeft?.hours) ? formatTime(timeLeft?.hours) : "00"}</div>
-                        <div className={`bg-${selectedColor} px-3 py-2 rounded-md text-white dark:text-secondary-text dark:bg-bg-primary-dark`}>{formatTime(timeLeft?.minutes) ? formatTime(timeLeft?.minutes) : "00"}</div>
-                        <div className={`bg-${selectedColor} px-3 py-2 rounded-md text-white dark:text-secondary-text dark:bg-bg-primary-dark`}>{formatTime(timeLeft?.seconds) ? formatTime(timeLeft?.seconds) : "00"}</div>
+                        <div className={`${selectedColor} px-3 py-2 rounded-md text-white dark:text-secondary-text dark:bg-bg-primary-dark`}>{timeLeft?.days ? timeLeft?.days : "00"}</div>
+                        <div className={`${selectedColor} px-3 py-2 rounded-md text-white dark:text-secondary-text dark:bg-bg-primary-dark`}>{formatTime(timeLeft?.hours) ? formatTime(timeLeft?.hours) : "00"}</div>
+                        <div className={`${selectedColor} px-3 py-2 rounded-md text-white dark:text-secondary-text dark:bg-bg-primary-dark`}>{formatTime(timeLeft?.minutes) ? formatTime(timeLeft?.minutes) : "00"}</div>
+                        <div className={`${selectedColor} px-3 py-2 rounded-md text-white dark:text-secondary-text dark:bg-bg-primary-dark`}>{formatTime(timeLeft?.seconds) ? formatTime(timeLeft?.seconds) : "00"}</div>
                      </div>
                   ) : (
                      <div className="flex items-center gap-3">
-                        <div className={`bg-${selectedColor} px-3 py-2 rounded-md text-white dark:text-secondary-text dark:bg-bg-primary-dark`}>{formatTime(timeLeft?.hours) ? formatTime(timeLeft?.hours) : "00"}</div>
-                        <div className={`bg-${selectedColor} px-3 py-2 rounded-md text-white dark:text-secondary-text dark:bg-bg-primary-dark`}>{formatTime(timeLeft?.minutes) ? formatTime(timeLeft?.minutes) : "00"}</div>
-                        <div className={`bg-${selectedColor} px-3 py-2 rounded-md text-white dark:text-secondary-text dark:bg-bg-primary-dark`}>{formatTime(timeLeft?.seconds) ? formatTime(timeLeft?.seconds) : "00"}</div>
+                        <div className={`${selectedColor} px-3 py-2 rounded-md text-white dark:text-secondary-text dark:bg-bg-primary-dark`}>{formatTime(timeLeft?.hours) ? formatTime(timeLeft?.hours) : "00"}</div>
+                        <div className={`${selectedColor} px-3 py-2 rounded-md text-white dark:text-secondary-text dark:bg-bg-primary-dark`}>{formatTime(timeLeft?.minutes) ? formatTime(timeLeft?.minutes) : "00"}</div>
+                        <div className={`${selectedColor} px-3 py-2 rounded-md text-white dark:text-secondary-text dark:bg-bg-primary-dark`}>{formatTime(timeLeft?.seconds) ? formatTime(timeLeft?.seconds) : "00"}</div>
                      </div>
                   )
                }
