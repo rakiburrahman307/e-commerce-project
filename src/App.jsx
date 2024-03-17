@@ -1,16 +1,10 @@
-
 import { Outlet } from 'react-router-dom'
-import './App.css'
 import Navbar from './Components/Layout/UserLayout/Navber/Navbar'
 import { Suspense } from 'react'
 
-
 function App() {
-
-
   return (
     <div>
-
       <Suspense fallback={
         <div className="flex items-center justify-center h-screen">
           <div className="relative">

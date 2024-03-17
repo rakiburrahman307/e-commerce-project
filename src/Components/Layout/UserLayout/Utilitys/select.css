@@ -8,6 +8,3 @@ cursor: pointer;
 -webkit-print-color-adjust: exact;
 print-color-adjust: exact;
 }
-select>option {
-   cursor: pointer;
-  }

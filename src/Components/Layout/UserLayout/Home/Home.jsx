@@ -5,6 +5,10 @@ import Carousel from "./Swiper/Carousel";
 import Category from "./SomeCategory/Category";
 import HelmetTitle from "../Hooks/HelmetTitle";
 import RightButton from "../Utilitys/Right Floting Button/RightButton";
+import FlashSale from "./FlashSale/FlashSale";
+
+
+
 
 
 
@@ -24,6 +28,8 @@ const Home = () => {
       <Category></Category>
       <Breadcrumb></Breadcrumb>
      <RightButton></RightButton>
+      <FlashSale></FlashSale>
+
 
      
     </div>

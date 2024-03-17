@@ -9,11 +9,27 @@ export default {
       'bg-primary': '#F85606',
       'secondary-text':'#757575',
       'bg-primary-dark': '#1D232A',
-      'secondary-text-dark': '#A6ADBB',
-     
+      'secondary-text-dark': '#A6ADBB',   
     },
     extend: {},
   },
-  plugins: [require('flowbite/plugin'),require("daisyui")],
+  purge: {
+    enabled: true,
+    content: [
+      "./index.html",
+      "./src/**/*.{js,ts,jsx,tsx}",
+    ],
+    options: {
+      safelist: [
+        'bg-primary',
+        'secondary-text',
+        'bg-primary-dark',
+        'secondary-text-dark',
+        /^bg-[a-zA-Z0-9]+$/,
+        /^text-[a-zA-Z0-9]+$/,
+      ],
+    },
+  },
+  plugins: [require('flowbite/plugin'), require("daisyui")],
 }
 
