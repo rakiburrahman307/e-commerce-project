@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode:"class",
   safelist: [
     "text-orange-500",
     "text-green-500",
@@ -25,6 +26,7 @@ export default {
       'secondary-text': '#757575',
       'bg-primary-dark': '#1D232A',
       'secondary-text-dark': '#A6ADBB',
+      'dark': '#1F2937',
 
     },
     extend: {},

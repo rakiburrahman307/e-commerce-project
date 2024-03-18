@@ -49,14 +49,14 @@ const Navbar = () => {
     );
 
     return (
-        <nav className={`px-2 md:px-10 lg:px-20 py-2 ${selectedColor} text-white dark:bg-dark-color dark:text-dark-color`}>
+        <nav className={`px-2 md:px-10 lg:px-20 py-2 ${selectedColor} text-white dark:bg-bg-primary-dark dark:text-secondary-text-dark`}>
 
             <div className="flex justify-start">
                 <ul className="flex gap-4">{navSubLinks}</ul>
             </div>
             <div className="flex items-center justify-between top-0 gap-2 md:gap-4 lg:gap-6">
                 <div className="scale-100 cursor-pointer rounded-2xl py-2 text-xl font-semibold text-white transition-all duration-200 hover:scale-110">
-                    <h2 className="text-4xl">Daraz</h2>
+                    <h2 className="text-4xl dark:text-secondary-text-dark">Daraz</h2>
                 </div>
                 <div className="hidden md:flex">{inputField}</div>
                 <div className="flex justify-between items-center gap-4">

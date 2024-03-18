@@ -32,7 +32,7 @@ const RightButton = () => {
                             <li
                                 onClick={() => setIsOpenDrawer(false)}
                                 key={id}
-                                className={`flex justify-between items-center w-36 h-14 px-4 mr-[-90px] duration-300 ${selectedColor} hover:mr-[-10px] cursor-pointer rounded-tl-2xl rounded-bl-2xl`}>
+                                className={`flex justify-between items-center w-36 h-14 px-4 mr-[-90px] duration-300 ${selectedColor} hover:mr-[-10px] cursor-pointer rounded-tl-2xl rounded-bl-2xl dark:bg-bg-primary-dark dark:text-secondary-text-dark`}>
                                 <p
 
                                     className="flex justify-between items-center w-full text-white rounded-tr-lg">{child}</p>
@@ -43,7 +43,7 @@ const RightButton = () => {
 
                 </div>) : (
                     <div className={`fixed top-[35%] ${isOpenDrawer ? 'translate-x-[9000px]' : 'translate-x-[300px] right-[280px]'} z-10 transition-all duration-500`}>
-                        <div className={`menu p-4 w-80 min-h-full px-4 ${selectedColor} cursor-pointer rounded-tl-2xl rounded-bl-2xl`}>
+                        <div className={`menu p-4 w-80 min-h-full px-4 ${selectedColor} cursor-pointer rounded-tl-2xl rounded-bl-2xl dark:bg-bg-primary-dark dark:text-secondary-text-dark`}>
                             <div>
                                 <div className="flex justify-end items-center">
                                     <GrClose

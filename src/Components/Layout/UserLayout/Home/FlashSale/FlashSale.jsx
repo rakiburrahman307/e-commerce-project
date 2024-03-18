@@ -5,7 +5,6 @@ import useContextInfo from "../../Hooks/useContextInfo";
 
 const FlashSale = ({ targetDate }) => {
    const { selectedColor, textColor } = useContextInfo();
-   console.log(textColor)
    const calculateTimeLeft = () => {
       if (!targetDate || isNaN(targetDate.getTime())) {
          return {
