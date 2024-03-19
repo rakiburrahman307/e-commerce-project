@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
-import ColorPalette from "../ColorPalette";
+import ColorPalette from "../ColorPalette/ColorPalette";
 import { GrClose } from "react-icons/gr";
 import useContextInfo from "../../Hooks/useContextInfo";
 import DarkModeSwitch from "../DarkMode/DarkModeSwitch";

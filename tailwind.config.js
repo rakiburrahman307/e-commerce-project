@@ -24,9 +24,9 @@ export default {
     colors: {
       'bg-primary': '#F85606',
       'secondary-text': '#757575',
-      'bg-primary-dark': '#1D232A',
+      'bg-primary-dark': '#0F0F0F',
       'secondary-text-dark': '#A6ADBB',
-      'dark': '#1F2937',
+      'semi-dark': '#182229',
 
     },
     extend: {},

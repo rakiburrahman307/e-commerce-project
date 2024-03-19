@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom'
-import Navbar from './Components/Layout/UserLayout/Navber/Navbar'
+import Navbar from './Components/Layout/UserLayout/Home/Navber/Navbar'
 import { Suspense } from 'react'
 
 function App() {
   return (
-    <div className='dark:bg-dark'>
+    <div className='dark:bg-semi-dark'>
       <Suspense fallback={
         <div className="flex items-center justify-center h-screen">
           <div className="relative">

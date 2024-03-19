@@ -1,6 +1,6 @@
 
 import './select.css';
-import useContextInfo from "../Hooks/useContextInfo";
+import useContextInfo from "../../Hooks/useContextInfo";
 import { twMerge } from 'tailwind-merge';
 import { useEffect } from 'react';
 const ColorPalette = () => {
