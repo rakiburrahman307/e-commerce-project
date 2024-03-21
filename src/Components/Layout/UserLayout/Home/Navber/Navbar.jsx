@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const inputField = (
     <input
-      className="border-none w-full md:w-[550px] lg:w-[700px] py-2 rounded-lg text-secondary-text dark:text-secondary-text-dark dark:bg-bg-primary-dark"
+      className="border-none w-full md:w-[550px] lg:w-[700px] py-2 rounded-lg text-secondary-text dark:text-secondary-text-dark dark:bg-primary-dark"
       type="text"
       placeholder="Search in Daraz"
     />
@@ -40,7 +40,7 @@ const Navbar = () => {
       </div>
       <ul
         tabIndex={0}
-        className="dropdown-content z-10 menu p-2 shadow rounded-box w-36 text-black bg-base-200 dark:text-white dark:bg-bg-primary-dark mt-4"
+        className="dropdown-content z-10 menu p-2 shadow rounded-box w-36 text-black bg-base-200 dark:text-white dark:bg-semi-dark mt-4"
       >
         <li>
           <a>Bangla</a>
@@ -56,7 +56,7 @@ const Navbar = () => {
     <section className="mx-auto">
       {/* This is for navbar design start here  */}
       <nav
-        className={`px-2 md:px-10 lg:px-20 py-2 relative ${selectedColor} text-white w-full dark:bg-bg-primary-dark dark:text-secondary-text-dark`}
+        className={`px-2 md:px-10 lg:px-20 py-2 relative ${selectedColor} text-white w-full dark:bg-semi-dark dark:text-secondary-text-dark`}
       >
         <div className="flex justify-start">
           <ul className="flex gap-4">{navSubLinks}</ul>
@@ -70,7 +70,9 @@ const Navbar = () => {
             {/* This is brand name end here  */}
             {/* -------------------------  */}
             {/* Search Box start here */}
-            <div className="hidden md:flex md:mx-auto lg:flex lg:mx-auto">{inputField}</div>
+            <div className="hidden md:flex md:mx-auto lg:flex lg:mx-auto">
+              {inputField}
+            </div>
             {/* Search Box end here */}
             {/* --------------------------------------------  */}
             {/* Search Box for the mobile view start */}
@@ -82,7 +84,7 @@ const Navbar = () => {
               />
               {searchBoxClick && (
                 <div
-                  className={`flex mx-auto gap-5 items-center w-full h-full absolute top-0 left-0 px-8 text-secondary-text ${selectedColor} dark:bg-bg-primary-dark dark:text-secondary-text-dark`}
+                  className={`flex mx-auto gap-5 items-center w-full h-full absolute top-0 left-0 px-8 text-secondary-text ${selectedColor} dark:bg-semi-dark dark:text-secondary-text-dark`}
                 >
                   <BiLeftArrowAlt
                     onClick={() => setSearchBoxClick(!searchBoxClick)}
@@ -128,7 +130,7 @@ const Navbar = () => {
       {/* This is for mobile view bottom section  */}
       <div className="fixed -bottom-7 w-full z-50 my-5 md:hidden lg:hidden">
         <div className="flex justify-around items-center top-4 h-16 w-full">
-          <div className="group flex items-center justify-center bg-white py-3 w-1/4 h-full dark:bg-bg-primary-dark dark:text-secondary-text-dark">
+          <div className="group flex items-center justify-center bg-white py-3 w-1/4 h-full dark:bg-semi-dark dark:text-secondary-text-dark">
             <NavLink to="/" className="flex flex-col items-center">
               <IoMdHome
                 size={25}
@@ -141,7 +143,7 @@ const Navbar = () => {
               </h4>
             </NavLink>
           </div>
-          <div className="group flex items-center justify-center bg-white py-3 w-1/4 h-full dark:bg-bg-primary-dark dark:text-secondary-text-dark">
+          <div className="group flex items-center justify-center bg-white py-3 w-1/4 h-full dark:bg-semi-dark dark:text-secondary-text-dark">
             <NavLink to="/category" className="flex flex-col items-center">
               <BiSolidCategory
                 size={25}
@@ -154,7 +156,7 @@ const Navbar = () => {
               </h4>
             </NavLink>
           </div>
-          <div className="group flex items-center justify-center bg-white py-3 w-1/4 h-full dark:bg-bg-primary-dark dark:text-secondary-text-dark">
+          <div className="group flex items-center justify-center bg-white py-3 w-1/4 h-full dark:bg-semi-dark dark:text-secondary-text-dark">
             <NavLink to="/cart" className="flex flex-col items-center">
               <IoMdCart
                 size={25}
@@ -167,7 +169,7 @@ const Navbar = () => {
               </h4>
             </NavLink>
           </div>
-          <div className="group flex items-center justify-center bg-white py-3 w-1/4 h-full dark:bg-bg-primary-dark dark:text-secondary-text-dark">
+          <div className="group flex items-center justify-center bg-white py-3 w-1/4 h-full dark:bg-semi-dark dark:text-secondary-text-dark">
             <NavLink to="/user" className="flex flex-col items-center">
               <FaUser
                 size={25}

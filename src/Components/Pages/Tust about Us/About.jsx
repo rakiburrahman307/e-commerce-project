@@ -60,7 +60,7 @@ const About = () => {
 
   return (
     <div
-      className={`bg-[#FFE8DE] mt-5 flex mx-auto flex-col md:flex-row lg:flex-row justify-evenly items-center w-full dark:bg-bg-primary-dark rounded-box space-y-2 py-3 text-secondary-text dark:text-secondary-text-dark`}
+      className={`bg-[#FFE8DE] mt-5 flex mx-auto flex-col md:flex-row lg:flex-row justify-evenly items-center w-full dark:bg-bg-primary-dark rounded-box space-y-2 py-3 text-secondary-text dark:text-secondary-text-dark dark:bg-semi-dark`}
     >
       {navigationData.map((navigation, idx) => (
         <li

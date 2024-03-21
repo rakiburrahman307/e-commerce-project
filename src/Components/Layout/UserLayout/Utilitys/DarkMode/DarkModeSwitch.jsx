@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 const DarkModeSwitch = () => {
     const { selectedColor } = useContextInfo();
     const [theme, setTheme] = useState(
-        localStorage.getItem("theme") ? localStorage.getItem("theme") : "system"
+        localStorage?.getItem("theme") ? localStorage?.getItem("theme") : "system"
     );
     const element = document.documentElement;
     const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -30,8 +30,8 @@ const DarkModeSwitch = () => {
     ];
     const onWindowMatches = () => {
         if (
-            localStorage.theme === "dark" ||
-            (!("theme" in localStorage) && darkQuery.matches)
+            localStorage?.theme === "dark" ||
+            (!("theme" in localStorage) && darkQuery?.matches)
         ) {
             element.classList.add("dark");
         } else {
@@ -55,35 +55,38 @@ const DarkModeSwitch = () => {
                 break;
         }
     }, [theme, element]);
-    darkQuery.addEventListener("click", (e) => {
+    darkQuery.addEventListener("change", (e) => {
         if (!("theme" in localStorage)) {
+            console.log(e)
             if (e.matches) {
                 element.classList.add("dark");
+                onWindowMatches();
             } else {
                 element.classList.remove("dark");
+                onWindowMatches();
             }
         }
     });
     return (
-   <div className="mt-5">
-     <h2 className="text-xl text-white dark:text-secondary-text-dark my-2">Dark Mode</h2>
-         <div
-            className={`dark:text-secondary-text ${selectedColor} rounded-md dark:bg-bg-primary-dark`}
-        >
-           
-            {icons?.map((icon) => (
-                <button
-                    onClick={() => setTheme(icon?.text)}
-                    key={icon?.text}
-                    className={`w-8 h-8 text-xl rounded-full m-1`}
-                >
-                    {React.createElement(iconName[icon?.name], {
-                        className: ` ${theme === icon?.text && "text-white"} text-2xl`,
-                    })}
-                </button>
-            ))}
+        <div className="mt-5">
+            <h2 className="text-xl text-white dark:text-secondary-text-dark my-2">Dark Mode</h2>
+            <div
+                className={`dark:text-secondary-text ${selectedColor} rounded-md dark:bg-semi-dark`}
+            >
+
+                {icons?.map((icon) => (
+                    <button
+                        onClick={() => setTheme(icon?.text)}
+                        key={icon?.text}
+                        className={`w-8 h-8 text-xl rounded-full m-1`}
+                    >
+                        {React.createElement(iconName[icon?.name], {
+                            className: ` ${theme === icon?.text && "text-white"} text-2xl`,
+                        })}
+                    </button>
+                ))}
+            </div>
         </div>
-   </div>
     );
 };
 

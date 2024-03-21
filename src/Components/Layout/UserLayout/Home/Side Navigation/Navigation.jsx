@@ -87,7 +87,7 @@ const Navigation = () => {
   ];
 
   return (
-    <ul className="bg-base-100 dark:bg-bg-primary-dark w-64 rounded-box space-y-2 p-6 text-secondary-text dark:text-secondary-text-dark">
+    <ul className="bg-base-100 dark:bg-semi-dark w-64 rounded-box space-y-2 p-6 text-secondary-text dark:text-secondary-text-dark">
       {navigationData.map((navigation, idx) => (
         <li
           key={idx}

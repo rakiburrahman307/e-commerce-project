@@ -4,7 +4,7 @@ import { Suspense } from 'react'
 
 function App() {
   return (
-    <div className='dark:bg-semi-dark'>
+    <div className='dark:bg-primary-dark'>
       <Suspense fallback={
         <div className="flex items-center justify-center h-screen">
           <div className="relative">

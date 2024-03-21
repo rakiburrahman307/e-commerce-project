@@ -28,7 +28,7 @@ const Carousel = () => {
     },
   ];
   return (
-    <div className="dark:bg-bg-primary-dark dark:text-secondary-text-dark">
+    <div className="dark:bg-semi-dark dark:text-secondary-text-dark">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -44,12 +44,12 @@ const Carousel = () => {
         className="mySwiper"
       >
         {caroselData?.map((cover, idx) => (
-          <SwiperSlide key={idx} className="rounded-lg">
-            <div className="h-[350px] w-[940px] lg:w-full rounded-lg">
+          <SwiperSlide key={idx} className="rounded-lg dark:bg-semi-dark">
+            <div className="h-[350px] w-[940px] lg:w-full rounded-lg dark:bg-semi-dark">
               <Link to={cover?.clickLink}>
                 <img
                   src={cover?.imgUrl}
-                  className="w-full object-cover rounded-lg mx-auto"
+                  className="w-full object-cover rounded-lg mx-auto dark:bg-semi-dark"
                   alt="Images"
                 />
               </Link>

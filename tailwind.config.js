@@ -4,29 +4,27 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode:"class",
+  darkMode: "class",
   safelist: [
-    "text-orange-500",
-    "text-green-500",
-    "text-blue-700",
-    "text-indigo-700",
-    "text-blue-900",
-    "text-purple-900",
-    "text-pink-600",
-    "text-yellow-400",
+
     {
       pattern: /text-(orange|green|blue|indigo|purple|pink|yellow)-(100|200|300|400|500|600|700|800|900)/,
-      variants: ['lg', 'hover','group-hover', 'focus', 'lg:hover', 'md', 'md:hover'],
+      variants: ['lg', 'hover', 'group-hover', 'focus', 'lg:hover', 'md', 'md:hover', 'after', 'before', 'after:hover', 'before:hover'],
     },
-    
+    {
+      pattern: /bg-(orange|green|blue|indigo|purple|pink|yellow)-(100|200|300|400|500|600|700|800|900)/,
+      variants: ['lg','dark:before','dark:after', 'hover', 'group-hover', 'focus', 'lg:hover', 'md', 'md:hover', 'after', 'before', 'after:hover', 'before:hover'],
+    },
+
   ],
   theme: {
     colors: {
       'bg-primary': '#F85606',
-      'secondary-text': '#757575',
-      'bg-primary-dark': '#0F0F0F',
-      'secondary-text-dark': '#A6ADBB',
+      'primary-dark': '#0F0F0F',
       'semi-dark': '#182229',
+      'secondary-text': '#757575',
+      'secondary-text-dark': '#A6ADBB',
+
 
     },
     extend: {},
