@@ -6,6 +6,7 @@ import Category from "../SomeCategory/Category";
 import HelmetTitle from "../../Hooks/HelmetTitle";
 import RightButton from "../../Utilitys/Right Floting Button/RightButton";
 import FlashSale from "../FlashSale/FlashSale";
+import JustForYou from "../JustForYou/JustForYou";
 
 
 
@@ -14,7 +15,7 @@ import FlashSale from "../FlashSale/FlashSale";
 
 const Home = () => {
     return (
-    <div className="px-2 md:px-10 lg:px-20 dark:bg-primary-dark dark:text-secondary-text-dark mx-auto w-full">
+    <div className="px-2 bg-root-bg md:px-10 lg:px-20 dark:bg-primary-dark dark:text-secondary-text-dark mx-auto w-full">
       <HelmetTitle title='Home | Daraz'></HelmetTitle>
           <div className="flex justify-evenly items-center mt-5">
         <div className="hidden md:flex md:w-1/4 ">
@@ -29,6 +30,7 @@ const Home = () => {
       <Breadcrumb></Breadcrumb>
      <RightButton></RightButton>
       <FlashSale></FlashSale>
+      <JustForYou></JustForYou>
 
 
      

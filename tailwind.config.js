@@ -24,6 +24,7 @@ export default {
       'semi-dark': '#182229',
       'secondary-text': '#757575',
       'secondary-text-dark': '#A6ADBB',
+      'root-bg': '',
 
 
     },

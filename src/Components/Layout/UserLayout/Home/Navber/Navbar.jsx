@@ -3,13 +3,13 @@ import { FaRegUser } from "react-icons/fa6";
 import { CiShoppingCart } from "react-icons/ci";
 import { MdLanguage } from "react-icons/md";
 import useContextInfo from "../../Hooks/useContextInfo";
-import Button from "../../Components/Button/Button";
 import { IoMdHome, IoMdCart } from "react-icons/io";
 import { FaUser } from "react-icons/fa6";
 import { IoSearch } from "react-icons/io5";
 import { BiLeftArrowAlt, BiSolidCategory } from "react-icons/bi";
 import "./style.css";
 import { useState } from "react";
+import Button from "../../ReuseableComponents/Button/Button";
 
 const Navbar = () => {
   const { selectedColor, textColor } = useContextInfo();
