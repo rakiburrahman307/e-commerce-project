@@ -1,9 +1,10 @@
+import Card from "../../../Reuseable/Card/Card";
 import Title from "../../Hooks/Title";
-import Card from "../../ReuseableComponents/Card/Card";
+
 
 const JustForYou = () => {
     return (
-        <section className="mx-auto bg-white p-5 rounded-lg dark:bg-semi-dark">
+        <section className="mx-auto bg-root-bg mt-5 p-5 rounded-lg dark:bg-semi-dark">
             <div className="mb-5">
                 <Title title='Just For You'></Title>
             </div>

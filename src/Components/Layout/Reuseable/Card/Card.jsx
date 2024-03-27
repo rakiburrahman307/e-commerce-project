@@ -1,6 +1,7 @@
-import useContextInfo from "../../Hooks/useContextInfo";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import PropTypes from 'prop-types';
+import useContextInfo from "../../UserLayout/Hooks/useContextInfo";
+
 const Card = ({ imageUrl, title, discountPrice, originalPrice, discountLevel }) => {
     const { textColor } = useContextInfo();
     const text ='Apple Watch Series 7 GPS, Aluminium ami nation akgdg jagdig kajgdiag kagdi Case, Starlight Sport';

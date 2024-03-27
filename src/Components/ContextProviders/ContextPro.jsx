@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import PropTypes from 'prop-types';
 import { twMerge } from "tailwind-merge";
 export const ContextProvider = createContext();
-const Provider = ({ children }) => {
+const ContextPro = ({ children }) => {
     //------------- Get The Local Storage Text Color ----------------
     const [textColor, setTextColor] = useState(() => {
         const storedTextColor = localStorage.getItem("PreferenceTextColor");
@@ -40,7 +40,7 @@ console.log(textColor)
     );
 };
 
-Provider.propTypes = {
+ContextPro.propTypes = {
     children: PropTypes.node
 };
-export default Provider;
+export default ContextPro;

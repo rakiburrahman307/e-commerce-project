@@ -1,7 +1,7 @@
 import { IoSunny, IoMoon } from "react-icons/io5";
 import { HiComputerDesktop } from "react-icons/hi2";
 import useContextInfo from "../../Hooks/useContextInfo";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 const DarkModeSwitch = () => {
     const { selectedColor } = useContextInfo();
     const [theme, setTheme] = useState(
@@ -28,7 +28,7 @@ const DarkModeSwitch = () => {
             text: "system",
         },
     ];
-    const onWindowMatches = () => {
+    const onWindowMatches = useCallback(async () => {
         if (
             localStorage?.theme === "dark" ||
             (!("theme" in localStorage) && darkQuery?.matches)
@@ -37,8 +37,8 @@ const DarkModeSwitch = () => {
         } else {
             element.classList.remove("dark");
         }
-    };
-    onWindowMatches();
+    }, [darkQuery, element]);
+
     useEffect(() => {
         switch (theme) {
             case "dark":
@@ -49,15 +49,14 @@ const DarkModeSwitch = () => {
                 element.classList.remove("dark");
                 localStorage.setItem("theme", "light");
                 break;
-
             default:
                 localStorage.removeItem("theme");
+                onWindowMatches();
                 break;
         }
-    }, [theme, element]);
+    }, [theme, element, onWindowMatches]);
     darkQuery.addEventListener("change", (e) => {
         if (!("theme" in localStorage)) {
-            console.log(e)
             if (e.matches) {
                 element.classList.add("dark");
                 onWindowMatches();

@@ -1,0 +1,1 @@
+export const BaseURL = import.meta.env.Redux_BaseURL;

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import useContextInfo from "../../Hooks/useContextInfo";
-const Category = () => {
+const Services = () => {
  const {textColor} = useContextInfo();
     const someCategory = [
         {
@@ -54,4 +54,4 @@ const Category = () => {
     );
 };
 
-export default Category;
+export default Services;

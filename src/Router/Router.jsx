@@ -5,25 +5,25 @@ import Error from "../Components/Pages/ErrorPage/Error";
 import UserCarts from "../Components/Layout/UserLayout/Pages/UserCarts/UserCarts";
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <App />,
-      errorElement: <Error />,
-      children: [
-        {
-          path: "/",
-          element: <Home />,
-        },
-        {
-          path: "/cart",
-          element: <UserCarts />,
-        },
-        {
-          path: "/cart",
-          element: <UserCarts />,
-        },
-      ],
-    },
-  ]);
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/cart",
+        element: <UserCarts />,
+      },
+      {
+        path: "/cart",
+        element: <UserCarts />,
+      },
+    ],
+  },
+]);
 
-  export default router;
+export default router;

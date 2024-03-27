@@ -9,7 +9,8 @@ import { IoSearch } from "react-icons/io5";
 import { BiLeftArrowAlt, BiSolidCategory } from "react-icons/bi";
 import "./style.css";
 import { useState } from "react";
-import Button from "../../ReuseableComponents/Button/Button";
+import Button from "../../../Reuseable/Button/Button";
+
 
 const Navbar = () => {
   const { selectedColor, textColor } = useContextInfo();
