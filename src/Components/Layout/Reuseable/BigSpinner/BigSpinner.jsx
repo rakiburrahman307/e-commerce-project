@@ -1,14 +1,19 @@
+import useContextInfo from "../../UserLayout/Hooks/useContextInfo";
 
 const BigSpinner = () => {
-    return (
-        <div className="flex items-center justify-center h-screen">
-            <div className="relative">
-              <div className="h-24 w-24 rounded-full border-t-8 border-b-8 border-gray-200"></div>
-              <div className="absolute top-0 left-0 h-20 w-20 rounded-full border-t-8 border-b-8 border-orange-500 animate-spin">
-              </div>
-            </div>
-          </div>
-    );
+  const { selectedColor } = useContextInfo();
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <div className="w-12 h-12 flex items-center justify-center">
+        <div className="grid grid-cols-2 h-full w-full overflow-hidden shadow-lg rounded-full animate-spin">
+          <span className="h-6 w-6 rounded-tl-full bg-transparent"></span>
+          <span className={`h-6 w-6 rounded-tr-full ${selectedColor}`}></span>
+          <span className={`h-6 w-6 rounded-bl-full ${selectedColor}`}></span>
+          <span className="h-6 w-6 rounded-br-full"></span>
+        </div>
+      </div>
+    </div>
+  );
 };
 
-export default  BigSpinner;
+export default BigSpinner;

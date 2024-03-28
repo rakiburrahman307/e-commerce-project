@@ -16,30 +16,30 @@ import Footer from "../Footer/Footer";
 
 
 const Home = () => {
-    return (
+  return (
     <div className="px-2 bg-root-bg md:px-10 lg:px-20 dark:bg-primary-dark dark:text-secondary-text-dark mx-auto w-full">
       <HelmetTitle title='Home | Daraz'></HelmetTitle>
-          <div className="flex justify-evenly items-center mt-5">
+      <div className="flex justify-evenly items-center mt-5">
         <div className="hidden md:flex md:w-1/4">
-        <Navigation></Navigation>
+          <Navigation></Navigation>
         </div>
-          <div className="w-full px-1 md:w-3/4 dark:bg-primary-dark">
-           <Carousel></Carousel>
+        <div className="w-full px-1 md:w-3/4 dark:bg-primary-dark">
+          <Carousel></Carousel>
         </div>
       </div>
       <About></About>
       <Services></Services>
       <Breadcrumb></Breadcrumb>
-     <RightButton></RightButton>
+      <RightButton></RightButton>
       <FlashSale></FlashSale>
       <Category></Category>
       <JustForYou></JustForYou>
       <Footer></Footer>
 
 
-     
+
     </div>
-    );
+  );
 };
 
 export default Home;

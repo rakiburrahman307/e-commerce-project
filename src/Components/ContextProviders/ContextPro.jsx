@@ -21,17 +21,25 @@ const ContextPro = ({ children }) => {
                 : JSON.parse(storedColor)?.preferenceColor;
         return updateColor;
     });
+    //------------- Get The Local Storage Border Color ----------------
+    const [borderColor, setBorderColor] = useState(() => {
+        const storedColor = localStorage.getItem("PreferenceBorderColor");
+        let updateColor =
+            storedColor === null || JSON.parse(storedColor)?.borderColor === ""
+                ? "border-orange-400"
+                : JSON.parse(storedColor)?.borderColor;
+        return updateColor;
+    });
 
-
-
-console.log(textColor)
 
 
     const providerInfo = {
         textColor,
         selectedColor,
         setSelectedColor,
-        setTextColor
+        setTextColor,
+        setBorderColor,
+        borderColor
     }
     return (
         <ContextProvider.Provider value={providerInfo}>

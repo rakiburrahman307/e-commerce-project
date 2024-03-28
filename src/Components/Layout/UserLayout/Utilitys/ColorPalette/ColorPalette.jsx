@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge';
 import { useEffect } from 'react';
 const ColorPalette = () => {
 
-    const { selectedColor, setSelectedColor, setTextColor } = useContextInfo();
+    const { selectedColor, setSelectedColor, setTextColor, setBorderColor } = useContextInfo();
 
     const handleChangeColor = (colors) => {
         const colorValue = colors.target.value;
@@ -27,6 +27,17 @@ const ColorPalette = () => {
             JSON.stringify({ textColor: textColorClass })
         );
     }, [selectedColor,setTextColor]);
+
+    useEffect(() => {
+        const colorName = selectedColor?.split("-")[1];
+        const colorOpacity = selectedColor?.split("-")[2];
+        const borderColorClass = twMerge(`border-${colorName}-${colorOpacity}`);
+        setBorderColor(borderColorClass);
+        localStorage.setItem(
+            "PreferenceBorderColor",
+            JSON.stringify({ borderColor: borderColorClass })
+        );
+    }, [selectedColor,setBorderColor]);
 
 
 

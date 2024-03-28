@@ -1,19 +1,17 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa6";
 import { CiShoppingCart } from "react-icons/ci";
 import { MdLanguage } from "react-icons/md";
 import useContextInfo from "../../Hooks/useContextInfo";
-import { IoMdHome, IoMdCart } from "react-icons/io";
-import { FaUser } from "react-icons/fa6";
 import { IoSearch } from "react-icons/io5";
-import { BiLeftArrowAlt, BiSolidCategory } from "react-icons/bi";
 import "./style.css";
 import { useState } from "react";
 import Button from "../../../Reuseable/Button/Button";
-
+import MobileNavbar from "./MobileNavber";
+import { BiLeftArrowAlt } from "react-icons/bi";
 
 const Navbar = () => {
-  const { selectedColor, textColor } = useContextInfo();
+  const { selectedColor } = useContextInfo();
   const [searchBoxClick, setSearchBoxClick] = useState(false);
 
   const inputField = (
@@ -104,6 +102,7 @@ const Navbar = () => {
               <Button
                 className="flex items-center justify-center gap-2 font-bold hover:scale-125 w-20 h-12 rounded-xl duration-150 dark:hover:bg-dark-color dark:text-dark-color"
                 value="Login"
+                to="/login"
               >
                 <FaRegUser />
                 Log In
@@ -112,6 +111,7 @@ const Navbar = () => {
               <Button
                 className="flex items-center justify-center gap-2 font-bold hover:scale-125 w-20 h-12 rounded-xl duration-150 dark:hover:bg-dark-color dark:text-dark-color"
                 value="Register"
+                to="/register"
               >
                 Register
               </Button>
@@ -129,62 +129,7 @@ const Navbar = () => {
       {/* This is for navbar design start end here  */}
       {/* -------------------------------------------------- */}
       {/* This is for mobile view bottom section  */}
-      <div className="fixed -bottom-7 w-full z-50 my-5 md:hidden lg:hidden">
-        <div className="flex justify-around items-center top-4 h-16 w-full">
-          <div className="group flex items-center justify-center bg-white py-3 w-1/4 h-full dark:bg-semi-dark dark:text-secondary-text-dark">
-            <NavLink to="/" className="flex flex-col items-center">
-              <IoMdHome
-                size={25}
-                className={`text-secondary-text group-hover:${textColor}`}
-              />
-              <h4
-                className={`text-secondary-text text-xs group-hover:${textColor}`}
-              >
-                Home
-              </h4>
-            </NavLink>
-          </div>
-          <div className="group flex items-center justify-center bg-white py-3 w-1/4 h-full dark:bg-semi-dark dark:text-secondary-text-dark">
-            <NavLink to="/category" className="flex flex-col items-center">
-              <BiSolidCategory
-                size={25}
-                className={`text-secondary-text group-hover:${textColor}`}
-              />
-              <h4
-                className={`text-secondary-text text-xs group-hover:${textColor}`}
-              >
-                Category
-              </h4>
-            </NavLink>
-          </div>
-          <div className="group flex items-center justify-center bg-white py-3 w-1/4 h-full dark:bg-semi-dark dark:text-secondary-text-dark">
-            <NavLink to="/cart" className="flex flex-col items-center">
-              <IoMdCart
-                size={25}
-                className={`text-gray-500 group-hover:${textColor}`}
-              />
-              <h4
-                className={`text-secondary-text text-xs group-hover:${textColor}`}
-              >
-                Cart
-              </h4>
-            </NavLink>
-          </div>
-          <div className="group flex items-center justify-center bg-white py-3 w-1/4 h-full dark:bg-semi-dark dark:text-secondary-text-dark">
-            <NavLink to="/user" className="flex flex-col items-center">
-              <FaUser
-                size={25}
-                className={`text-secondary-text group-hover:${textColor}`}
-              />
-              <h4
-                className={`text-secondary-text text-xs group-hover:${textColor}`}
-              >
-                Account
-              </h4>
-            </NavLink>
-          </div>
-        </div>
-      </div>
+      <MobileNavbar></MobileNavbar>
       {/* This is for mobile view bottom section end  */}
     </section>
   );
