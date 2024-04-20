@@ -26,6 +26,7 @@
     "react-router-dom": "^6.22.0",
     "redux": "^5.0.1",
     "sort-by": "^1.2.0",
+    "sweetalert2": "^11.10.8",
     "swiper": "^11.0.6",
     "tailwind-merge": "^2.2.2"
   },

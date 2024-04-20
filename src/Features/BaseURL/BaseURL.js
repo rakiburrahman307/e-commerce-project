@@ -1,1 +1,4 @@
-export const BaseURL = import.meta.env.Redux_BaseURL;
+const BaseURL = () => {
+    return import.meta.env.Redux_BaseURL;
+};
+export default BaseURL;
