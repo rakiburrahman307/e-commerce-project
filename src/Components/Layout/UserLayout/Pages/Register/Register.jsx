@@ -4,10 +4,10 @@ import useContextInfo from "../../Hooks/useContextInfo";
 import Button from "../../../Reuseable/Button/Button";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useState } from "react";
-import { useRegisterUserMutation } from "../../../../../Features/Authentications/authApiSlice";
 import BigSpinner from "../../../Reuseable/BigSpinner/BigSpinner";
-import Swal from "sweetalert2";
-import showSuccessMessage from "../../../Reuseable/ShowSuccsessNotification/showSuccessMessage";
+import showSuccessMessage from "../../../Reuseable/ShowSuccsessMessage/showSuccsess";
+import { useRegisterUserMutation } from "../../../../Features/Authentications/authApiSlice";
+import showErrorMessage from "../../../Reuseable/showErrorMessage/showErrorMessage";
 
 const Register = () => {
   const { textColor, selectedColor, borderColor } = useContextInfo();
@@ -27,7 +27,6 @@ const Register = () => {
 
   const onSubmit = async data => {
     const { confirmPass, remember, ...formData } = data;
-    console.log(formData);
     setSubmitted(true);
     try {
       const response = await registerUser(formData).unwrap();

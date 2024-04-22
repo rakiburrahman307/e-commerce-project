@@ -10,20 +10,15 @@ import Services from "../SomeCategory/Services";
 import Category from "../Category/Category";
 import Footer from "../Footer/Footer";
 
-
-
-
-
-
 const Home = () => {
   return (
-    <div className="px-2 bg-root-bg md:px-10 lg:px-20 dark:bg-primary-dark dark:text-secondary-text-dark mx-auto w-full">
+    <div className='px-2 bg-root-bg md:px-10 lg:px-20 dark:bg-primary-dark dark:text-secondary-text-dark mx-auto w-full'>
       <HelmetTitle title='Home | Daraz'></HelmetTitle>
-      <div className="flex justify-evenly items-center mt-5">
-        <div className="hidden md:flex md:w-1/4">
+      <div className='flex justify-evenly items-center mt-5'>
+        <div className='hidden md:flex md:w-1/4'>
           <Navigation></Navigation>
         </div>
-        <div className="w-full px-1 md:w-3/4 dark:bg-primary-dark">
+        <div className='w-full px-1 md:w-3/4 dark:bg-primary-dark'>
           <Carousel></Carousel>
         </div>
       </div>
@@ -35,9 +30,6 @@ const Home = () => {
       <Category></Category>
       <JustForYou></JustForYou>
       <Footer></Footer>
-
-
-
     </div>
   );
 };

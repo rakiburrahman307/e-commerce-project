@@ -1,26 +1,48 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useContextInfo from "../../Hooks/useContextInfo";
 import Button from "../../../Reuseable/Button/Button";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useState } from "react";
+import { useLoginUserMutation } from "../../../../Features/Authentications/authApiSlice";
+import showSuccessMessage from "../../../Reuseable/ShowSuccsessMessage/showSuccsess";
+import showErrorMessage from "../../../Reuseable/showErrorMessage/showErrorMessage";
+import BigSpinner from "../../../Reuseable/BigSpinner/BigSpinner";
 
 const Login = () => {
   const { textColor, selectedColor, borderColor } = useContextInfo();
+  const [loginUser, { isLoading, isError }] = useLoginUserMutation();
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+  4;
+  const location = useLocation();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const onSubmit = data => console.log(data);
+  // handelSubmit data here
+  const onSubmit = async data => {
+    try {
+      const response = await loginUser(data);
+      if (response?.error?.status !== 401) {
+        navigate(location?.state ? location?.state : "/");
+        showSuccessMessage("Login Success");
+      } else {
+        showErrorMessage(response?.error?.data?.error);
+      }
+    } catch (error) {
+      console.log(error.message);
+      showErrorMessage(error?.message);
+    }
+  };
   return (
     <section className='w-full p-3 md:w-2/3 lg:w-2/3 mx-auto mt-16 min-h-screen'>
       <div className='flex flex-col md:flex-row lg:flex-row justify-between items-center mb-5 gap-4 md:gap-0'>
         <h2 className='text-lg md:text-2xl font-semibold text-secondary-text dark:text-secondary-text-dark'>
           WallCome To Daraz Please Login
         </h2>
+
         <p className='text-sm font-light text-secondary-text dark:text-secondary-text-dark'>
           New Member?{" "}
           <Link to='/register' className={`${textColor}`}>
@@ -29,6 +51,8 @@ const Login = () => {
           here.
         </p>
       </div>
+      {isError && showErrorMessage(isError)}
+      {isLoading && <BigSpinner />}
       <div className='flex flex-col md:flex-row lg:flex:row justify-between items-center gap-14 bg-white dark:bg-semi-dark p-2 md:p-10 shadow-xl dark:shadow-sm-light dark:shadow-white mt-5'>
         <form className='w-full md:w-1/2' onSubmit={handleSubmit(onSubmit)}>
           <div className='mb-6'>
