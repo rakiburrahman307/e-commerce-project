@@ -1,20 +1,17 @@
-import { useNavigation, Outlet } from 'react-router-dom'
-import Navbar from './Components/Layout/UserLayout/Home/Navber/Navbar'
-import BigSpinner from './Components/Layout/Reuseable/BigSpinner/BigSpinner';
-import { Suspense } from 'react';
+import { Outlet } from "react-router-dom";
+import Navbar from "./Components/Layout/UserLayout/Home/Navbar/Navbar";
+import { Suspense } from "react";
+import BigSpinner from "./Components/Layout/BigSpinner/BigSpinner";
 
 function App() {
-  const navigation = useNavigation();
   return (
     <div className='dark:bg-primary-dark'>
-      {navigation?.state === 'loading' && <BigSpinner></BigSpinner>}
-      
-        <Suspense fallback={<BigSpinner></BigSpinner>}>
-        <Navbar />
+      <Navbar />
+      <Suspense fallback={<BigSpinner />}>
         <Outlet />
-        </Suspense>
+      </Suspense>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

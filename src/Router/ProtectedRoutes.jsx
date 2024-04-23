@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useGetUserQuery } from "../Components/Features/Authentications/authApiSlice";
-import BigSpinner from "../Components/Layout/Reuseable/BigSpinner/BigSpinner";
+import BigSpinner from "../Components/Layout/BigSpinner/BigSpinner";
 
 const ProtectedRoutes = ({ children }) => {
   const { data: user, isLoading } = useGetUserQuery();

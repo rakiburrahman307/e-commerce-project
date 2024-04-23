@@ -1,13 +1,13 @@
 import { Controller, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useContextInfo from "../../Hooks/useContextInfo";
-import Button from "../../../Reuseable/Button/Button";
+import Button from "../../Utilitys/Button/Button";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useState } from "react";
-import BigSpinner from "../../../Reuseable/BigSpinner/BigSpinner";
-import showSuccessMessage from "../../../Reuseable/ShowSuccsessMessage/showSuccsess";
+import showSuccessMessage from "../../Utilitys/ShowSuccsessMessage/showSuccsess";
 import { useRegisterUserMutation } from "../../../../Features/Authentications/authApiSlice";
-import showErrorMessage from "../../../Reuseable/showErrorMessage/showErrorMessage";
+import showErrorMessage from "../../Utilitys/showErrorMessage/showErrorMessage";
+import BigSpinner from "../../../BigSpinner/BigSpinner";
 
 const Register = () => {
   const { textColor, selectedColor, borderColor } = useContextInfo();

@@ -1,4 +1,4 @@
-import useContextInfo from "../../UserLayout/Hooks/useContextInfo";
+import useContextInfo from "../UserLayout/Hooks/useContextInfo";
 
 const BigSpinner = () => {
   const { selectedColor } = useContextInfo();

@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useContextInfo from "../../Hooks/useContextInfo";
-import Button from "../../../Reuseable/Button/Button";
+import Button from "../../Utilitys/Button/Button";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useState } from "react";
 import { useLoginUserMutation } from "../../../../Features/Authentications/authApiSlice";
-import showSuccessMessage from "../../../Reuseable/ShowSuccsessMessage/showSuccsess";
-import showErrorMessage from "../../../Reuseable/showErrorMessage/showErrorMessage";
-import BigSpinner from "../../../Reuseable/BigSpinner/BigSpinner";
+import showSuccessMessage from "../../Utilitys/ShowSuccsessMessage/showSuccsess";
+import showErrorMessage from "../../Utilitys/showErrorMessage/showErrorMessage";
+import BigSpinner from "../../../BigSpinner/BigSpinner";
 
 const Login = () => {
   const { textColor, selectedColor, borderColor } = useContextInfo();

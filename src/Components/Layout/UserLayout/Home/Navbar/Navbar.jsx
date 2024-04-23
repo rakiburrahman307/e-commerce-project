@@ -6,7 +6,7 @@ import useContextInfo from "../../Hooks/useContextInfo";
 import { IoSearch } from "react-icons/io5";
 import "./style.css";
 import { useState } from "react";
-import Button from "../../../Reuseable/Button/Button";
+import Button from "../../Utilitys/Button/Button";
 import MobileNavbar from "./MobileNavber";
 import { BiLeftArrowAlt } from "react-icons/bi";
 

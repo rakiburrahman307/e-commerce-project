@@ -7,8 +7,6 @@ import ContextPro from "./Components/ContextProviders/ContextPro.jsx";
 import { Provider } from "react-redux";
 import { store } from "./App/store.js";
 import router from "./Router/Router.jsx";
-import BigSpinner from "./Components/Layout/Reuseable/BigSpinner/BigSpinner.jsx";
-
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -18,8 +16,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <HelmetProvider>
           <RouterProvider
             router={router}
-            fallbackElement={<BigSpinner />}
-            future={{ v7_startTransition: true }}
           />
         </HelmetProvider>
       </ContextPro>

@@ -1,0 +1,40 @@
+.lazy-image-container>img {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out;
+}
+
+.lazy-image-container>img.visible {
+    opacity: 1;
+}
+
+/* .lazy-image-container>img.blur {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+} */
+
+.placeholder-pulse {
+    width: 100%;
+    height: 100%;
+    background-position: cover;
+    background-color: rgba(255, 255, 255, 0.1);
+    animation: pulse 0.2s infinite;
+    -webkit-animation: pulse 0.2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+    50% {
+        background-color: rgba(255, 255, 255, .1);
+    }
+
+    100% {
+        background-color: rgba(255, 255, 255, 0);
+    }
+}

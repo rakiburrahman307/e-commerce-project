@@ -1,5 +1,6 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import getBaseURL from "../BaseURL/BaseURL";
+
 
 const productApiSlice = createApi({
   reducerPath: "product",
@@ -7,12 +8,18 @@ const productApiSlice = createApi({
   endpoints: builder => ({
     getProducts: builder.query({
       query: () => ({
-        url: "/product/all",
+        url: "product/all",
+        method: "GET",
+      }),
+    }),
+    getSingleProduct: builder.query({
+      query: (id) => ({
+        url: `product/${id}`,
         method: "GET",
       }),
     }),
   }),
 });
 
-export const { useGetProductsQuery } = productApiSlice;
+export const { useGetProductsQuery, useGetSingleProductQuery } = productApiSlice;
 export default productApiSlice;
