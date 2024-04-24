@@ -2,7 +2,7 @@ import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import PropTypes from "prop-types";
 import useContextInfo from "../../Hooks/useContextInfo";
 import ReactStars from "react-rating-stars-component";
-import LazyImage from "./LazyImgLoading/LazyImage";
+import LazyImage from "../LazyImgLoading/LazyImage";
 import { Link } from "react-router-dom";
 
 const Card = ({ _id, title, price, rating, brand, thumbnail }) => {

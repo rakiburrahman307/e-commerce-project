@@ -1,12 +1,12 @@
 import { Controller, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useContextInfo from "../../Hooks/useContextInfo";
-import Button from "../../Utilitys/Button/Button";
+import Button from "../../Utilities/Button/Button";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useState } from "react";
-import showSuccessMessage from "../../Utilitys/ShowSuccsessMessage/showSuccsess";
+import showSuccessMessage from "../../Utilities/ShowSuccsessMessage/showSuccsess";
 import { useRegisterUserMutation } from "../../../../Features/Authentications/authApiSlice";
-import showErrorMessage from "../../Utilitys/showErrorMessage/showErrorMessage";
+import showErrorMessage from "../../Utilities/showErrorMessage/showErrorMessage";
 import BigSpinner from "../../../BigSpinner/BigSpinner";
 
 const Register = () => {

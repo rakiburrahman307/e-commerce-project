@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useContextInfo from "../../Hooks/useContextInfo";
-import Button from "../../Utilitys/Button/Button";
+import Button from "../../Utilities/Button/Button";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useState } from "react";
 import { useLoginUserMutation } from "../../../../Features/Authentications/authApiSlice";
-import showSuccessMessage from "../../Utilitys/ShowSuccsessMessage/showSuccsess";
-import showErrorMessage from "../../Utilitys/showErrorMessage/showErrorMessage";
+import showSuccessMessage from "../../Utilities/ShowSuccsessMessage/showSuccsess";
+import showErrorMessage from "../../Utilities/showErrorMessage/showErrorMessage";
 import BigSpinner from "../../../BigSpinner/BigSpinner";
 
 const Login = () => {

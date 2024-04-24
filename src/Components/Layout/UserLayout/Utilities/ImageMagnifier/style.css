@@ -1,0 +1,25 @@
+.image-magnifier-container {
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container img {
+  display: block;
+  max-width: 100%;
+}
+
+.magnifier {
+  position: absolute;
+  width: 250px; 
+  height: 250px; 
+  border: 1px solid #ccc; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+  z-index: 999;
+  background-size: 400% 300%; 
+  pointer-events: none; 
+  transform: translate(-50%, -50%);
+}
