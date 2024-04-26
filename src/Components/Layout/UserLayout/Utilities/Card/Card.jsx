@@ -6,14 +6,14 @@ import LazyImage from "../LazyImgLoading/LazyImage";
 import { Link } from "react-router-dom";
 
 const Card = ({ _id, title, price, rating, brand, thumbnail }) => {
-  const { textColor, selectedColor, borderColor } = useContextInfo();
+  const { textColor} = useContextInfo();
 
   return (
     <Link to={`/product/${_id}`}>
       <div className='mx-auto max-w-[350px] space-y-4 rounded-lg bg-white p-4 shadow-lg md:w-[350px] dark:bg-[#18181B] duration-500 hover:scale-105'>
         <LazyImage src={thumbnail} alt={title}></LazyImage>`
         <div className='grid gap-1'>
-          <h1 className='text-lg font-semibold'>
+          <h1 className='text-lg font-semibold dark:text-white/60'>
             {title?.length > 30 ? title?.slice(0, 35) : title}
           </h1>
           <p className='text-sm text-gray-500 dark:text-white/60'>{brand}</p>

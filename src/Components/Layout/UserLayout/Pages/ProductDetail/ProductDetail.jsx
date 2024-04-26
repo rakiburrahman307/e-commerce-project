@@ -1,23 +1,32 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetSingleProductQuery } from "../../../../Features/Product/productsApiSlice";
 import Breadcrumb from "../../Utilities/Breadcrumbs/Breadcrumb";
-import useContextInfo from "../../Hooks/useContextInfo";
 import Slider from "react-slick";
 import LeftArrow from "../../../../../assets/svg/left-arrow.svg";
 import RightArrow from "../../../../../assets/svg/right-arrow.svg";
 import ImageMagnifier from "../../Utilities/ImageMagnifier/ImageMagnifier";
 import ReactStars from "react-rating-stars-component";
+import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./style.css";
+import DeliveryDetails from "./DeliveryDetails";
+import showErrorMessage from "./../../Utilities/showErrorMessage/showErrorMessage";
+import useContextInfo from "../../Hooks/useContextInfo";
+import SkeletonLoader from "./SkeletonLoader";
+import DescriptionAndRating from "./DescriptionAndRating";
+
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const { textColor, selectedColor, borderColor } = useContextInfo();
   const { data: product, isLoading, error } = useGetSingleProductQuery(id);
-  const { borderColor } = useContextInfo();
   const [imgUrl, setImgUrl] = useState("");
-  const [currentSlideIndex, setCurrentSlideIndex] = useState();
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [heartFill, setHeartFill] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
   useEffect(() => {
     if (product) {
       if (
@@ -31,7 +40,14 @@ const ProductDetail = () => {
       }
     }
   }, [currentSlideIndex, product]);
-  // Slider arrow components
+
+  const handleDecrease = () => {
+    setQuantity((prevQuantity) => Math.max(prevQuantity - 1, 1));
+  };
+
+  const handleIncrease = () => {
+    setQuantity((prevQuantity) => Math.min(prevQuantity + 1, 10));
+  };
   const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
     <img src={LeftArrow} alt='prevArrow' {...props} />
   );
@@ -39,38 +55,55 @@ const ProductDetail = () => {
   const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
     <img src={RightArrow} alt='nextArrow' {...props} />
   );
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    centerMode: false,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    prevArrow: <img src={LeftArrow} alt='prevArrow' />,
-    nextArrow: <img src={RightArrow} alt='nextArrow' />,
-    beforeChange: (current, next) => {
-      setCurrentSlideIndex(next);
-    },
-  };
+
+  const settings =
+    product?.images?.length === 1
+      ? {
+          dots: true,
+          fade: true,
+          infinite: true,
+          speed: 500,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          waitForAnimate: false,
+        }
+      : {
+          dots: false,
+          infinite: true,
+          speed: 500,
+          centerMode: false,
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          initialSlide: 0,
+          prevArrow: <SlickArrowLeft />,
+          nextArrow: <SlickArrowRight />,
+          beforeChange: (current, next) => {
+            setCurrentSlideIndex(next);
+          },
+        };
 
   return (
-    <section className='w-11/12 mx-auto'>
+    <section className='w-full md:w-11/12 lg:w-11/12 mx-auto min-h-screen'>
       <Breadcrumb />
-      <div className='w-full bg-white shadow-xl rounded-lg'>
+      <div className='w-full bg-white shadow-xl rounded-lg dark:bg-semi-dark'>
         {isLoading ? (
-          <div>Loading...</div>
+          <SkeletonLoader />
         ) : error ? (
-          <div>Error: {error.message}</div>
+          <>
+            {showErrorMessage(error?.data?.error)}
+            {navigate("/login")}
+          </>
         ) : (
-          <div className='flex flex-col md:flex-row p-2 md:p-5 lg:p-10 lg:flex-row my-4'>
-            <div className={`flex flex-col items-center`}>
-              <div className={`w-[500px] p-2 rounded-lg h-[300px] shadow-sm`}>
+          <div className='flex flex-col md:flex-row px-1 md:px-3 lg:px-5 lg:flex-row my-4 gap-10 h-[500px]'>
+            <div className={`flex flex-col items-center mt-5`}>
+              <div
+                className={`p-2 rounded-lg h-[300px] shadow-sm md:shadow-md`}
+              >
                 <ImageMagnifier src={imgUrl}></ImageMagnifier>
               </div>
-              <div className='w-96 mt-8'>
+              <div className='w-[320px] md:w-[300px] mx-auto mt-3 md:mt-5 lg:mt-8 px-1 md:px-2 lg:px-3'>
                 <Slider {...settings} className='rounded-lg'>
-                  {product.images.map((item, index) => (
+                  {product?.images?.map((item, index) => (
                     <div
                       key={index}
                       className='flex justify-evenly items-center gap-5'
@@ -79,32 +112,115 @@ const ProductDetail = () => {
                         src={item}
                         alt={product.title}
                         onMouseEnter={() => setImgUrl(item)}
-                        className={`w-32 h-20 mx-auto rounded-lg object-contain cursor-pointer`}
+                        className='w-32 h-20 mx-auto rounded-lg object-contain cursor-pointer'
                       />
                     </div>
                   ))}
                 </Slider>
               </div>
             </div>
-            <div>
-              <h2 className='text-4xl font-semibold'>{product.title}</h2>
-              <div>
-                <ReactStars
-                  value={rating}
-                  count={5}
-                  edit={false}
-                  isHalf={true}
-                  size={24}
-                  activeColor='#ffd700'
-                />
-                <span>Rating{product?.rating}</span>
+            <div className='px-3 mt-10 w-full'>
+              <h2 className='text-4xl font-semibold dark:text-secondary-text-dark'>
+                {product.title}
+              </h2>
+              <div className='flex justify-between items-center'>
+                <div className='flex flex-col'>
+                  <div className='flex items-center gap-2'>
+                    <ReactStars
+                      value={product?.rating}
+                      count={5}
+                      edit={false}
+                      isHalf={true}
+                      size={24}
+                      activeColor='#ffd700'
+                    />
+                    <span className='text-blue-600'>
+                      {product?.rating} Ratings
+                    </span>
+                  </div>
+                  <p className='dark:text-secondary-text-dark'>
+                    Brand:{" "}
+                    <span className='text-blue-500'>{product?.brand}</span>
+                  </p>
+                </div>
+                <div>
+                  {heartFill ? (
+                    <IoHeartSharp
+                      onClick={() => setHeartFill(!heartFill)}
+                      size={25}
+                      className={`${textColor}`}
+                    />
+                  ) : (
+                    <IoHeartOutline
+                      onClick={() => setHeartFill(!heartFill)}
+                      size={25}
+                      className='dark:text-secondary-text-dark'
+                    />
+                  )}
+                </div>
               </div>
-              <p>{product.description}</p>
-              <p>Price: ${product.price}</p>
+              <div className='mt-2 mb-4 dark:text-secondary-text-dark'>
+                <hr />
+              </div>
+              <p className={`flex gap-2 text-3xl ${textColor}`}>
+                <FaBangladeshiTakaSign size={30} />
+                {product.price}
+              </p>
+              <p className='mt-2 mb-4 text-base text-semi-dark font-medium dark:text-secondary-text-dark'>
+                Promotion:{" "}
+              </p>
+              <div className='flex gap-5 items-center'>
+                <p className='text-base text-semi-dark font-medium dark:text-secondary-text-dark'>
+                  Quantity:
+                </p>
+                <div className='flex gap-8 items-center'>
+                  <button
+                    className={`border ${
+                      quantity > 1
+                        ? `hover:text-white ${textColor} hover:${selectedColor}`
+                        : "border-gray-500 text-gray-500"
+                    } font-bold rounded-full text-sm px-2.5 py-1 text-center inline-flex items-center cursor-pointer dark:${textColor} dark:hover:${selectedColor}`}
+                    onClick={handleDecrease}
+                    disabled={quantity === 1}
+                  >
+                    -
+                  </button>
+                  <p className='text-lg w-4 mx-auto dark:text-secondary-text-dark'>
+                    {quantity}
+                  </p>
+                  <button
+                    className={`border ${
+                      quantity < 10
+                        ? `hover:text-white ${textColor} hover:${selectedColor}`
+                        : "border-gray-500 text-gray-500"
+                    } font-bold rounded-full text-sm px-2.5 py-1 text-center inline-flex items-center cursor-pointer dark:${textColor} dark:hover:${selectedColor}`}
+                    onClick={handleIncrease}
+                    disabled={quantity === 10}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div className='flex justify-between md:justify-start gap-2 md:gap-5 mt-14 mx-auto'>
+                <button
+                  className={`rounded-sm hover:scale-95 w-44 md:w-full border border-blue-500 px-8 py-3 text-base md:text-xl text-blue-500 duration-300 hover:bg-blue-500 hover:text-white`}
+                >
+                  Buy Now
+                </button>
+                <button
+                  className={`rounded-sm hover:scale-95 w-44 md:w-full border ${borderColor} px-8 py-3 text-base md:text-xl ${textColor} duration-300 hover:${selectedColor} hover:text-white`}
+                >
+                  Add To Cart
+                </button>
+              </div>
+            </div>
+            <div className='w-[700px] border-l-2 py-3 px-2'>
+              <DeliveryDetails />
             </div>
           </div>
         )}
       </div>
+        <DescriptionAndRating description={product?.description}/>
     </section>
   );
 };

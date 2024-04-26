@@ -22,7 +22,7 @@ const ImageMagnifier = ({ src, alt }) => {
   };
 
   return (
-    <div className='image-magnifier-container w-96 h-72 mx-auto border shadow-xl bg-white'>
+    <div className='image-magnifier-container h-70 mx-auto bg-transparent'>
       <div
         className='image-container'
         onMouseMove={handleMouseMove}
@@ -30,7 +30,7 @@ const ImageMagnifier = ({ src, alt }) => {
         onMouseLeave={handleMouseLeave}
         style={{ cursor: showMagnifier ? "none" : "auto" }}
       >
-        <img src={src} alt={alt} className="h-72 w-96 mx-auto"/>
+        <img src={src} alt={alt} className="h-72 w-96 object-contain mx-auto"/>
         {showMagnifier && (
           <div
             className='magnifier'

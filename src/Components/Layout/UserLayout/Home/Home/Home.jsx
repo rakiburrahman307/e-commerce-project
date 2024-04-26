@@ -3,7 +3,7 @@
 // import Navigation from "../Side Navigation/Navigation";
 // import Carousel from "../Swiper/Carousel";
 import HelmetTitle from "../../Hooks/HelmetTitle";
-// import RightButton from "../../Utilities/Right Floting Button/RightButton";
+import RightButton from "../../Utilities/Right Floting Button/RightButton";
 // import FlashSale from "../FlashSale/FlashSale";
 import JustForYou from "../JustForYou/JustForYou";
 // import Services from "../SomeCategory/Services";
@@ -25,9 +25,10 @@ const Home = () => {
       {/* <About></About>
       <Services></Services>
       <Breadcrumb></Breadcrumb>
-      <RightButton></RightButton>
+    
       <FlashSale></FlashSale>
       <Category></Category> */}
+        <RightButton></RightButton>
       <JustForYou></JustForYou>
       <Footer></Footer>
     </div>

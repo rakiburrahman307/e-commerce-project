@@ -1,7 +1,7 @@
 import { useGetProductsQuery } from "../../../../Features/Product/productsApiSlice";
 import Card from "../../Utilities/Card/Card";
 import Title from "../../Hooks/Title";
-import CardLoadingSkeleton from "../CardLoadingSkeleton/cardLoadingSkeleton";
+import CardLoadingSkeleton from "../../Utilities/Card/cardLoadingSkeleton";
 import showErrorMessage from "../../Utilities/showErrorMessage/showErrorMessage";
 
 const JustForYou = () => {

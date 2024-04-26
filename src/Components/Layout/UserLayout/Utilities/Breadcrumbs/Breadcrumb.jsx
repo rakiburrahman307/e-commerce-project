@@ -18,10 +18,10 @@ const Breadcrumb = () => {
         breadcrumbPath += `/${name}`;
         const isLast = idx === pathnames.length - 1;
         return isLast ? (
-          <span key={`Breadcrumb-${idx}`}>/ {name}</span>
+          <span className="dark:text-secondary-text-dark" key={`Breadcrumb-${idx}`}> {name}</span>
         ) : (
           <span className={`${textColor}`} key={`Breadcrumb-${idx}`}>
-            / <Link to={breadcrumbPath}>{name}</Link>
+            / <Link to={breadcrumbPath}>{name}</Link> /
           </span>
         );
       })}

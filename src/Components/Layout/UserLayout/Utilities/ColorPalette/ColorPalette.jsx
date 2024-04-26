@@ -55,10 +55,13 @@ const ColorPalette = () => {
     return (
         <div>
             <h2 className="text-xl text-white dark:text-secondary-text-dark my-2">System Color</h2>
-            <select onChange={handleChangeColor} className={`select-arrow block py-2.5 px-0 w-1/2 text-sm text-white ${selectedColor} border-0 border-b-2 border-white appearance-none dark:border-white focus:outline-none focus:ring-0 focus:border-white dark:bg-semi-dark dark:text-secondary-text-dark`}>
+            <select 
+            onChange={handleChangeColor} 
+            defaultValue={selectedColor}
+            className={`select-arrow block py-2.5 px-0 w-1/2 text-sm text-white ${selectedColor} border-0 border-b-2 border-white appearance-none dark:border-white focus:outline-none focus:ring-0 focus:border-white dark:bg-semi-dark dark:text-secondary-text-dark`}>
                 {
                     colors?.map(color => <option
-                        selected={selectedColor === color?.value}
+
                         key={color?.id}
                         value={color?.value}
                         onClick={() => handleChangeColor(color)}
