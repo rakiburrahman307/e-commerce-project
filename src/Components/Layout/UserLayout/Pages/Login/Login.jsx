@@ -5,8 +5,8 @@ import Button from "../../Utilities/Button/Button";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useState } from "react";
 import { useLoginUserMutation } from "../../../../Features/Authentications/authApiSlice";
-import showSuccessMessage from "../../Utilities/ShowSuccsessMessage/showSuccsess";
-import showErrorMessage from "../../Utilities/showErrorMessage/showErrorMessage";
+import ShowSuccessMessage from "../../Utilities/ShowSuccessMessage/ShowSuccessMessage";
+import ShowErrorMessage from "../../Utilities/ShowErrorMessage/ShowErrorMessage";
 import BigSpinner from "../../../BigSpinner/BigSpinner";
 
 const Login = () => {
@@ -27,13 +27,13 @@ const Login = () => {
       const response = await loginUser(data);
       if (response?.error?.status !== 401) {
         navigate(location?.state ? location?.state : "/");
-        showSuccessMessage("Login Success");
+        ShowSuccessMessage("Login Success");
       } else {
-        showErrorMessage(response?.error?.data?.error);
+        ShowErrorMessage(response?.error?.data?.error);
       }
     } catch (error) {
-      console.log(error.message);
-      showErrorMessage(error?.message);
+      console.log(error?.message);
+      ShowErrorMessage(error?.message);
     }
   };
   return (
@@ -51,7 +51,7 @@ const Login = () => {
           here.
         </p>
       </div>
-      {isError && showErrorMessage(isError)}
+      {isError && ShowErrorMessage(isError)}
       {isLoading && <BigSpinner />}
       <div className='flex flex-col md:flex-row lg:flex:row justify-between items-center gap-14 bg-white dark:bg-semi-dark p-2 md:p-10 shadow-xl dark:shadow-sm-light dark:shadow-white mt-5'>
         <form className='w-full md:w-1/2' onSubmit={handleSubmit(onSubmit)}>

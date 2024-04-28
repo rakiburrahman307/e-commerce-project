@@ -4,8 +4,8 @@ import ColorPalette from "../ColorPalette/ColorPalette";
 import { GrClose } from "react-icons/gr";
 import useContextInfo from "../../Hooks/useContextInfo";
 import DarkModeSwitch from "../DarkMode/DarkModeSwitch";
-
-const RightButton = () => {
+import './ScrollStyle.css'
+const RightFloatingButton = () => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   const { selectedColor } = useContextInfo();
 
@@ -38,7 +38,7 @@ const RightButton = () => {
         ))}
       </div>
       <div
-        className={`top-[35%] ${isOpenDrawer ? 'visible':'invisible mr-[-9000px]'} z-50 right-0 fixed duration-500`}
+        className={`top-[35%] ${isOpenDrawer ? 'visible opacity-1':'invisible opacity-0 translate-x-52'} z-50 right-0 fixed duration-500`}
       >
         <div
           className={`menu p-4 w-80 min-h-full px-4 ${selectedColor} cursor-pointer rounded-tl-2xl rounded-bl-2xl dark:bg-semi-dark dark:text-secondary-text-dark`}
@@ -60,4 +60,4 @@ const RightButton = () => {
   );
 };
 
-export default RightButton;
+export default RightFloatingButton;

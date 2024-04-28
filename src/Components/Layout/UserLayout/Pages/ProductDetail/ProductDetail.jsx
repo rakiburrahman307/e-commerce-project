@@ -12,11 +12,11 @@ import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DeliveryDetails from "./DeliveryDetails";
-import showErrorMessage from "./../../Utilities/showErrorMessage/showErrorMessage";
+import ShowErrorMessage from "../../Utilities/ShowErrorMessage/ShowErrorMessage";
 import useContextInfo from "../../Hooks/useContextInfo";
 import SkeletonLoader from "./SkeletonLoader";
 import DescriptionAndRating from "./DescriptionAndRating";
-
+import CommentsInputField from "./CommentsInputField";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -83,18 +83,18 @@ const ProductDetail = () => {
         };
 
   return (
-    <section className='w-full md:w-11/12 lg:w-11/12 mx-auto min-h-screen'>
+    <section className='w-full md:w-11/12 lg:w-11/12 mx-auto min-h-screen pb-5'>
       <Breadcrumb />
-      <div className='w-full bg-white shadow-xl rounded-lg dark:bg-semi-dark'>
+      <div className='w-full bg-white shadow-lg rounded-lg dark:bg-semi-dark'>
         {isLoading ? (
           <SkeletonLoader />
         ) : error ? (
           <>
-            {showErrorMessage(error?.data?.error)}
+            {ShowErrorMessage(error?.data?.error)}
             {navigate("/login")}
           </>
         ) : (
-          <div className='flex flex-col md:flex-row px-1 md:px-3 lg:px-5 lg:flex-row my-4 gap-10 h-[500px]'>
+          <div className='flex flex-col md:flex-row px-1 md:px-3 lg:px-5 lg:flex-row my-4 gap-10 h-auto md:h-[500px]'>
             <div className={`flex flex-col items-center mt-5`}>
               <div
                 className={`p-2 rounded-lg h-[300px] shadow-sm md:shadow-md`}
@@ -177,7 +177,7 @@ const ProductDetail = () => {
                   <button
                     className={`border ${
                       quantity > 1
-                        ? `hover:text-white ${textColor} hover:${selectedColor}`
+                        ? `hover:text-white hover:scale-95 duration-500 ${textColor} hover:${selectedColor}`
                         : "border-gray-500 text-gray-500"
                     } font-bold rounded-full text-sm px-2.5 py-1 text-center inline-flex items-center cursor-pointer dark:${textColor} dark:hover:${selectedColor}`}
                     onClick={handleDecrease}
@@ -191,7 +191,7 @@ const ProductDetail = () => {
                   <button
                     className={`border ${
                       quantity < 10
-                        ? `hover:text-white ${textColor} hover:${selectedColor}`
+                        ? `hover:text-white hover:scale-95 duration-500 ${textColor} hover:${selectedColor}`
                         : "border-gray-500 text-gray-500"
                     } font-bold rounded-full text-sm px-2.5 py-1 text-center inline-flex items-center cursor-pointer dark:${textColor} dark:hover:${selectedColor}`}
                     onClick={handleIncrease}
@@ -220,7 +220,8 @@ const ProductDetail = () => {
           </div>
         )}
       </div>
-        <DescriptionAndRating description={product?.description}/>
+      <CommentsInputField productId={product?._id} />
+      <DescriptionAndRating description={product?.description} />
     </section>
   );
 };

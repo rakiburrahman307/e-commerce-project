@@ -25,7 +25,7 @@ export default {
     colors: {
       'bg-primary': '#F85606',
       'primary-dark': '#0F0F0F',
-      'semi-dark': '#182229',
+      'semi-dark': '#1F2937',
       'secondary-text': '#757575',
       'secondary-text-dark': '#A6ADBB',
       'root-bg': '',

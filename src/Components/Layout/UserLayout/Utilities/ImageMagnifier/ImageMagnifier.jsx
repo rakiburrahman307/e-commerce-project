@@ -30,7 +30,7 @@ const ImageMagnifier = ({ src, alt }) => {
         onMouseLeave={handleMouseLeave}
         style={{ cursor: showMagnifier ? "none" : "auto" }}
       >
-        <img src={src} alt={alt} className="h-72 w-96 object-contain mx-auto"/>
+        <img src={src} alt={alt} className="h-72 w-full object-cover mx-auto"/>
         {showMagnifier && (
           <div
             className='magnifier'

@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 
-const showSuccessMessage = message => {
+
+const ShowSuccessMessage = message => {
   Swal.fire({
     position: "center",
     icon: "success",
@@ -10,4 +11,4 @@ const showSuccessMessage = message => {
   });
 };
 
-export default showSuccessMessage
+export default ShowSuccessMessage

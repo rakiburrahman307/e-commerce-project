@@ -1,8 +1,8 @@
 import { useGetProductsQuery } from "../../../../Features/Product/productsApiSlice";
 import Card from "../../Utilities/Card/Card";
 import Title from "../../Hooks/Title";
-import CardLoadingSkeleton from "../../Utilities/Card/cardLoadingSkeleton";
-import showErrorMessage from "../../Utilities/showErrorMessage/showErrorMessage";
+import CardLoadingSkeleton from "../../Utilities/CardLoadingSkeleton/cardLoadingSkeleton";
+import ShowErrorMessage from "../../Utilities/ShowErrorMessage/ShowErrorMessage";
 
 const JustForYou = () => {
   const { data: products, isLoading, error } = useGetProductsQuery();
@@ -13,7 +13,7 @@ const JustForYou = () => {
         <Title title="Just For You"></Title>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {error && showErrorMessage(error)}
+        {error && ShowErrorMessage(error)}
         {isLoading
           ? Array(6)
               .fill(null)

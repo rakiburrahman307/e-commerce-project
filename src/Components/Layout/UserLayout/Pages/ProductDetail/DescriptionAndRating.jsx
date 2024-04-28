@@ -14,7 +14,7 @@ const DescriptionAndRating = ({ description }) => {
     },
   ];
   return (
-    <Tabs className='dark:text-secondary-text-dark'>
+    <Tabs className='dark:text-secondary-text-dark dark:bg-semi-dark min-h-screen mb-5'>
       <TabList>
         {tabList?.map((tab) => (
           <Tab key={tab?.id}>{tab?.name}</Tab>

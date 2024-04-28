@@ -1,10 +1,11 @@
 import Swal from "sweetalert2";
 
-const showErrorMessage = (message) => {
+
+const ShowErrorMessage = (message) => {
   Swal.fire({
     icon: "error",
     title: "Oops...",
     text: message,
   });
 };
-export default showErrorMessage;
+export default ShowErrorMessage;

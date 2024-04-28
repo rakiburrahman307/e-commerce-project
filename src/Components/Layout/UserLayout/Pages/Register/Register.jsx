@@ -4,10 +4,10 @@ import useContextInfo from "../../Hooks/useContextInfo";
 import Button from "../../Utilities/Button/Button";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useState } from "react";
-import showSuccessMessage from "../../Utilities/ShowSuccsessMessage/showSuccsess";
 import { useRegisterUserMutation } from "../../../../Features/Authentications/authApiSlice";
-import showErrorMessage from "../../Utilities/showErrorMessage/showErrorMessage";
+import ShowErrorMessage from "../../Utilities/ShowErrorMessage/ShowErrorMessage";
 import BigSpinner from "../../../BigSpinner/BigSpinner";
+import ShowSuccessMessage from "../../Utilities/ShowSuccessMessage/ShowSuccessMessage";
 
 const Register = () => {
   const { textColor, selectedColor, borderColor } = useContextInfo();
@@ -30,16 +30,16 @@ const Register = () => {
     setSubmitted(true);
     try {
       const response = await registerUser(formData).unwrap();
-      showSuccessMessage(response?.message);
+      ShowSuccessMessage(response?.message);
       navigate("/login");
     } catch (error) {
-      showErrorMessage("Something was wrong", error.message);
+      ShowErrorMessage("Something was wrong", error?.message);
     }
   };
   const isChecked = watch("remember");
   return (
     <section className='w-full p-3 md:w-2/3 lg:w-2/3 mx-auto mt-16 min-h-screen'>
-      {error && showErrorMessage(error)}
+      {error && ShowErrorMessage(error)}
       <div className='flex flex-col md:flex-row lg:flex-row justify-between items-center mb-5 gap-4 md:gap-0'>
         <h2 className='text-lg md:text-2xl font-semibold text-secondary-text dark:text-secondary-text-dark'>
           Create your Daraz Account

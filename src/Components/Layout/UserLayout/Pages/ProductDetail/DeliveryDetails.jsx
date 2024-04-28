@@ -7,7 +7,7 @@ import useContextInfo from "../../Hooks/useContextInfo";
 const DeliveryDetails = () => {
   const { textColor } = useContextInfo();
   return (
-    <section className='dark:text-secondary-text-dark'>
+    <div className='dark:text-secondary-text-dark mt-2'>
       <div className='mt-2'>
         <h2 className='mb-5'>Delivery</h2>
         <div className='flex gap-2 justify-between'>
@@ -59,7 +59,7 @@ const DeliveryDetails = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

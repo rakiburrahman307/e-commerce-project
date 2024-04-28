@@ -42,10 +42,10 @@ const Navbar = () => {
         className="dropdown-content z-10 menu p-2 shadow rounded-box w-36 text-black bg-base-200 dark:text-white dark:bg-semi-dark mt-4"
       >
         <li>
-          <a>Bangla</a>
+          Bangla
         </li>
         <li>
-          <a>English</a>
+          English
         </li>
       </ul>
     </div>
