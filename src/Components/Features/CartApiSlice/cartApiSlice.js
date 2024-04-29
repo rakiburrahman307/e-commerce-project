@@ -11,7 +11,7 @@ const cartApiSlice = createApi({
         url: `cart/${id}`,
         method: "GET",
       }),
-      providesTags: ["Cart"],
+      providesTags: ["Carts"],
     }),
     // add carts by user
     addCart: builder.mutation({
@@ -20,7 +20,7 @@ const cartApiSlice = createApi({
         method: "POST",
         body: cart,
       }),
-      invalidatesTags: ["Cart"],
+      invalidatesTags: ["Carts"],
     }),
   }),
 });
