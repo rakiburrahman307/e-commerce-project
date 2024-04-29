@@ -17,6 +17,7 @@ import useContextInfo from "../../Hooks/useContextInfo";
 import SkeletonLoader from "./SkeletonLoader";
 import DescriptionAndRating from "./DescriptionAndRating";
 import CommentsInputField from "./CommentsInputField";
+import RelatedProduct from "./RelatedProduct";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -221,7 +222,8 @@ const ProductDetail = () => {
         )}
       </div>
       <CommentsInputField productId={product?._id} />
-      <DescriptionAndRating description={product?.description} />
+      <DescriptionAndRating description={product?.description} productId={product?._id}/>
+      <RelatedProduct category={product?.category}/>
     </section>
   );
 };

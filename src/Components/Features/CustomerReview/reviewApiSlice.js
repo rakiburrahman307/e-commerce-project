@@ -9,21 +9,40 @@ const reviewApiSlice = createApi({
   }),
   // get all customer review
   endpoints: (builder) => ({
-    getComments: builder.query({
-      query: () => ({
-        url: "reviews/all",
+    getReviews: builder.query({
+      query: (productId) => ({
+        url: `reviews/${productId}`,
         method: "GET",
       }),
+      providesTags:['Reviews']
     }),
      // post all customer review
-     postComment: builder.mutation({
-      query: (commentData) => ({
+     postReview: builder.mutation({
+      query: (reviewData) => ({
         url: "reviews/add",
         method: "POST",
-        body: commentData,
+        body: reviewData,
       }),
+      invalidatesTags: ['Reviews']
     }),
+    // delete the review 
+    deleteReview: builder.mutation({
+      query: (reviewId) => ({
+        url: `reviews/delete/${reviewId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ['Reviews']
+    }),
+    // update the review 
+    updateReview: builder.mutation({
+      query: (reviewData) => ({
+        url: `reviews/update`,
+        method: "PUT",
+        body: reviewData,
+      }),
+      invalidatesTags: ['Reviews']
+    })
   }),
 });
-export const { useGetCommentsQuery, usePostCommentMutation } = reviewApiSlice;
+export const { useGetReviewsQuery, usePostReviewMutation, useDeleteReviewMutation, useUpdateReviewMutation } = reviewApiSlice;
 export default reviewApiSlice;

@@ -13,7 +13,7 @@ const JustForYou = () => {
         <Title title="Just For You"></Title>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {error && ShowErrorMessage(error)}
+        {error && ShowErrorMessage(error?.error)}
         {isLoading
           ? Array(6)
               .fill(null)

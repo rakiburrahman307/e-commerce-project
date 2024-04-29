@@ -4,7 +4,7 @@ import ReactStars from "react-rating-stars-component";
 import "./ScrollStyleTextArea.css";
 import { useGetUserQuery } from "../../../../Features/Authentications/authApiSlice";
 import PropTypes from "prop-types";
-import { usePostCommentMutation } from "../../../../Features/CustomerReview/reviewApiSlice";
+import { usePostReviewMutation } from "../../../../Features/CustomerReview/reviewApiSlice";
 import ShowErrorMessage from "../../Utilities/ShowErrorMessage/ShowErrorMessage";
 import ShowSuccessMessage from "../../Utilities/ShowSuccessMessage/ShowSuccessMessage";
 
@@ -14,7 +14,7 @@ const CommentsInputField = ({ productId }) => {
   const { data: user } = useGetUserQuery();
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
-  const [postComment, { isLoading, error }] = usePostCommentMutation();
+  const [postReview] = usePostReviewMutation();
   const submitData = async () => {
     const userId = user?.user?._id;
     const userName = user?.user?.name;
@@ -25,7 +25,7 @@ const CommentsInputField = ({ productId }) => {
       comment,
       rating,
     };
-    const response = await postComment(customerData);
+    const response = await postReview(customerData);
 
     if (response?.error?.status === 400) {
       ShowErrorMessage(response?.error?.data?.message);
