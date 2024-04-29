@@ -118,9 +118,9 @@ const Navbar = () => {
             </div>
             <div className="hidden md:flex justify-evenly items-center gap-2">
               {language}
-              <button>
+              <Link to="/cart">
                 <CiShoppingCart className="text-4xl" />
-              </button>
+              </Link>
             </div>
           </div>
           {/* This is for the  nav header section start here  */}

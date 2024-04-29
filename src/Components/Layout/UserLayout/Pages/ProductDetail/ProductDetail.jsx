@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useGetSingleProductQuery } from "../../../../Features/Product/productsApiSlice";
 import Breadcrumb from "../../Utilities/Breadcrumbs/Breadcrumb";
 import Slider from "react-slick";
 import LeftArrow from "../../../../../assets/svg/left-arrow.svg";
@@ -18,6 +17,7 @@ import SkeletonLoader from "./SkeletonLoader";
 import DescriptionAndRating from "./DescriptionAndRating";
 import CommentsInputField from "./CommentsInputField";
 import RelatedProduct from "./RelatedProduct";
+import { useGetSingleProductQuery } from "../../../../Features/Product/productsApiSlice";
 
 const ProductDetail = () => {
   const { id } = useParams();

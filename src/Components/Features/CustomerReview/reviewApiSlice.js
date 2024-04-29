@@ -7,8 +7,8 @@ const reviewApiSlice = createApi({
     baseUrl: getBaseURL(),
     credential: "include",
   }),
-  // get all customer review
   endpoints: (builder) => ({
+      // get all customer review
     getReviews: builder.query({
       query: (productId) => ({
         url: `reviews/${productId}`,
