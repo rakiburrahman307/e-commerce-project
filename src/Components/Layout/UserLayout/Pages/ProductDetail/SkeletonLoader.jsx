@@ -12,7 +12,7 @@ const SkeletonLoader = () => {
             <Skeleton height={50} width={250} />
           </div>
         </div>
-        <div className='px-3 mt-10 w-full'>
+        <div className='px-3 mt-10 w-full invisible md:visible'>
           <h2 className='text-4xl font-semibold dark:text-secondary-text-dark'>
             <Skeleton height={40} width={200} />
           </h2>
@@ -45,7 +45,7 @@ const SkeletonLoader = () => {
             <Skeleton height={40} width={176} />
           </div>
         </div>
-        <div className='dark:text-secondary-text-dark'>
+        <div className='dark:text-secondary-text-dark invisible md:visible'>
           <div className='mt-2'>
             <Skeleton height={20} width={250} />
             <div className='flex gap-2 justify-between'>

@@ -11,7 +11,7 @@ import Footer from "../Footer/Footer";
 
 const Home = () => {
   return (
-    <div className='px-2 bg-root-bg md:px-10 lg:px-20 dark:bg-primary-dark dark:text-secondary-text-dark mx-auto w-full'>
+    <div className='bg-root-bg dark:bg-primary-dark dark:text-secondary-text-dark'>
       <HelmetTitle title='Home | Daraz'></HelmetTitle>
       <div className='flex justify-evenly items-center mt-5'>
         {/* <div className='hidden md:flex md:w-1/4'>

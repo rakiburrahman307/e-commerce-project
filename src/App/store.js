@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authApiSlice from "../Components/Features/Authentications/authApiSlice";
-import productApiSlice from "../Components/Features/Product/productsApiSlice";
-import reviewApiSlice from "../Components/Features/CustomerReview/reviewApiSlice";
-import cartApiSlice from "../Components/Features/CartApiSlice/CartApiSlice";
+import authApiSlice from "../Components/Features/authApiSlice";
+import productApiSlice from "../Components/Features/productsApiSlice";
+import reviewApiSlice from "../Components/Features/reviewApiSlice";
+import cartApiSlice from '../Components/Features/cartApiSlice';
+
 
 export const store = configureStore({
   reducer: {

@@ -7,7 +7,7 @@ import { IoSearch } from "react-icons/io5";
 import "./style.css";
 import { useState } from "react";
 import Button from "../../Utilities/Button/Button";
-import MobileNavbar from "./MobileNavber";
+import MobileNavbar from "./MobileNavbar";
 import { BiLeftArrowAlt } from "react-icons/bi";
 
 const Navbar = () => {
@@ -16,70 +16,51 @@ const Navbar = () => {
 
   const inputField = (
     <input
-      className="border-none w-full md:w-[550px] lg:w-[700px] py-2 rounded-lg text-secondary-text dark:text-secondary-text-dark dark:bg-primary-dark"
-      type="text"
-      placeholder="Search in Daraz"
+      className='border-none w-full py-2 rounded-lg text-secondary-text focus:ring-0 dark:text-secondary-text-dark dark:bg-primary-dark'
+      type='text'
+      placeholder='Search in Daraz'
     />
   );
 
   const navSubLinks = (
     <>
-      <Link to="#">
-        <li className="text-sm">Become a Seller</li>
+      <Link to='#'>
+        <li className='text-sm'>Become a Seller</li>
       </Link>
-      <li className="text-sm">Daraz Donates</li>
-      <button className="text-sm">Help & Support</button>
+      <li className='text-sm'>Daraz Donates</li>
+      <button className='text-sm'>Help & Support</button>
     </>
   );
 
-  const language = (
-    <div className="dropdown dropdown-hover">
-      <div tabIndex={0} role="button" className="flex gap-2">
-        <MdLanguage className="text-2xl" /> EN
-      </div>
-      <ul
-        tabIndex={0}
-        className="dropdown-content z-10 menu p-2 shadow rounded-box w-36 text-black bg-base-200 dark:text-white dark:bg-semi-dark mt-4"
-      >
-        <li>
-          Bangla
-        </li>
-        <li>
-          English
-        </li>
-      </ul>
-    </div>
-  );
-
   return (
-    <section className="mx-auto">
+    <section className='mx-auto min-w-fit'>
       {/* This is for navbar design start here  */}
       <nav
         className={`px-2 md:px-10 lg:px-20 py-2 relative ${selectedColor} text-white w-full dark:bg-semi-dark dark:text-secondary-text-dark`}
       >
-        <div className="flex justify-start">
-          <ul className="flex gap-4">{navSubLinks}</ul>
+        <div className='flex justify-start'>
+          <ul className='flex gap-4'>{navSubLinks}</ul>
         </div>
-        <div className="flex items-center justify-between top-0 gap-2 md:gap-4 lg:gap-6">
-          <div className="flex justify-between items-center w-full">
+        <div className='flex items-center justify-between top-0 gap-2 md:gap-3 lg:gap-5'>
+          <div className='flex justify-between items-center w-full'>
             {/* This is brand name   */}
-            <div className="scale-100 cursor-pointer rounded-2xl mr-5 py-2 text-xl font-semibold text-white transition-all duration-200 hover:scale-110">
-              <h2 className="text-4xl dark:text-secondary-text-dark">Daraz</h2>
+            <div className='scale-100 cursor-pointer rounded-2xl mr-5 py-2 text-xl font-semibold text-white transition-all duration-200 hover:scale-110'>
+            <Link to='/'><h2 className='text-4xl dark:text-secondary-text-dark'>Daraz</h2></Link>
             </div>
             {/* This is brand name end here  */}
             {/* -------------------------  */}
             {/* Search Box start here */}
-            <div className="hidden md:flex md:mx-auto lg:flex lg:mx-auto">
+            <div className='hidden w-full md:flex md:mx-auto lg:flex lg:mx-auto xl:mx-auto 2xl:mx-auto'>
               {inputField}
             </div>
             {/* Search Box end here */}
             {/* --------------------------------------------  */}
             {/* Search Box for the mobile view start */}
-            <div className="md:hidden lg:hidden">
+            <div className='md:hidden lg:hidden'>
               <IoSearch
                 onClick={() => setSearchBoxClick(!searchBoxClick)}
                 size={25}
-                className="flex justify-end hover:scale-150 hover:duration-300 md:hidden lg:hidden"
+                className='flex justify-end hover:scale-150 hover:duration-300 md:hidden lg:hidden'
               />
               {searchBoxClick && (
                 <div
@@ -88,7 +69,7 @@ const Navbar = () => {
                   <BiLeftArrowAlt
                     onClick={() => setSearchBoxClick(!searchBoxClick)}
                     size={25}
-                    className=" text-white hover:scale-150 hover:duration-300 dark:text-secondary-text-dark"
+                    className=' text-white hover:scale-150 hover:duration-300 dark:text-secondary-text-dark'
                   />
                   {searchBoxClick && inputField}
                 </div>
@@ -97,29 +78,28 @@ const Navbar = () => {
             {/* Search Box for the mobile view start */}
           </div>
           {/* This is for the  nav header section start here  */}
-          <div className="flex justify-between items-center gap-4">
-            <div className="hidden md:flex items-center">
+          <div className='flex justify-between items-center gap-4'>
+            <div className='hidden md:flex items-center'>
               <Button
-                className="flex items-center justify-center gap-2 font-bold hover:scale-125 w-20 h-12 rounded-xl duration-150 dark:hover:bg-dark-color dark:text-dark-color"
-                value="Login"
-                to="/login"
+                className='flex items-center justify-center gap-2 font-bold hover:scale-125 w-20 h-12 rounded-xl duration-150 dark:hover:bg-dark-color dark:text-dark-color'
+                value='Login'
+                to='/login'
               >
                 <FaRegUser />
                 Log In
               </Button>
-              <div className="ml-1 mr-1">|</div>
+              <div className='ml-1 mr-1'>|</div>
               <Button
-                className="flex items-center justify-center gap-2 font-bold hover:scale-125 w-20 h-12 rounded-xl duration-150 dark:hover:bg-dark-color dark:text-dark-color"
-                value="Register"
-                to="/register"
+                className='flex items-center justify-center gap-2 font-bold hover:scale-125 w-20 h-12 rounded-xl duration-150 dark:hover:bg-dark-color dark:text-dark-color'
+                value='Register'
+                to='/register'
               >
                 Register
               </Button>
             </div>
-            <div className="hidden md:flex justify-evenly items-center gap-2">
-              {language}
-              <Link to="/cart">
-                <CiShoppingCart className="text-4xl" />
+            <div className='hidden md:flex justify-evenly items-center gap-2'>
+              <Link to='/carts'>
+                <CiShoppingCart className='text-4xl' />
               </Link>
             </div>
           </div>

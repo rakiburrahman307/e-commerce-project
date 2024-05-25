@@ -36,7 +36,7 @@ const LazyImage = ({ src, alt }) => {
     <div ref={imageRef} className='lazy-image-container'>
       {isVisible ? (
         <img
-          className={`h-[200px] w-[350px] rounded-lg object-cover hover:scale-105 duration-300 ${
+          className={`h-[200px] w-[350px] rounded-lg object-cover hover:scale-105 hover:bg-opacity-70 duration-300 ${
             isLoaded ? "visible" : "opacity-95 blur-sm"
           }`}
           src={src}

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Cart = () => {
+const ProductCarts = () => {
   return (
     <section className='container mx-auto mt-10'>
       <div className='sm:flex shadow-md my-10'>
@@ -127,4 +127,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default ProductCarts;

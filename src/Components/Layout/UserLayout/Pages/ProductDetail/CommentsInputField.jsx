@@ -2,11 +2,12 @@ import { useState } from "react";
 import useContextInfo from "../../Hooks/useContextInfo";
 import ReactStars from "react-rating-stars-component";
 import "./ScrollStyleTextArea.css";
-import { useGetUserQuery } from "../../../../Features/Authentications/authApiSlice";
+import { useGetUserQuery } from "../../../../Features/authApiSlice";
 import PropTypes from "prop-types";
-import { usePostReviewMutation } from "../../../../Features/CustomerReview/reviewApiSlice";
-import ShowErrorMessage from "../../Utilities/ShowErrorMessage/ShowErrorMessage";
-import ShowSuccessMessage from "../../Utilities/ShowSuccessMessage/ShowSuccessMessage";
+import { usePostReviewMutation } from "../../../../Features/reviewApiSlice";
+import ShowSuccessMessage from "../../Utilities/SuccessMessage/ShowSuccessMessage";
+import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
+
 
 const CommentsInputField = ({ productId }) => {
   const [openModal, setOpenModal] = useState(false);

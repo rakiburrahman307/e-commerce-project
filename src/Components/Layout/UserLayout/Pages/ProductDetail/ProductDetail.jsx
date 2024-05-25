@@ -11,13 +11,15 @@ import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DeliveryDetails from "./DeliveryDetails";
-import ShowErrorMessage from "../../Utilities/ShowErrorMessage/ShowErrorMessage";
 import useContextInfo from "../../Hooks/useContextInfo";
 import SkeletonLoader from "./SkeletonLoader";
 import DescriptionAndRating from "./DescriptionAndRating";
 import CommentsInputField from "./CommentsInputField";
 import RelatedProduct from "./RelatedProduct";
-import { useGetSingleProductQuery } from "../../../../Features/Product/productsApiSlice";
+import { useGetSingleProductQuery } from "../../../../Features/productsApiSlice";
+import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
+import { useAddToCartProductMutation } from "../../../../Features/cartApiSlice";
+import ShowSuccessMessage from "../../Utilities/SuccessMessage/ShowSuccessMessage";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -28,6 +30,7 @@ const ProductDetail = () => {
   const [heartFill, setHeartFill] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
+  const [addToCartProduct] = useAddToCartProductMutation();
   useEffect(() => {
     if (product) {
       if (
@@ -82,7 +85,20 @@ const ProductDetail = () => {
             setCurrentSlideIndex(next);
           },
         };
-
+  // handle add to carts functionality
+  const handleAddToCarts = async (product) => {
+    const cart = {
+      ...product,
+      quantity,
+    };
+    const res = await addToCartProduct(cart);
+    if (res?.error?.status === 400 && res?.error) {
+      ShowErrorMessage(res?.error?.data?.message);
+    }else{
+      ShowSuccessMessage(res?.data?.message);
+    }
+    
+  };
   return (
     <section className='w-full md:w-11/12 lg:w-11/12 mx-auto min-h-screen pb-5'>
       <Breadcrumb />
@@ -95,7 +111,7 @@ const ProductDetail = () => {
             {navigate("/login")}
           </>
         ) : (
-          <div className='flex flex-col md:flex-row px-1 md:px-3 lg:px-5 lg:flex-row my-4 gap-10 h-auto md:h-[500px]'>
+          <div className='flex flex-col px-1 md:px-3 lg:px-5 lg:flex-row my-4 gap-10 h-auto md:min-h-[500px]'>
             <div className={`flex flex-col items-center mt-5`}>
               <div
                 className={`p-2 rounded-lg h-[300px] shadow-sm md:shadow-md`}
@@ -122,7 +138,7 @@ const ProductDetail = () => {
             </div>
             <div className='px-3 mt-10 w-full'>
               <h2 className='text-4xl font-semibold dark:text-secondary-text-dark'>
-                {product.title}
+                {product?.title}
               </h2>
               <div className='flex justify-between items-center'>
                 <div className='flex flex-col'>
@@ -204,26 +220,30 @@ const ProductDetail = () => {
               </div>
               <div className='flex justify-between md:justify-start gap-2 md:gap-5 mt-14 mx-auto'>
                 <button
-                  className={`rounded-sm hover:scale-95 w-44 md:w-full border border-blue-500 px-8 py-3 text-base md:text-xl text-blue-500 duration-300 hover:bg-blue-500 hover:text-white`}
+                  className={`rounded-sm hover:scale-95 w-42 md:w-full border border-blue-500 px-8 py-3 text-base md:text-xl text-blue-500 duration-300 hover:bg-blue-500 hover:text-white`}
                 >
                   Buy Now
                 </button>
                 <button
-                  className={`rounded-sm hover:scale-95 w-44 md:w-full border ${borderColor} px-8 py-3 text-base md:text-xl ${textColor} duration-300 hover:${selectedColor} hover:text-white`}
+                  onClick={() => handleAddToCarts(product)}
+                  className={`rounded-sm hover:scale-95 w-42 md:w-full border ${borderColor} px-6 py-3 text-base md:text-xl ${textColor} duration-300 hover:${selectedColor} hover:text-white`}
                 >
                   Add To Cart
                 </button>
               </div>
             </div>
-            <div className='w-[700px] border-l-2 py-3 px-2'>
+            <div className='w-full border-l-2 py-3 px-0 lg:px-2'>
               <DeliveryDetails />
             </div>
           </div>
         )}
       </div>
       <CommentsInputField productId={product?._id} />
-      <DescriptionAndRating description={product?.description} productId={product?._id}/>
-      <RelatedProduct category={product?.category}/>
+      <DescriptionAndRating
+        description={product?.description}
+        productId={product?._id}
+      />
+      <RelatedProduct category={product?.category} />
     </section>
   );
 };

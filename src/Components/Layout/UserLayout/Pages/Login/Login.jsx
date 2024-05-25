@@ -4,9 +4,9 @@ import useContextInfo from "../../Hooks/useContextInfo";
 import Button from "../../Utilities/Button/Button";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useState } from "react";
-import { useLoginUserMutation } from "../../../../Features/Authentications/authApiSlice";
-import ShowSuccessMessage from "../../Utilities/ShowSuccessMessage/ShowSuccessMessage";
-import ShowErrorMessage from "../../Utilities/ShowErrorMessage/ShowErrorMessage";
+import { useLoginUserMutation } from "../../../../Features/authApiSlice";
+import ShowSuccessMessage from "../../Utilities/SuccessMessage/ShowSuccessMessage";
+import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
 import BigSpinner from "../../../BigSpinner/BigSpinner";
 
 const Login = () => {

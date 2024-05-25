@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import CardLoadingSkeleton from "../../Utilities/CardLoadingSkeleton/cardLoadingSkeleton";
 import Card from "../../Utilities/Card/Card";
 import Title from "../../Hooks/Title";
-import { useRelatedProductQuery } from "../../../../Features/Product/productsApiSlice";
+import { useRelatedProductQuery } from "../../../../Features/productsApiSlice";
 const RelatedProduct = ({ category }) => {
   const { data: relatedProducts, isLoading, error } = useRelatedProductQuery(category);
 

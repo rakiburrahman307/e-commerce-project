@@ -4,10 +4,10 @@ import useContextInfo from "../../Hooks/useContextInfo";
 import Button from "../../Utilities/Button/Button";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useState } from "react";
-import { useRegisterUserMutation } from "../../../../Features/Authentications/authApiSlice";
-import ShowErrorMessage from "../../Utilities/ShowErrorMessage/ShowErrorMessage";
+import { useRegisterUserMutation } from "../../../../Features/authApiSlice";
 import BigSpinner from "../../../BigSpinner/BigSpinner";
-import ShowSuccessMessage from "../../Utilities/ShowSuccessMessage/ShowSuccessMessage";
+import ShowSuccessMessage from "../../Utilities/SuccessMessage/ShowSuccessMessage";
+import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
 
 const Register = () => {
   const { textColor, selectedColor, borderColor } = useContextInfo();

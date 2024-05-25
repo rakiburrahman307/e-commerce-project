@@ -5,15 +5,15 @@ import {
   useDeleteReviewMutation,
   useGetReviewsQuery,
   useUpdateReviewMutation,
-} from "../../../../Features/CustomerReview/reviewApiSlice";
+} from "../../../../Features/reviewApiSlice";
 import ReactStars from "react-rating-stars-component";
 import useContextInfo from "../../Hooks/useContextInfo";
 import Swal from "sweetalert2";
-import ShowSuccessMessage from "../../Utilities/ShowSuccessMessage/ShowSuccessMessage";
+import ShowSuccessMessage from "../../Utilities/SuccessMessage/ShowSuccessMessage";
 import LoadingSkeletonReview from "./LoadingSkeletonReview";
 import { useState } from "react";
-import ShowErrorMessage from "../../Utilities/ShowErrorMessage/ShowErrorMessage";
-import { useGetUserQuery } from "../../../../Features/Authentications/authApiSlice";
+import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
+import { useGetUserQuery } from "../../../../Features/authApiSlice";
 
 const DescriptionAndRating = ({ description, productId }) => {
   const { textColor, borderColor, selectedColor } = useContextInfo();

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import getBaseURL from "../BaseURL/BaseURL";
+import getBaseURL from "./BaseURL/BaseURL";
 
 const cartApiSlice = createApi({
   reducerPath: "cartApiSlices",
@@ -14,7 +14,7 @@ const cartApiSlice = createApi({
       providesTags: ["Carts"],
     }),
     // add carts by user
-    addCart: builder.mutation({
+    addToCartProduct: builder.mutation({
       query: (cart) => ({
         url: `cart/add`,
         method: "POST",
@@ -25,5 +25,5 @@ const cartApiSlice = createApi({
   }),
 });
 
-const { useGetCartQuery, useAddCartMutation } = cartApiSlice;
+export const { useGetCartQuery, useAddToCartProductMutation } = cartApiSlice;
 export default cartApiSlice;

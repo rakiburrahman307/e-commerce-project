@@ -1,14 +1,14 @@
-import { useGetProductsQuery } from "../../../../Features/Product/productsApiSlice";
+import { useGetProductsQuery } from "../../../../Features/productsApiSlice";
 import Card from "../../Utilities/Card/Card";
 import Title from "../../Hooks/Title";
 import CardLoadingSkeleton from "../../Utilities/CardLoadingSkeleton/cardLoadingSkeleton";
-import ShowErrorMessage from "../../Utilities/ShowErrorMessage/ShowErrorMessage";
+import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
 
 const JustForYou = () => {
   const { data: products, isLoading, error } = useGetProductsQuery();
 
   return (
-    <section className="mx-auto bg-root-bg mt-5 p-5 rounded-lg dark:bg-semi-dark">
+    <section className="mx-auto px-5 bg-root-bg mt-5 rounded-lg dark:bg-semi-dark">
       <div className="mb-5">
         <Title title="Just For You"></Title>
       </div>

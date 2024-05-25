@@ -8,7 +8,7 @@ const MobileNavbar = () => {
     const {textColor} = useContextInfo()
     return (
         <div className="fixed -bottom-7 w-full z-50 my-5 md:hidden lg:hidden">
-        <div className="flex justify-around items-center top-4 h-16 w-full">
+        <div className="flex items-center top-4 h-16 w-full">
           <div className="group flex items-center justify-center bg-white py-3 w-1/4 h-full dark:bg-semi-dark dark:text-secondary-text-dark">
             <NavLink to="/" className="flex flex-col items-center">
               <IoMdHome
@@ -36,7 +36,7 @@ const MobileNavbar = () => {
             </NavLink>
           </div>
           <div className="group flex items-center justify-center bg-white py-3 w-1/4 h-full dark:bg-semi-dark dark:text-secondary-text-dark">
-            <NavLink to="/cart" className="flex flex-col items-center">
+            <NavLink to="/carts" className="flex flex-col items-center">
               <IoMdCart
                 size={25}
                 className={`text-gray-500 group-hover:${textColor}`}

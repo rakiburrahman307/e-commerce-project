@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./Components/Layout/UserLayout/Home/Navbar/Navbar";
 import { Suspense } from "react";
-import BigSpinner from "./Components/Layout/BigSpinner/BigSpinner";
-import TopScroll from "./Components/Layout/UserLayout/Utilities/TopScroll/TopScroll";
 import RightFloatingButton from "./Components/Layout/UserLayout/Utilities/RightFloatingButton/RightFloatingButton";
+import BigSpinner from "./Components/Layout/BigSpinner/BigSpinner";
+import TopScroll from './Components/Layout/UserLayout/Utilities/TopScroll/TopScroll';
 
 function App() {
   return (

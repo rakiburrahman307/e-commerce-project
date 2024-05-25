@@ -9,8 +9,8 @@ const Card = ({ _id, title, price, rating, brand, thumbnail }) => {
   const { textColor} = useContextInfo();
 
   return (
-    <Link to={`/product/${_id}`}>
-      <div className='mx-auto max-w-[350px] space-y-4 rounded-lg bg-white p-4 shadow-lg md:w-[350px] dark:bg-[#18181B] duration-500 hover:scale-105'>
+    <Link to={`/product/${_id}`} className="mx-auto">
+      <div className='max-w-[400px] space-y-4 rounded-lg bg-white p-2 shadow-lg dark:bg-[#18181B] duration-500 hover:scale-105'>
         <LazyImage src={thumbnail} alt={title}></LazyImage>`
         <div className='grid gap-1'>
           <h1 className='text-lg font-semibold dark:text-white/60'>
