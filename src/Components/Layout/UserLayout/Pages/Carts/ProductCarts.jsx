@@ -1,67 +1,40 @@
+import React from "react";
 import { Link } from "react-router-dom";
+import { useGetCartsQuery } from "../../../../Features/cartApiSlice";
+import { useGetUserQuery } from "../../../../Features/authApiSlice";
+import CartItems from "./CartItems";
+import CartItemSkeleton from "./CartItemSkeleton";
+import './style.css';
+import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
 
 const ProductCarts = () => {
+  const {
+    data: user,
+    isLoading: userLoading,
+  } = useGetUserQuery();
+  const {
+    data: carts,
+    isLoading: cartsLoading,
+  } = useGetCartsQuery(user?.user?._id);
+
+
   return (
     <section className='container mx-auto mt-10'>
       <div className='sm:flex shadow-md my-10'>
-        <div className='w-full  sm:w-3/4 bg-white px-10 py-10 dark:bg-semi-dark'>
+        <div className='w-full sm:w-3/4 bg-white px-10 py-10 dark:bg-semi-dark'>
           <div className='flex justify-between border-b pb-8'>
-            <h1 className='font-semibold text-2xl dark:text-secondary-text-dark'>Shopping Cart</h1>
-            <h2 className='font-semibold text-2xl dark:text-secondary-text-dark'>3 Items</h2>
-          </div>     
-          <div className='md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50'>
-            <div className='md:w-4/12 2xl:w-1/4 w-full'>
-              <img
-                src='https://i.ibb.co/6gzWwSq/Rectangle-20-1.png'
-                alt='Black Leather Purse'
-                className='h-full object-center object-cover md:block hidden'
-              />
-              <img
-                src='https://i.ibb.co/TTnzMTf/Rectangle-21.png'
-                alt='Black Leather Purse'
-                className='md:hidden w-full h-full object-center object-cover'
-              />
-            </div>
-            <div className='md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center'>
-              <p className='text-xs leading-3 text-gray-800 md:pt-0 pt-4 dark:text-secondary-text-dark'>
-                RF293
-              </p>
-              <div className='flex items-center justify-between w-full'>
-                <p className='text-base font-black leading-none text-gray-800 dark:text-secondary-text-dark'>
-                  Luxe card holder
-                </p>
-                <select
-                  aria-label='Select quantity'
-                  className='py-2 px-1 border border-gray-200 mr-6 focus:outline-none dark:text-secondary-text-dark'
-                >
-                  <option>01</option>
-                  <option>02</option>
-                  <option>03</option>
-                </select>
-              </div>
-              <p className='text-xs leading-3 text-gray-600 pt-2 dark:text-secondary-text-dark'>
-                Height: 10 inches
-              </p>
-              <p className='text-xs leading-3 text-gray-600 py-4 dark:text-secondary-text-dark'>
-                Color: Black
-              </p>
-              <p className='w-96 text-xs leading-3 text-gray-600 dark:text-secondary-text-dark'>
-                Composition: 100% calf leather
-              </p>
-              <div className='flex items-center justify-between pt-5'>
-                <div className='flex itemms-center'>
-                  <p className='text-xs leading-3 underline text-gray-800 cursor-pointer dark:text-secondary-text-dark'>
-                    Add to favorites
-                  </p>
-                  <p className='text-xs leading-3 underline text-red-500 pl-5 cursor-pointer dark:text-secondary-text-dark'>
-                    Remove
-                  </p>
-                </div>
-                <p className='text-base font-black leading-none text-gray-800 dark:text-secondary-text-dark'>
-                  ,000
-                </p>
-              </div>
-            </div>
+            <h1 className='font-semibold text-2xl dark:text-secondary-text-dark'>
+              Shopping Cart
+            </h1>
+            <h2 className='font-semibold text-2xl dark:text-secondary-text-dark'>
+              {carts?.length} Items
+            </h2>
+          </div>
+          {/* Map all the cart Items */}
+          <div className="max-h-screen overflow-y-scroll my-scroll-container">
+            {cartsLoading && userLoading ? <CartItemSkeleton /> : carts?.map((cart) => (
+              <CartItems key={cart?._id} cart={cart} />
+            ))}
           </div>
           <Link
             to='/'
@@ -76,18 +49,17 @@ const ProductCarts = () => {
             Continue Shopping
           </Link>
         </div>
-        <div
-          id='summary'
-          className=' w-full   sm:w-1/4   md:w-1/2     px-8 py-10'
-        >
+        <div id='summary' className='w-full sm:w-1/4 md:w-1/2 px-8 py-10'>
           <h1 className='font-semibold text-2xl border-b pb-8 dark:text-secondary-text-dark'>
             Order Summary
           </h1>
           <div className='flex justify-between mt-10 mb-5 dark:text-secondary-text-dark'>
-            <span className='font-semibold text-sm uppercase'>Items 3</span>
+            <span className='font-semibold text-sm uppercase'>
+              Items {carts?.length}
+            </span>
             <span className='font-semibold text-sm'>590$</span>
           </div>
-          <div className="dark:text-secondary-text-dark">
+          <div className='dark:text-secondary-text-dark'>
             <label className='font-medium inline-block mb-3 text-sm uppercase'>
               Shipping
             </label>
@@ -97,7 +69,7 @@ const ProductCarts = () => {
           </div>
           <div className='py-10 dark:text-secondary-text-dark'>
             <label
-              for='promo'
+              htmlFor='promo'
               className='font-semibold inline-block mb-3 text-sm uppercase'
             >
               Promo Code

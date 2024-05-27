@@ -9,10 +9,14 @@ import { useState } from "react";
 import Button from "../../Utilities/Button/Button";
 import MobileNavbar from "./MobileNavbar";
 import { BiLeftArrowAlt } from "react-icons/bi";
+import { useGetUserQuery } from "../../../../Features/authApiSlice";
+import { useGetCartsQuery } from "../../../../Features/cartApiSlice";
 
 const Navbar = () => {
-  const { selectedColor } = useContextInfo();
+  const { selectedColor, textColor } = useContextInfo();
   const [searchBoxClick, setSearchBoxClick] = useState(false);
+  const { data: user } = useGetUserQuery();
+  const { data: carts, isLoading } = useGetCartsQuery(user?.user?._id);
 
   const inputField = (
     <input
@@ -45,7 +49,11 @@ const Navbar = () => {
           <div className='flex justify-between items-center w-full'>
             {/* This is brand name   */}
             <div className='scale-100 cursor-pointer rounded-2xl mr-5 py-2 text-xl font-semibold text-white transition-all duration-200 hover:scale-110'>
-            <Link to='/'><h2 className='text-4xl dark:text-secondary-text-dark'>Daraz</h2></Link>
+              <Link to='/'>
+                <h2 className='text-4xl dark:text-secondary-text-dark'>
+                  Daraz
+                </h2>
+              </Link>
             </div>
             {/* This is brand name end here  */}
             {/* -------------------------  */}
@@ -81,7 +89,7 @@ const Navbar = () => {
           <div className='flex justify-between items-center gap-4'>
             <div className='hidden md:flex items-center'>
               <Button
-                className='flex items-center justify-center gap-2 font-bold hover:scale-125 w-20 h-12 rounded-xl duration-150 dark:hover:bg-dark-color dark:text-dark-color'
+                className='flex items-center justify-center gap-2 font-bold hover:scale-125 w-20 h-12 rounded-xl duration-200 dark:hover:bg-dark-color dark:text-dark-color'
                 value='Login'
                 to='/login'
               >
@@ -90,17 +98,24 @@ const Navbar = () => {
               </Button>
               <div className='ml-1 mr-1'>|</div>
               <Button
-                className='flex items-center justify-center gap-2 font-bold hover:scale-125 w-20 h-12 rounded-xl duration-150 dark:hover:bg-dark-color dark:text-dark-color'
+                className='flex items-center justify-center gap-2 font-bold hover:scale-125 w-20 h-12 rounded-xl duration-200 dark:hover:bg-dark-color dark:text-dark-color'
                 value='Register'
                 to='/register'
               >
                 Register
               </Button>
             </div>
-            <div className='hidden md:flex justify-evenly items-center gap-2'>
+            <div className='relative hidden md:flex justify-evenly items-center gap-2'>
               <Link to='/carts'>
-                <CiShoppingCart className='text-4xl' />
+                <CiShoppingCart className='text-4xl hover:scale-125 duration-200' />
               </Link>
+              {carts?.length > 0 && !isLoading && (
+                <span
+                  className={`absolute -right-2 -top-2 flex h-[20px] w-[20px] items-center justify-center rounded-full bg-white text-center text-[12px] ${textColor}`}
+                >
+                  {carts?.length}
+                </span>
+              )}
             </div>
           </div>
           {/* This is for the  nav header section start here  */}

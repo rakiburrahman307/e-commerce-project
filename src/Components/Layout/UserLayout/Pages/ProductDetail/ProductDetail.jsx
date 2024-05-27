@@ -20,6 +20,8 @@ import { useGetSingleProductQuery } from "../../../../Features/productsApiSlice"
 import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
 import { useAddToCartProductMutation } from "../../../../Features/cartApiSlice";
 import ShowSuccessMessage from "../../Utilities/SuccessMessage/ShowSuccessMessage";
+import { useGetUserQuery } from "../../../../Features/authApiSlice";
+import ProtectedRoutes from "../../../../../Router/ProtectedRoutes";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -31,6 +33,9 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
   const [addToCartProduct] = useAddToCartProductMutation();
+  const { data: user } = useGetUserQuery();
+
+  const userId = user?.user?._id;
   useEffect(() => {
     if (product) {
       if (
@@ -90,15 +95,24 @@ const ProductDetail = () => {
     const cart = {
       ...product,
       quantity,
+      userId,
     };
-    const res = await addToCartProduct(cart);
-    if (res?.error?.status === 400 && res?.error) {
-      ShowErrorMessage(res?.error?.data?.message);
-    }else{
-      ShowSuccessMessage(res?.data?.message);
+    try {
+      const res = await addToCartProduct(cart).unwrap();
+      if (res?.success) {
+        ShowSuccessMessage(res?.success?.message || "Product added successfully");
+      }
+    }  catch (error) {
+      if (error.data?.error) {
+        ShowErrorMessage(error?.data?.error?.message || "Something went wrong");
+      } else {
+        ShowErrorMessage(error?.message || "An unexpected error occurred");
+      }
     }
     
   };
+
+
   return (
     <section className='w-full md:w-11/12 lg:w-11/12 mx-auto min-h-screen pb-5'>
       <Breadcrumb />
@@ -218,19 +232,21 @@ const ProductDetail = () => {
                   </button>
                 </div>
               </div>
+                <ProtectedRoutes>
               <div className='flex justify-between md:justify-start gap-2 md:gap-5 mt-14 mx-auto'>
                 <button
                   className={`rounded-sm hover:scale-95 w-42 md:w-full border border-blue-500 px-8 py-3 text-base md:text-xl text-blue-500 duration-300 hover:bg-blue-500 hover:text-white`}
                 >
                   Buy Now
                 </button>
-                <button
+               <button
                   onClick={() => handleAddToCarts(product)}
                   className={`rounded-sm hover:scale-95 w-42 md:w-full border ${borderColor} px-6 py-3 text-base md:text-xl ${textColor} duration-300 hover:${selectedColor} hover:text-white`}
                 >
                   Add To Cart
                 </button>
               </div>
+               </ProtectedRoutes>
             </div>
             <div className='w-full border-l-2 py-3 px-0 lg:px-2'>
               <DeliveryDetails />

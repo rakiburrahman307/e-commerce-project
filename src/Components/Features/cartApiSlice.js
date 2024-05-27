@@ -6,9 +6,9 @@ const cartApiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: getBaseURL(), credential: "include" }),
   endpoints: (builder) => ({
     // get all carts by user
-    getCart: builder.query({
+    getCarts: builder.query({
       query: (id) => ({
-        url: `cart/${id}`,
+        url: `cart/all/${id}`,
         method: "GET",
       }),
       providesTags: ["Carts"],
@@ -25,5 +25,5 @@ const cartApiSlice = createApi({
   }),
 });
 
-export const { useGetCartQuery, useAddToCartProductMutation } = cartApiSlice;
+export const { useGetCartsQuery, useAddToCartProductMutation } = cartApiSlice;
 export default cartApiSlice;

@@ -6,12 +6,15 @@ import LazyImage from "../LazyImgLoading/LazyImage";
 import { Link } from "react-router-dom";
 
 const Card = ({ _id, title, price, rating, brand, thumbnail }) => {
-  const { textColor} = useContextInfo();
+  const { textColor } = useContextInfo();
 
   return (
     <Link to={`/product/${_id}`} className="mx-auto">
       <div className='max-w-[400px] space-y-4 rounded-lg bg-white p-2 shadow-lg dark:bg-[#18181B] duration-500 hover:scale-105'>
-        <LazyImage src={thumbnail} alt={title}></LazyImage>`
+        <div className='relative'>
+          <LazyImage src={thumbnail} alt={title} className='w-full rounded-lg' />
+          <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 hover:opacity-100 rounded-lg'></div>
+        </div>
         <div className='grid gap-1'>
           <h1 className='text-lg font-semibold dark:text-white/60'>
             {title?.length > 30 ? title?.slice(0, 35) : title}
@@ -38,12 +41,14 @@ const Card = ({ _id, title, price, rating, brand, thumbnail }) => {
     </Link>
   );
 };
+
 Card.propTypes = {
-  _id: PropTypes.string,
-  thumbnail: PropTypes.string,
-  title: PropTypes.string,
-  price: PropTypes.number,
-  rating: PropTypes.number,
-  brand: PropTypes.string,
+  _id: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  rating: PropTypes.number.isRequired,
+  brand: PropTypes.string.isRequired,
 };
+
 export default Card;
