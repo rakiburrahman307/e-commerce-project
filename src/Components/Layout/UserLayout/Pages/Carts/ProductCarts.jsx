@@ -1,40 +1,50 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useGetCartsQuery } from "../../../../Features/cartApiSlice";
+import {
+  useDeleteCartProductMutation,
+  useGetCartsQuery,
+} from "../../../../Features/cartApiSlice";
 import { useGetUserQuery } from "../../../../Features/authApiSlice";
 import CartItems from "./CartItems";
 import CartItemSkeleton from "./CartItemSkeleton";
-import './style.css';
-import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
+import "./style.css";
+import emptyCart from "../../../../../assets/svg/empty-cart.svg";
 
 const ProductCarts = () => {
-  const {
-    data: user,
-    isLoading: userLoading,
-  } = useGetUserQuery();
-  const {
-    data: carts,
-    isLoading: cartsLoading,
-  } = useGetCartsQuery(user?.user?._id);
-
+  const { data: user, isLoading: userLoading } = useGetUserQuery();
+  const { data: carts, isLoading: cartsLoading } = useGetCartsQuery(
+    user?.user?._id
+  );
+  const [deleteCartProduct] = useDeleteCartProductMutation();
 
   return (
     <section className='container mx-auto mt-10'>
       <div className='sm:flex shadow-md my-10'>
-        <div className='w-full sm:w-3/4 bg-white px-10 py-10 dark:bg-semi-dark'>
+        <div className='w-full sm:w-3/4 bg-white px-5 md:px-10 py-10 dark:bg-semi-dark'>
           <div className='flex justify-between border-b pb-8'>
-            <h1 className='font-semibold text-2xl dark:text-secondary-text-dark'>
+            <h1 className='font-semibold text-xl md:text-2xl dark:text-secondary-text-dark'>
               Shopping Cart
             </h1>
-            <h2 className='font-semibold text-2xl dark:text-secondary-text-dark'>
-              {carts?.length} Items
+            <h2 className='font-semibold text-lg md:text-xl dark:text-secondary-text-dark'>
+              {carts?.length || 0} Items
             </h2>
           </div>
-          {/* Map all the cart Items */}
-          <div className="max-h-screen overflow-y-scroll my-scroll-container">
-            {cartsLoading && userLoading ? <CartItemSkeleton /> : carts?.map((cart) => (
-              <CartItems key={cart?._id} cart={cart} />
-            ))}
+          <div className='max-h-screen overflow-y-scroll my-scroll-container'>
+            {userLoading || cartsLoading ? (
+              <CartItemSkeleton />
+            ) : carts?.length > 0 ? (
+              carts?.map((cart) => (
+                <CartItems
+                  key={cart?._id}
+                  cart={cart}
+                  deleteCartProduct={deleteCartProduct}
+                />
+              ))
+            ) : (
+              <div className='flex justify-center items-center h-full my-20'>
+                <img src={emptyCart} alt='empty cart' className='w-1/2' />
+              </div>
+            )}
           </div>
           <Link
             to='/'
@@ -55,7 +65,7 @@ const ProductCarts = () => {
           </h1>
           <div className='flex justify-between mt-10 mb-5 dark:text-secondary-text-dark'>
             <span className='font-semibold text-sm uppercase'>
-              Items {carts?.length}
+              Items {carts?.length || 0}
             </span>
             <span className='font-semibold text-sm'>590$</span>
           </div>

@@ -17,3 +17,12 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #8a8a8a;
 }
+
+
+/* CSS */
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+

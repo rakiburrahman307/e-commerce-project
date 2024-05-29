@@ -22,8 +22,19 @@ const cartApiSlice = createApi({
       }),
       invalidatesTags: ["Carts"],
     }),
+    deleteCartProduct: builder.mutation({
+      query: (id) => ({
+        url: `cart/delete/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Carts"],
+    }),
   }),
 });
 
-export const { useGetCartsQuery, useAddToCartProductMutation } = cartApiSlice;
+export const {
+  useGetCartsQuery,
+  useDeleteCartProductMutation,
+  useAddToCartProductMutation,
+} = cartApiSlice;
 export default cartApiSlice;
