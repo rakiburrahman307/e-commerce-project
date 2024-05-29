@@ -33,7 +33,7 @@ const cartApiSlice = createApi({
     // increase carts by user
     increaseCartQuantity: builder.mutation({
       query: (id) => ({
-        url: `cart/increase/${id}`,
+        url: `cart/increase/quantity/${id}`,
         method: "PUT",
       }),
       invalidatesTags: ["Carts"],
@@ -41,7 +41,7 @@ const cartApiSlice = createApi({
     // decrease carts by user
     decreaseCartQuantity: builder.mutation({
       query: (id)=>({
-        url: `cart/decrease/${id}`,
+        url: `cart/decrease/quantity/${id}`,
         method: "PUT",
       }),
       invalidatesTags: ["Carts"],
@@ -49,11 +49,19 @@ const cartApiSlice = createApi({
     // reset carts by user
     resetCartQuantity: builder.mutation({
       query: (id)=>({
-        url: `cart/reset/${id}`,
+        url: `cart/reset/quantity/${id}`,
         method: "PUT",
       }),
       invalidatesTags: ["Carts"],
+    }),
+    clearCart: builder.mutation({
+      query: (userId)=>({
+        url: `cart/clear/${userId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Carts"],
     })
+
   }),
 });
 
@@ -63,6 +71,7 @@ export const {
   useAddToCartProductMutation,
   useIncreaseCartQuantityMutation,
   useDecreaseCartQuantityMutation,
-  useResetCartQuantityMutation
+  useResetCartQuantityMutation,
+  useClearCartMutation
 } = cartApiSlice;
 export default cartApiSlice;

@@ -13,10 +13,11 @@ const CartItems = ({
   decreaseCartQuantity,
   increaseCartQuantity,
   resetCartQuantity,
+  itemTotalPrices,
 }) => {
   const { textColor, selectedColor } = useContextInfo();
   const { _id, title, thumbnail, price, quantity: totalQuantity } = cart;
-  const [quantity, setQuantity] = useState(totalQuantity || 0);
+  const [quantity, setQuantity] = useState(totalQuantity || 1);
 
   const handleDecrease = async (id) => {
     try {
@@ -51,16 +52,25 @@ const CartItems = ({
       ShowErrorMessage(error?.data?.error);
     }
   };
-  const handleResetQuantity = async() => {
+  const handleResetQuantity = () => {
     try {
-      const res = await resetCartQuantity(_id).unwrap();
-      setQuantity(1);
       Swal.fire({
-        position: "center",
-        icon: "success",
-        title: res?.message,
-        showConfirmButton: false,
-        timer: 1000,
+        title: "Are you sure?",
+        text: "reset this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, reset it!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const res = await resetCartQuantity(_id).unwrap();
+          setQuantity(1);
+          Swal.fire({
+            title: res?.message,
+            icon: "success",
+          });
+        }
       });
     } catch (error) {
       console.error(error);
@@ -147,10 +157,10 @@ const CartItems = ({
           </div>
         </div>
         <p className='text-xs leading-3 text-gray-600 pt-2 dark:text-secondary-text-dark'>
-          Height: {totalQuantity}
+          Quantity: {totalQuantity}
         </p>
-        <p className='text-xs leading-3 text-gray-600 py-4 dark:text-secondary-text-dark'>
-          Color: Black
+        <p className='text-xs flex gap-1 leading-3 text-gray-600 py-4 dark:text-secondary-text-dark'>
+          Price: <FaBangladeshiTakaSign size={10} /> {price}
         </p>
         <p className='w-96 text-xs leading-3 text-gray-600 dark:text-secondary-text-dark'>
           Composition: 100% calf leather
@@ -168,7 +178,7 @@ const CartItems = ({
             </button>
           </div>
           <p className='flex gap-1 text-base font-black leading-none text-gray-800 dark:text-secondary-text-dark'>
-            <FaBangladeshiTakaSign size={15} /> {price}
+            <FaBangladeshiTakaSign size={15} /> {itemTotalPrices[_id]}
           </p>
         </div>
       </div>
@@ -184,5 +194,6 @@ CartItems.propTypes = {
   increaseCartQuantity: PropTypes.func,
   resetCartQuantity: PropTypes.func,
   _id: PropTypes.string,
+  itemTotalPrices: PropTypes.object,
 };
 export default CartItems;

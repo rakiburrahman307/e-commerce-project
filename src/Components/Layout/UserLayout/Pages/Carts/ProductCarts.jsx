@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
+  useClearCartMutation,
   useDecreaseCartQuantityMutation,
   useDeleteCartProductMutation,
   useGetCartsQuery,
@@ -12,8 +13,15 @@ import CartItems from "./CartItems";
 import CartItemSkeleton from "./CartItemSkeleton";
 import "./style.css";
 import emptyCart from "../../../../../assets/svg/empty-cart.svg";
+import { FaLongArrowAltLeft } from "react-icons/fa";
+import { RiDeleteBin6Fill } from "react-icons/ri";
+import useContextInfo from "../../Hooks/useContextInfo";
+import Swal from "sweetalert2";
+import { calculateTotalCartPrice } from "./calculationItemPrices";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 
 const ProductCarts = () => {
+  const { textColor } = useContextInfo();
   const { data: user, isLoading: userLoading } = useGetUserQuery();
   const { data: carts, isLoading: cartsLoading } = useGetCartsQuery(
     user?.user?._id
@@ -22,7 +30,34 @@ const ProductCarts = () => {
   const [increaseCartQuantity] = useIncreaseCartQuantityMutation();
   const [decreaseCartQuantity] = useDecreaseCartQuantityMutation();
   const [resetCartQuantity] = useResetCartQuantityMutation();
-
+  const [clearCart] = useClearCartMutation();
+  const { totalCartPrice, itemTotalPrices, updatedCarts } =
+    calculateTotalCartPrice(carts);
+  const handleClearCart = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Clear This Cart!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await clearCart(id).unwrap();
+          Swal.fire({
+            title: "Deleted!",
+            text: res?.message,
+            icon: "success",
+          });
+        } catch (error) {
+          console.error(error);
+          ShowErrorMessage(error?.data?.error);
+        }
+      }
+    });
+  };
   return (
     <section className='container mx-auto mt-10'>
       <div className='sm:flex shadow-md my-10'>
@@ -32,14 +67,14 @@ const ProductCarts = () => {
               Shopping Cart
             </h1>
             <h2 className='font-semibold text-lg md:text-xl dark:text-secondary-text-dark'>
-              {carts?.length || 0} Items
+              {updatedCarts?.length || 0} Items
             </h2>
           </div>
-          <div className='max-h-screen overflow-y-scroll my-scroll-container'>
+          <div className='max-h-screen overflow-y-scroll shadow-sm'>
             {userLoading || cartsLoading ? (
               <CartItemSkeleton />
-            ) : carts?.length > 0 ? (
-              carts?.map((cart) => (
+            ) : updatedCarts?.length > 0 ? (
+              updatedCarts?.map((cart) => (
                 <CartItems
                   key={cart?._id}
                   cart={cart}
@@ -47,6 +82,7 @@ const ProductCarts = () => {
                   increaseCartQuantity={increaseCartQuantity}
                   decreaseCartQuantity={decreaseCartQuantity}
                   resetCartQuantity={resetCartQuantity}
+                  itemTotalPrices={itemTotalPrices}
                 />
               ))
             ) : (
@@ -55,18 +91,20 @@ const ProductCarts = () => {
               </div>
             )}
           </div>
-          <Link
-            to='/'
-            className='flex font-semibold text-indigo-600 text-sm mt-10'
-          >
-            <svg
-              className='fill-current mr-2 text-indigo-600 w-4'
-              viewBox='0 0 448 512'
+          <div className='flex justify-between items-center'>
+            <Link
+              to='/'
+              className={`flex items-center gap-2 font-semibold ${textColor} text-sm mt-10`}
             >
-              <path d='M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z' />
-            </svg>
-            Continue Shopping
-          </Link>
+              <FaLongArrowAltLeft size={15} /> Continue Shopping
+            </Link>
+            <button
+              className='flex items-center gap-2 font-semibold text-red-600 text-sm mt-10'
+              onClick={() => handleClearCart(user?.user?._id)}
+            >
+              <RiDeleteBin6Fill size={15} /> Clear Cart Items
+            </button>
+          </div>
         </div>
         <div id='summary' className='w-full sm:w-1/4 md:w-1/2 px-8 py-10'>
           <h1 className='font-semibold text-2xl border-b pb-8 dark:text-secondary-text-dark'>
@@ -76,14 +114,17 @@ const ProductCarts = () => {
             <span className='font-semibold text-sm uppercase'>
               Items {carts?.length || 0}
             </span>
-            <span className='font-semibold text-sm'>590$</span>
+            <span className='font-semibold text-sm flex gap-1 items-center'>
+              <FaBangladeshiTakaSign />
+              {totalCartPrice || 0}
+            </span>
           </div>
           <div className='dark:text-secondary-text-dark'>
             <label className='font-medium inline-block mb-3 text-sm uppercase'>
               Shipping
             </label>
             <select className='block p-2 text-gray-600 w-full text-sm dark:text-secondary-text-dark'>
-              <option>Standard shipping - $10.00</option>
+              <option>Standard shipping - 75.00</option>
             </select>
           </div>
           <div className='py-10 dark:text-secondary-text-dark'>
@@ -106,7 +147,10 @@ const ProductCarts = () => {
           <div className='border-t mt-8 dark:text-secondary-text-dark'>
             <div className='flex font-semibold justify-between py-6 text-sm uppercase'>
               <span>Total cost</span>
-              <span>$600</span>
+              <span className='flex gap-1 items-center'>
+                <FaBangladeshiTakaSign />
+                {totalCartPrice + 75 || 0}
+              </span>
             </div>
             <button className='bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full'>
               Checkout
