@@ -5,19 +5,68 @@ import "./style.css";
 import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
 import { useState } from "react";
 import useContextInfo from "../../Hooks/useContextInfo";
-const CartItems = ({ cart, deleteCartProduct }) => {
-  const [quantity, setQuantity] = useState(1);
+import { GrPowerReset } from "react-icons/gr";
+
+const CartItems = ({
+  cart,
+  deleteCartProduct,
+  decreaseCartQuantity,
+  increaseCartQuantity,
+  resetCartQuantity,
+}) => {
   const { textColor, selectedColor } = useContextInfo();
-  const { _id, title, thumbnail, price } = cart;
+  const { _id, title, thumbnail, price, quantity: totalQuantity } = cart;
+  const [quantity, setQuantity] = useState(totalQuantity || 0);
 
+  const handleDecrease = async (id) => {
+    try {
+      const res = await decreaseCartQuantity(id).unwrap();
+      setQuantity((prevQuantity) => Math.max(prevQuantity - 1, 1));
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: res?.message,
+        showConfirmButton: false,
+        timer: 1000,
+      });
+    } catch (error) {
+      console.error(error);
+      ShowErrorMessage(error?.data?.error);
+    }
+  };
 
-  const handleDecrease =()=>{
-
-    
-  }
-  const handleIncrease =()=>{}
-
-//   Delete Function 
+  const handleIncrease = async (id) => {
+    try {
+      const res = await increaseCartQuantity(id).unwrap();
+      setQuantity((prevQuantity) => Math.min(prevQuantity + 1, 20));
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: res?.message,
+        showConfirmButton: false,
+        timer: 1000,
+      });
+    } catch (error) {
+      console.error(error);
+      ShowErrorMessage(error?.data?.error);
+    }
+  };
+  const handleResetQuantity = async() => {
+    try {
+      const res = await resetCartQuantity(_id).unwrap();
+      setQuantity(1);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: res?.message,
+        showConfirmButton: false,
+        timer: 1000,
+      });
+    } catch (error) {
+      console.error(error);
+      ShowErrorMessage(error?.data?.error);
+    }
+  };
   const handleDeleteItem = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -45,7 +94,7 @@ const CartItems = ({ cart, deleteCartProduct }) => {
   };
   return (
     <div className='md:flex items-strech md:px-3 py-8 md:py-10 lg:py-8 border-t border-gray-50'>
-      <div className='relative md:w-4/12 2xl:w-1/4 w-full cursor-pointer'>
+      <div className='relative md:w-4/12 2xl:w-1/4 w-full cursor-pointer mb-10'>
         <img
           src={thumbnail}
           alt={title}
@@ -65,12 +114,18 @@ const CartItems = ({ cart, deleteCartProduct }) => {
           </p>
           <div className='dark:text-secondary-text-dark flex gap-3 items-center'>
             <button
+              className={`border hover:text-white hover:scale-95 duration-500 ${textColor} hover:${selectedColor} font-bold rounded-full text-sm px-2.5 py-1 text-center inline-flex items-center cursor-pointer dark:${textColor} dark:hover:${selectedColor}`}
+              onClick={() => handleResetQuantity(_id)}
+            >
+              <GrPowerReset size={18} />
+            </button>
+            <button
               className={`border ${
                 quantity > 1
                   ? `hover:text-white hover:scale-95 duration-500 ${textColor} hover:${selectedColor}`
                   : "border-gray-500 text-gray-500"
               } font-bold rounded-full text-sm px-2.5 py-1 text-center inline-flex items-center cursor-pointer dark:${textColor} dark:hover:${selectedColor}`}
-              onClick={handleDecrease}
+              onClick={() => handleDecrease(_id)}
               disabled={quantity === 1}
             >
               -
@@ -80,19 +135,19 @@ const CartItems = ({ cart, deleteCartProduct }) => {
             </p>
             <button
               className={`border ${
-                quantity < 10
+                quantity < 20
                   ? `hover:text-white hover:scale-95 duration-500 ${textColor} hover:${selectedColor}`
                   : "border-gray-500 text-gray-500"
               } font-bold rounded-full text-sm px-2.5 py-1 text-center inline-flex items-center cursor-pointer dark:${textColor} dark:hover:${selectedColor}`}
-              onClick={handleIncrease}
-              disabled={quantity === 10}
+              onClick={() => handleIncrease(_id)}
+              disabled={quantity === 20}
             >
               +
             </button>
           </div>
         </div>
         <p className='text-xs leading-3 text-gray-600 pt-2 dark:text-secondary-text-dark'>
-          Height: 10 inches
+          Height: {totalQuantity}
         </p>
         <p className='text-xs leading-3 text-gray-600 py-4 dark:text-secondary-text-dark'>
           Color: Black
@@ -125,6 +180,9 @@ CartItems.propTypes = {
   title: PropTypes.string,
   price: PropTypes.number,
   deleteCartProduct: PropTypes.func,
+  decreaseCartQuantity: PropTypes.func,
+  increaseCartQuantity: PropTypes.func,
+  resetCartQuantity: PropTypes.func,
   _id: PropTypes.string,
 };
 export default CartItems;

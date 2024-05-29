@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
+  useDecreaseCartQuantityMutation,
   useDeleteCartProductMutation,
   useGetCartsQuery,
+  useIncreaseCartQuantityMutation,
+  useResetCartQuantityMutation,
 } from "../../../../Features/cartApiSlice";
 import { useGetUserQuery } from "../../../../Features/authApiSlice";
 import CartItems from "./CartItems";
@@ -16,6 +19,9 @@ const ProductCarts = () => {
     user?.user?._id
   );
   const [deleteCartProduct] = useDeleteCartProductMutation();
+  const [increaseCartQuantity] = useIncreaseCartQuantityMutation();
+  const [decreaseCartQuantity] = useDecreaseCartQuantityMutation();
+  const [resetCartQuantity] = useResetCartQuantityMutation();
 
   return (
     <section className='container mx-auto mt-10'>
@@ -38,6 +44,9 @@ const ProductCarts = () => {
                   key={cart?._id}
                   cart={cart}
                   deleteCartProduct={deleteCartProduct}
+                  increaseCartQuantity={increaseCartQuantity}
+                  decreaseCartQuantity={decreaseCartQuantity}
+                  resetCartQuantity={resetCartQuantity}
                 />
               ))
             ) : (
