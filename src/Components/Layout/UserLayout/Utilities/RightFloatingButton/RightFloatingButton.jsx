@@ -4,14 +4,17 @@ import ColorPalette from "../ColorPalette/ColorPalette";
 import { GrClose } from "react-icons/gr";
 import useContextInfo from "../../Hooks/useContextInfo";
 import DarkModeSwitch from "../DarkMode/DarkModeSwitch";
-import './ScrollStyle.css'
+import "./ScrollStyle.css";
 import { useGetCartsQuery } from "../../../../Features/cartApiSlice";
 import { useGetUserQuery } from "../../../../Features/authApiSlice";
+import CartFloat from "../CartFloat/CartFloat";
 const RightFloatingButton = () => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   const { selectedColor, textColor } = useContextInfo();
-  const { data: user } = useGetUserQuery();
-  const { data: carts, isLoading } = useGetCartsQuery(user?.user?._id);
+  const { data: user, isLoading: userLoading } = useGetUserQuery();
+  const { data: carts, isLoading: cartsLoading } = useGetCartsQuery(
+    user?.user?._id
+  );
   const utilityButton = [
     {
       id: 1,
@@ -27,7 +30,11 @@ const RightFloatingButton = () => {
 
   return (
     <div>
-      <div className={`top-[35%] right-0 fixed z-10 ${isOpenDrawer ? 'invisible':'visible'}`}>
+      <div
+        className={`top-[35%] right-0 fixed z-10 ${
+          isOpenDrawer ? "invisible" : "visible"
+        }`}
+      >
         {utilityButton?.map(({ id, child }) => (
           <li
             onClick={() => setIsOpenDrawer(!isOpenDrawer)}
@@ -36,7 +43,7 @@ const RightFloatingButton = () => {
           >
             <p className='flex justify-between items-center w-full text-white rounded-tr-lg'>
               {child}
-              {carts?.length > 0 && !isLoading && (
+              {carts?.length > 0 && !cartsLoading && (
                 <span
                   className={`absolute -left-2 -top-2 flex h-[20px] w-[20px] items-center justify-center rounded-full bg-white text-center text-[12px] ${textColor}`}
                 >
@@ -48,7 +55,11 @@ const RightFloatingButton = () => {
         ))}
       </div>
       <div
-        className={`top-[35%] ${isOpenDrawer ? 'visible opacity-1':'invisible opacity-0 translate-x-52'} z-50 right-0 fixed duration-500`}
+        className={`top-[35%] ${
+          isOpenDrawer
+            ? "visible opacity-1"
+            : "invisible opacity-0 translate-x-52"
+        } z-50 right-0 fixed duration-500`}
       >
         <div
           className={`menu p-4 w-80 min-h-full px-4 ${selectedColor} cursor-pointer rounded-tl-2xl rounded-bl-2xl dark:bg-semi-dark dark:text-secondary-text-dark`}
@@ -60,8 +71,12 @@ const RightFloatingButton = () => {
                 className='text-white text-2xl mr-5'
               />
             </div>
+            <CartFloat
+              carts={carts}
+              userLoading={userLoading}
+              cartsLoading={cartsLoading}
+            ></CartFloat>
             <ColorPalette />
-
             <DarkModeSwitch></DarkModeSwitch>
           </div>
         </div>
