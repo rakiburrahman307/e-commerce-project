@@ -16,8 +16,8 @@ const Card = ({ _id, title, price, rating, brand, thumbnail }) => {
           <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 hover:opacity-100 rounded-lg'></div>
         </div>
         <div className='grid gap-1'>
-          <h1 className='text-lg font-semibold dark:text-white/60'>
-            {title?.length > 30 ? title?.slice(0, 35) : title}
+          <h1 className='text-base font-semibold dark:text-white/60'>
+            {title?.length > 20 ? title?.slice(0, 22) : title}
           </h1>
           <p className='text-sm text-gray-500 dark:text-white/60'>{brand}</p>
           <div className='flex'>

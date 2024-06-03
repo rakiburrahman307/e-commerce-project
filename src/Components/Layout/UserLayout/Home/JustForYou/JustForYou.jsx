@@ -8,14 +8,14 @@ const JustForYou = () => {
   const { data: products, isLoading, error } = useGetProductsQuery();
 
   return (
-    <section className="mx-auto px-5 bg-root-bg mt-5 rounded-lg dark:bg-semi-dark">
-      <div className="mb-5">
-        <Title title="Just For You"></Title>
+    <section className='mx-auto px-5 bg-root-bg mt-5 rounded-lg dark:bg-semi-dark'>
+      <div className='mb-5'>
+        <Title title='Just For You'></Title>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-5'>
         {error && ShowErrorMessage(error?.error)}
         {isLoading
-          ? Array(6)
+          ? Array(12)
               .fill(null)
               .map((_, index) => (
                 <CardLoadingSkeleton

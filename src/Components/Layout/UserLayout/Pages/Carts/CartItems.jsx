@@ -124,8 +124,13 @@ const CartItems = ({
           </p>
           <div className='dark:text-secondary-text-dark flex gap-3 items-center'>
             <button
-              className={`border hover:text-white hover:scale-95 duration-500 ${textColor} hover:${selectedColor} font-bold rounded-full text-sm px-2.5 py-1 text-center inline-flex items-center cursor-pointer dark:${textColor} dark:hover:${selectedColor}`}
+              className={`border  ${
+                quantity > 1
+                  ? `hover:text-white hover:scale-95 duration-500 ${textColor} hover:${selectedColor}`
+                  : "border-gray-500 text-gray-500"
+              } font-bold rounded-full text-sm px-2.5 py-1 text-center inline-flex items-center cursor-pointer dark:${textColor} dark:hover:${selectedColor}`}
               onClick={() => handleResetQuantity(_id)}
+              disabled={quantity === 1}
             >
               <GrPowerReset size={18} />
             </button>

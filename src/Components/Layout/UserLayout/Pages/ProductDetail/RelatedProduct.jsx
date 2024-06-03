@@ -11,7 +11,7 @@ const RelatedProduct = ({ category }) => {
     <div className="mb-5">
       <Title title="Related Product"></Title>
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-5">
       {error && ShowErrorMessage(error?.error)}
       {isLoading
         ? Array(6)
