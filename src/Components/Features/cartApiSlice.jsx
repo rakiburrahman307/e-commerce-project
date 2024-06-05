@@ -1,9 +1,6 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import getBaseURL from "./BaseURL/BaseURL";
+import apiSlice from "./apiSlice";
 
-const cartApiSlice = createApi({
-  reducerPath: "cartApiSlices",
-  baseQuery: fetchBaseQuery({ baseUrl: getBaseURL(), credential: "include" }),
+const cartApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     // get all carts by user
     getCarts: builder.query({
@@ -61,8 +58,8 @@ const cartApiSlice = createApi({
       }),
       invalidatesTags: ["Carts"],
     }),
-     // add to wishList
-     addCardToWishList: builder.mutation({
+    // add to wishList
+    addCardToWishList: builder.mutation({
       query: (cart) => ({
         url: `cart/toWish`,
         method: "POST",
@@ -70,23 +67,6 @@ const cartApiSlice = createApi({
       }),
       invalidatesTags: ["Carts", "WishList"],
     }),
-      // get Wish list carts by user
-      getWishList: builder.query({
-        query: (id) => ({
-          url: `wish/all/${id}`,
-          method: "GET",
-        }),
-        providesTags: ["WishList"],
-      }),
-  
-      addWishListToCart: builder.mutation({
-        query: (cart) => ({
-          url: `wish/toCart`,
-          method: "POST",
-          body: cart,
-        }),
-        invalidatesTags: ["WishList", "Carts"],
-      })
   }),
 });
 
@@ -99,7 +79,4 @@ export const {
   useResetCartQuantityMutation,
   useClearCartMutation,
   useAddCardToWishListMutation,
-  useGetWishListQuery,
-  useAddWishListToCartMutation,
 } = cartApiSlice;
-export default cartApiSlice;

@@ -1,28 +1,24 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import getBaseURL from "./BaseURL/BaseURL";
+import apiSlice from "./apiSlice";
 
-
-const authApiSlice = createApi({
-  reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({ baseUrl: getBaseURL(), credentials: "include" }),
-  endpoints: builder => ({
+const authApiSlice = apiSlice.injectEndpoints({
+  endpoints: (builder) => ({
     // loginApi Here
     loginUser: builder.mutation({
-      query: userData => ({
+      query: (userData) => ({
         url: "auth/login",
         method: "POST",
         body: userData,
       }),
-      invalidatesTags: ['User'],
+      invalidatesTags: ["User"],
     }),
     // registerApi Here
     registerUser: builder.mutation({
-      query: userData => ({
+      query: (userData) => ({
         url: "auth/register",
         method: "POST",
         body: userData,
       }),
-      invalidatesTags: ['User'],
+      invalidatesTags: ["User"],
     }),
     // logoutApi Here
     logoutUser: builder.mutation({
@@ -36,7 +32,7 @@ const authApiSlice = createApi({
         url: "auth/user",
         method: "GET",
       }),
-      providesTags: ['User'],
+      providesTags: ["User"],
     }),
   }),
 });
@@ -47,5 +43,3 @@ export const {
   useRegisterUserMutation,
   useLogoutMutation,
 } = authApiSlice;
-
-export default authApiSlice;

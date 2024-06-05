@@ -61,8 +61,8 @@ const ProductCarts = () => {
     });
   };
   return (
-    <section className='container mx-auto mt-10 dark:bg-primary-dark'>
-      <div className='sm:flex shadow-md my-10'>
+    <section className='container mx-auto mt-10 bg-root-bg dark:bg-primary-dark'>
+      <div className='sm:flex shadow-md'>
         <div className='w-full sm:w-3/4 bg-white px-5 md:px-10 py-10 dark:bg-semi-dark'>
           <div className='flex justify-between border-b pb-8'>
             <h1 className='font-semibold text-xl md:text-2xl dark:text-secondary-text-dark'>

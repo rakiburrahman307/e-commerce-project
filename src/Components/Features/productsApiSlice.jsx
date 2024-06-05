@@ -1,14 +1,10 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import getBaseURL from "./BaseURL/BaseURL";
+import apiSlice from "./apiSlice";
 
-const productApiSlice = createApi({
-  reducerPath: "product",
-  baseQuery: fetchBaseQuery({ baseUrl: getBaseURL(), credentials: "include" }),
+const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    // get all the products
     getProducts: builder.query({
-      query: () => ({
-        url: "product/all",
+      query: ({ skip, limit }) => ({
+        url: `product/all?skip=${skip}&limit=${limit}`,
         method: "GET",
       }),
       providesTags: ["Products"],
@@ -36,4 +32,3 @@ export const {
   useGetSingleProductQuery,
   useRelatedProductQuery,
 } = productApiSlice;
-export default productApiSlice;

@@ -18,7 +18,6 @@ const CartItem = ({ cart, itemTotalPrices, addWishListToCart }) => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           const res = await addWishListToCart(cart).unwrap();
-          console.log(res);
           Swal.fire({
             title: "Moved!",
             text: res?.message,

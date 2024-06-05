@@ -7,11 +7,11 @@ import DarkModeSwitch from "../DarkMode/DarkModeSwitch";
 import "./ScrollStyle.css";
 import {
   useGetCartsQuery,
-  useGetWishListQuery,
 } from "../../../../Features/cartApiSlice";
 import { useGetUserQuery } from "../../../../Features/authApiSlice";
 import CartFloat from "../CartFloat/CartFloat";
 import WishList from "../Wishlist/WishList";
+import { useGetWishListQuery } from "../../../../Features/cartWishListApiSlice";
 const RightFloatingButton = () => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   const { selectedColor, textColor } = useContextInfo();

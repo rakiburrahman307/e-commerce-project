@@ -7,7 +7,7 @@ import { calculateTotalCartPrice } from "../../Pages/Carts/calculationItemPrices
 import CartItem from "./CartItem";
 import emptyCart from "../../../../../assets/svg/empty-cart.svg";
 import LoadingItemSkeleton from "./LoadingItemSkeleton";
-import { useAddWishListToCartMutation } from "../../../../Features/cartApiSlice";
+import { useAddWishListToCartMutation } from "../../../../Features/cartWishListApiSlice";
 const WishList = ({ wishListData, WishListLoading, userLoading }) => {
   const [openLeftSidebar, setLeftSidebar] = useState(false);
   const { textColor } = useContextInfo();
