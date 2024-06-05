@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
+  useAddCardToWishListMutation,
   useClearCartMutation,
   useDecreaseCartQuantityMutation,
   useDeleteCartProductMutation,
@@ -31,6 +32,7 @@ const ProductCarts = () => {
   const [decreaseCartQuantity] = useDecreaseCartQuantityMutation();
   const [resetCartQuantity] = useResetCartQuantityMutation();
   const [clearCart] = useClearCartMutation();
+  const [addCartToWishList] = useAddCardToWishListMutation();
   const { totalCartPrice, itemTotalPrices, updatedCarts } =
     calculateTotalCartPrice(carts);
   const handleClearCart = (id) => {
@@ -59,7 +61,7 @@ const ProductCarts = () => {
     });
   };
   return (
-    <section className='container mx-auto mt-10'>
+    <section className='container mx-auto mt-10 dark:bg-primary-dark'>
       <div className='sm:flex shadow-md my-10'>
         <div className='w-full sm:w-3/4 bg-white px-5 md:px-10 py-10 dark:bg-semi-dark'>
           <div className='flex justify-between border-b pb-8'>
@@ -83,6 +85,7 @@ const ProductCarts = () => {
                   decreaseCartQuantity={decreaseCartQuantity}
                   resetCartQuantity={resetCartQuantity}
                   itemTotalPrices={itemTotalPrices}
+                  addCartToWishList={addCartToWishList}
                 />
               ))
             ) : (
@@ -153,9 +156,9 @@ const ProductCarts = () => {
               </span>
             </div>
             <Link to=''>
-            <button className='bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full'>
-              Checkout
-            </button>
+              <button className='bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full'>
+                Checkout
+              </button>
             </Link>
           </div>
         </div>

@@ -14,6 +14,7 @@ const CartItems = ({
   increaseCartQuantity,
   resetCartQuantity,
   itemTotalPrices,
+  addCartToWishList,
 }) => {
   const { textColor, selectedColor } = useContextInfo();
   const { _id, title, thumbnail, price, quantity: totalQuantity } = cart;
@@ -36,6 +37,31 @@ const CartItems = ({
     }
   };
 
+  const handleWishList = (cart) => {
+    try {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "Added to wishList",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Added!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const res = await addCartToWishList(cart).unwrap();
+          Swal.fire({
+            title: "Moved!",
+            text: res?.message,
+            icon: "success",
+          });
+        }
+      });
+    } catch (error) {
+      console.error(error);
+      ShowErrorMessage(error?.data?.error);
+    }
+  };
   const handleIncrease = async (id) => {
     try {
       const res = await increaseCartQuantity(id).unwrap();
@@ -172,9 +198,12 @@ const CartItems = ({
         </p>
         <div className='flex items-center justify-between pt-5'>
           <div className='flex itemms-center'>
-            <p className='text-xs leading-3 underline text-gray-800 cursor-pointer dark:text-secondary-text-dark'>
-              Add to favorites
-            </p>
+            <button
+              onClick={() => handleWishList(cart)}
+              className='text-xs leading-3 underline text-gray-800 cursor-pointer dark:text-secondary-text-dark'
+            >
+              Add to wishList
+            </button>
             <button
               onClick={() => handleDeleteItem(_id)}
               className='text-xs leading-3 underline text-red-500 pl-5 cursor-pointer dark:text-secondary-text-dark'
@@ -198,6 +227,7 @@ CartItems.propTypes = {
   decreaseCartQuantity: PropTypes.func,
   increaseCartQuantity: PropTypes.func,
   resetCartQuantity: PropTypes.func,
+  addCartToWishList: PropTypes.func,
   _id: PropTypes.string,
   itemTotalPrices: PropTypes.object,
 };

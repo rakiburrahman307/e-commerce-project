@@ -40,7 +40,7 @@ const cartApiSlice = createApi({
     }),
     // decrease carts by user
     decreaseCartQuantity: builder.mutation({
-      query: (id)=>({
+      query: (id) => ({
         url: `cart/decrease/quantity/${id}`,
         method: "PUT",
       }),
@@ -48,20 +48,45 @@ const cartApiSlice = createApi({
     }),
     // reset carts by user
     resetCartQuantity: builder.mutation({
-      query: (id)=>({
+      query: (id) => ({
         url: `cart/reset/quantity/${id}`,
         method: "PUT",
       }),
       invalidatesTags: ["Carts"],
     }),
     clearCart: builder.mutation({
-      query: (userId)=>({
+      query: (userId) => ({
         url: `cart/clear/${userId}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Carts"],
-    })
-
+    }),
+     // add to wishList
+     addCardToWishList: builder.mutation({
+      query: (cart) => ({
+        url: `cart/toWish`,
+        method: "POST",
+        body: cart,
+      }),
+      invalidatesTags: ["Carts", "WishList"],
+    }),
+      // get Wish list carts by user
+      getWishList: builder.query({
+        query: (id) => ({
+          url: `wish/all/${id}`,
+          method: "GET",
+        }),
+        providesTags: ["WishList"],
+      }),
+  
+      addWishListToCart: builder.mutation({
+        query: (cart) => ({
+          url: `wish/toCart`,
+          method: "POST",
+          body: cart,
+        }),
+        invalidatesTags: ["WishList", "Carts"],
+      })
   }),
 });
 
@@ -72,6 +97,9 @@ export const {
   useIncreaseCartQuantityMutation,
   useDecreaseCartQuantityMutation,
   useResetCartQuantityMutation,
-  useClearCartMutation
+  useClearCartMutation,
+  useAddCardToWishListMutation,
+  useGetWishListQuery,
+  useAddWishListToCartMutation,
 } = cartApiSlice;
 export default cartApiSlice;

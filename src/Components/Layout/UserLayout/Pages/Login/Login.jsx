@@ -5,16 +5,15 @@ import Button from "../../Utilities/Button/Button";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useState } from "react";
 import { useLoginUserMutation } from "../../../../Features/authApiSlice";
-import ShowSuccessMessage from "../../Utilities/SuccessMessage/ShowSuccessMessage";
 import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
 import BigSpinner from "../../../BigSpinner/BigSpinner";
+import ShowSuccessMessage from "../../Utilities/SuccessMessage/ShowSuccessMessage";
 
 const Login = () => {
   const { textColor, selectedColor, borderColor } = useContextInfo();
-  const [loginUser, { isLoading, isError }] = useLoginUserMutation();
+  const [loginUser, { isLoading, error }] = useLoginUserMutation();
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
-  4;
   const location = useLocation();
   const {
     register,
@@ -24,16 +23,13 @@ const Login = () => {
   // handelSubmit data here
   const onSubmit = async (data) => {
     try {
-      const response = await loginUser(data);
-      if (response?.error?.status !== 401) {
+      const res = await loginUser(data).unwrap();
+      if (res?.message === "Login Successful") {
+        ShowSuccessMessage(res?.message);
         navigate(location?.state ? location?.state : "/");
-        ShowSuccessMessage("Login Success");
-      } else {
-        ShowErrorMessage(response?.error?.data?.error);
       }
     } catch (error) {
-      console.log(error?.message);
-      ShowErrorMessage(error?.message);
+      console.error(error);
     }
   };
   return (
@@ -51,7 +47,7 @@ const Login = () => {
           here.
         </p>
       </div>
-      {isError && ShowErrorMessage(isError)}
+      {error && ShowErrorMessage(error?.data?.error)}
       {isLoading && <BigSpinner />}
       <div className='flex flex-col md:flex-row lg:flex:row justify-between items-center gap-14 bg-white dark:bg-semi-dark p-2 md:p-10 shadow-xl dark:shadow-sm-light dark:shadow-white mt-5'>
         <form className='w-full md:w-1/2' onSubmit={handleSubmit(onSubmit)}>

@@ -8,7 +8,7 @@ const JustForYou = () => {
   const { data: products, isLoading, error } = useGetProductsQuery();
 
   return (
-    <section className='mx-auto px-5 bg-root-bg mt-5 rounded-lg dark:bg-semi-dark'>
+    <section className='mx-auto px-5 bg-root-bg mt-5 rounded-lg dark:bg-semi-dark py-5'>
       <div className='mb-5'>
         <Title title='Just For You'></Title>
       </div>

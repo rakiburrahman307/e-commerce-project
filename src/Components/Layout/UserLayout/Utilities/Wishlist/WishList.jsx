@@ -1,44 +1,36 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { FiShoppingCart } from "react-icons/fi";
-import { IoMdClose } from "react-icons/io";
-import {
-  useDecreaseCartQuantityMutation,
-  useDeleteCartProductMutation,
-  useIncreaseCartQuantityMutation,
-  useResetCartQuantityMutation,
-} from "../../../../Features/cartApiSlice";
-import FloatCartItem from "./FloatCartItem";
-import { calculateTotalCartPrice } from "../../Pages/Carts/calculationItemPrices";
 import useContextInfo from "../../Hooks/useContextInfo";
+import { IoMdClose } from "react-icons/io";
+import { TbBasketHeart } from "react-icons/tb";
+import { calculateTotalCartPrice } from "../../Pages/Carts/calculationItemPrices";
+import CartItem from "./CartItem";
 import emptyCart from "../../../../../assets/svg/empty-cart.svg";
-import "./style.css";
-import LoadingItemSkeleton from "../Wishlist/LoadingItemSkeleton";
-
-const CartFloat = ({ carts, cartsLoading, userLoading }) => {
+import LoadingItemSkeleton from "./LoadingItemSkeleton";
+import { useAddWishListToCartMutation } from "../../../../Features/cartApiSlice";
+const WishList = ({ wishListData, WishListLoading, userLoading }) => {
   const [openLeftSidebar, setLeftSidebar] = useState(false);
-  const [deleteCartProduct] = useDeleteCartProductMutation();
-  const [increaseCartQuantity] = useIncreaseCartQuantityMutation();
-  const [decreaseCartQuantity] = useDecreaseCartQuantityMutation();
-  const [resetCartQuantity] = useResetCartQuantityMutation();
-  const { itemTotalPrices, updatedCarts } = calculateTotalCartPrice(carts);
   const { textColor } = useContextInfo();
+  const { itemTotalPrices, updatedCarts } =
+    calculateTotalCartPrice(wishListData);
+  const [addWishListToCart] = useAddWishListToCartMutation();
+
   return (
     <div className='dark:bg-semi-dark'>
       <h4 className='text-xl text-white dark:text-secondary-text-dark mb-4'>
-        Carts
+        Wish List
       </h4>
       <div className='relative'>
-        <FiShoppingCart
+        <TbBasketHeart
           size={25}
           className='text-white hover:scale-110 duration-300'
           onClick={() => setLeftSidebar(!openLeftSidebar)}
-        ></FiShoppingCart>
-        {carts?.length > 0 && !cartsLoading && (
+        ></TbBasketHeart>
+        {wishListData?.length > 0 && !WishListLoading && (
           <span
             className={`absolute left-6 -top-2 flex h-[20px] w-[20px] items-center justify-center rounded-full bg-white text-center text-[12px] ${textColor}`}
           >
-            {carts?.length}
+            {updatedCarts?.length}
           </span>
         )}
       </div>
@@ -59,20 +51,17 @@ const CartFloat = ({ carts, cartsLoading, userLoading }) => {
             className='font-extrabold my-5 ml-2 hover:scale-110 duration-200 hover:text-red-500'
             size={30}
           />
-          <h1 className='mb-5 text-center text-2xl font-bold'>Cart Items</h1>
+          <h1 className='mb-5 text-center text-2xl font-bold'>Wish List</h1>
           <div className='rounded-lg w-full p-4 max-h-[500px] overflow-y-auto'>
-            {userLoading || cartsLoading ? (
+            {userLoading || WishListLoading ? (
               <LoadingItemSkeleton />
             ) : updatedCarts?.length > 0 ? (
               updatedCarts?.map((cart) => (
-                <FloatCartItem
+                <CartItem
                   key={cart?._id}
                   cart={cart}
-                  deleteCartProduct={deleteCartProduct}
-                  increaseCartQuantity={increaseCartQuantity}
-                  decreaseCartQuantity={decreaseCartQuantity}
-                  resetCartQuantity={resetCartQuantity}
                   itemTotalPrices={itemTotalPrices}
+                  addWishListToCart={addWishListToCart}
                 />
               ))
             ) : (
@@ -86,9 +75,9 @@ const CartFloat = ({ carts, cartsLoading, userLoading }) => {
     </div>
   );
 };
-CartFloat.propTypes = {
-  carts: PropTypes.array,
-  usrLoading: PropTypes.bool,
-  cartsLoading: PropTypes.bool,
+WishList.propTypes = {
+  wishListData: PropTypes.array,
+  WishListLoading: PropTypes.bool,
+  userLoading: PropTypes.bool,
 };
-export default CartFloat;
+export default WishList;

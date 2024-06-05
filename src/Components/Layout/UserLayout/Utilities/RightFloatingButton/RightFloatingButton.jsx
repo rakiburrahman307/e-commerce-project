@@ -5,9 +5,13 @@ import { GrClose } from "react-icons/gr";
 import useContextInfo from "../../Hooks/useContextInfo";
 import DarkModeSwitch from "../DarkMode/DarkModeSwitch";
 import "./ScrollStyle.css";
-import { useGetCartsQuery } from "../../../../Features/cartApiSlice";
+import {
+  useGetCartsQuery,
+  useGetWishListQuery,
+} from "../../../../Features/cartApiSlice";
 import { useGetUserQuery } from "../../../../Features/authApiSlice";
 import CartFloat from "../CartFloat/CartFloat";
+import WishList from "../Wishlist/WishList";
 const RightFloatingButton = () => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   const { selectedColor, textColor } = useContextInfo();
@@ -15,6 +19,8 @@ const RightFloatingButton = () => {
   const { data: carts, isLoading: cartsLoading } = useGetCartsQuery(
     user?.user?._id
   );
+  const { data: wishListData, isLoading: WishListLoading } =
+    useGetWishListQuery(user?.user?._id);
   const utilityButton = [
     {
       id: 1,
@@ -43,11 +49,11 @@ const RightFloatingButton = () => {
           >
             <p className='flex justify-between items-center w-full text-white rounded-tr-lg'>
               {child}
-              {carts?.length > 0 && !cartsLoading && (
+              {carts?.length > 0 && !cartsLoading && !WishListLoading && (
                 <span
                   className={`absolute -left-2 -top-2 flex h-[20px] w-[20px] items-center justify-center rounded-full bg-white text-center text-[12px] ${textColor}`}
                 >
-                  {carts?.length}
+                  {carts?.length + wishListData?.length}
                 </span>
               )}
             </p>
@@ -68,14 +74,21 @@ const RightFloatingButton = () => {
             <div className='flex justify-end items-center'>
               <GrClose
                 onClick={() => setIsOpenDrawer(!isOpenDrawer)}
-                className='text-white text-2xl mr-5'
+                className='text-white text-2xl mr-5 hover:scale-110 duration-200'
               />
             </div>
-            <CartFloat
-              carts={carts}
-              userLoading={userLoading}
-              cartsLoading={cartsLoading}
-            ></CartFloat>
+            <div className='flex gap-10 items-center'>
+              <CartFloat
+                carts={carts}
+                userLoading={userLoading}
+                cartsLoading={cartsLoading}
+              ></CartFloat>
+              <WishList
+                wishListData={wishListData}
+                WishListLoading={WishListLoading}
+                userLoading={userLoading}
+              />
+            </div>
             <ColorPalette />
             <DarkModeSwitch></DarkModeSwitch>
           </div>

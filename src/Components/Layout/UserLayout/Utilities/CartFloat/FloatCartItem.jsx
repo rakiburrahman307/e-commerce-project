@@ -101,7 +101,7 @@ const FloatCartItem = ({
     });
   };
   return (
-    <div className='flex gap-4 bg-white p-4 rounded shadow-[0_2px_15px_-5px_rgba(6,81,237,0.3)]'>
+    <div className='flex gap-4 bg-white p-4 rounded shadow-[0_2px_15px_-5px_rgba(6,81,237,0.3)] dark:bg-primary-dark hover:scale-105 duration-200'>
       <div className='flex gap-4'>
         <div className='w-36 h-36 max-sm:w-24 max-sm:h-24 shrink-0'>
           <img src={thumbnail} className='w-full h-full object-contain' />
@@ -109,7 +109,7 @@ const FloatCartItem = ({
 
         <div className='flex flex-col gap-4'>
           <div>
-            <h3 className='sm:text-lg text-base font-bold text-gray-800'>
+            <h3 className='sm:text-lg text-base font-bold text text-gray-800 dark:text-white/60'>
               {title}
             </h3>
             <p className='text-sm font-semibold text-gray-500 mt-2 flex items-center gap-2'>
@@ -165,12 +165,12 @@ const FloatCartItem = ({
       <div className='ml-auto flex flex-col'>
         <div className='flex items-start gap-4 justify-end'>
           <RiDeleteBinLine
-            className='text-red-600'
+            className='text-red-600 hover:scale-110 hover:text-red-700 duration-200'
             onClick={() => handleDeleteItem(_id)}
             size={20}
           />
         </div>
-        <h3 className='sm:text-lg text-base flex gap-1 items-center font-bold text-gray-800 mt-auto'>
+        <h3 className='sm:text-lg text-base flex gap-1 items-center font-bold dark:text-secondary-text mt-auto'>
           <FaBangladeshiTakaSign size={15} /> {itemTotalPrices[_id]}
         </h3>
       </div>
