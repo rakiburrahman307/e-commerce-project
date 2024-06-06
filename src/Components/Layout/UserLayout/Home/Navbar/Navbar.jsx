@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa6";
 import { CiShoppingCart } from "react-icons/ci";
-import { MdLanguage } from "react-icons/md";
 import useContextInfo from "../../Hooks/useContextInfo";
 import { IoSearch } from "react-icons/io5";
-import "./style.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../Utilities/Button/Button";
 import MobileNavbar from "./MobileNavbar";
 import { BiLeftArrowAlt } from "react-icons/bi";
@@ -17,6 +15,26 @@ const Navbar = () => {
   const [searchBoxClick, setSearchBoxClick] = useState(false);
   const { data: user } = useGetUserQuery();
   const { data: carts, isLoading } = useGetCartsQuery(user?.user?._id);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > lastScrollY) {
+      // Scrolling up
+      setIsNavbarVisible(true);
+    } else {
+      // Scrolling down
+      setIsNavbarVisible(false);
+    }
+    setLastScrollY(currentScrollY);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
 
   const inputField = (
     <input
@@ -124,7 +142,7 @@ const Navbar = () => {
       {/* This is for navbar design start end here  */}
       {/* -------------------------------------------------- */}
       {/* This is for mobile view bottom section  */}
-      <MobileNavbar></MobileNavbar>
+      <MobileNavbar isNavbarVisible={isNavbarVisible} />
       {/* This is for mobile view bottom section end  */}
     </section>
   );

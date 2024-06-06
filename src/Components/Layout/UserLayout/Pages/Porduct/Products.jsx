@@ -18,6 +18,7 @@ const Products = () => {
 
   const [priceRange, setPriceRange] = useState([0, 1000]);
   const [selectedPrice, setSelectedPrice] = useState("");
+  const [openSideBar, setOpenSideBar] = useState(false);
 
   const toggleSection = (section) => {
     setSections((prev) => ({
@@ -65,9 +66,8 @@ const Products = () => {
   return (
     <div className='bg-root-bg dark:bg-primary-dark'>
       <div>
-      {
-    sectionsData?.map((section) => (
-        <MobileFilterProduct
+        {sectionsData?.map((section) => (
+          <MobileFilterProduct
             key={section?.key}
             section={section}
             isOpen={sections[section?.key]}
@@ -76,34 +76,35 @@ const Products = () => {
             priceRange={priceRange}
             selectedPrice={selectedPrice}
             handleSelectPrice={handleSelectPrice}
-        />
-    ))
-}
+            setOpenSideBar={setOpenSideBar}
+            openSideBar={openSideBar}
+          />
+        ))}
 
         <main className='mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 dark:bg-semi-dark p-2 mt-10'>
-          <div className='flex items-baseline justify-between border-b border-gray-200 pb-6 pt-10'>
-            <h1 className='text-4xl font-bold tracking-tight text-secondary-text'>
+          <div className='flex flex-col md:flex-row items-baseline justify-between border-b border-gray-200 pb-6 pt-5'>
+            <h1 className='text-4xl font-bold tracking-tight text-secondary-text pb-5 md:pb-0'>
               Products
             </h1>
-            <div className='flex items-center gap-3'>
+            <div className='flex flex-wrap items-center gap-5'>
               <button className='group inline-flex items-center gap-2 justify-center text-sm font-medium text-gray-700 hover:text-gray-900'>
                 Sort
                 <BsArrowDown />
               </button>
-              <div className='flex items-center'>
+              <div className='flex items-center gap-3'>
                 <span className='text-secondary-text dark:text-secondary-text-dark text-sm'>
                   View:
                 </span>
-                <button className='text-gray-400 flex items-center hover:text-gray-500 sm:ml-7'>
+                <button className='text-gray-400 flex items-center hover:text-gray-500 ml-3 sm:ml-7'>
                   <IoGrid size={20} />
                 </button>
-                <button className='text-gray-400 flex items-center hover:text-gray-500 sm:ml-7'>
+                <button className='text-gray-400 flex items-center hover:text-gray-500 ml-3 sm:ml-7'>
                   <FaList size={20} />
                 </button>
               </div>
               <button
-                type='button'
-                className='-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden'
+                onClick={() => setOpenSideBar(!openSideBar)}
+                className='-m-2 ml-2 p-2 text-gray-400 hover:text-gray-500 sm:ml-3 lg:hidden'
               >
                 <span className='sr-only'>Filters</span>
                 <FaFilter size={30} />
@@ -111,7 +112,7 @@ const Products = () => {
             </div>
           </div>
 
-          <section className='pb-24 pt-6'>
+          <section className='pb-10 pt-6'>
             <h2 className='sr-only'>Products</h2>
             <div className='grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4'>
               <form className='hidden lg:block max-h-[90vh] overflow-y-auto'>
