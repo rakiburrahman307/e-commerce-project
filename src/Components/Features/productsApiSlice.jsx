@@ -17,10 +17,36 @@ const productApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ["Products"],
     }),
+      // get product by category name
     relatedProduct: builder.query({
       query: (category) => ({
         url: `product/related/${category}`,
         method: "GET",
+      }),
+      providesTags: ["Products"],
+    }),
+      // get product by filtered data
+    filterProducts: builder.query({
+      query: ({
+        categories,
+        color,
+        size,
+        brand,
+        price,
+        priceRange,
+        rating,
+      }) => ({
+        url: "product/filter",
+        method: "POST",
+        body: {
+          categories,
+          color,
+          size,
+          brand,
+          price,
+          priceRange,
+          rating,
+        },
       }),
       providesTags: ["Products"],
     }),
@@ -31,4 +57,5 @@ export const {
   useGetProductsQuery,
   useGetSingleProductQuery,
   useRelatedProductQuery,
+  useFilterProductsQuery,
 } = productApiSlice;

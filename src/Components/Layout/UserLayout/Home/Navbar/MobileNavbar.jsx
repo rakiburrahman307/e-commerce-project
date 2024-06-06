@@ -9,7 +9,7 @@ const MobileNavbar = ({ isNavbarVisible }) => {
   const { textColor } = useContextInfo();
   return (
     <div
-      className={`fixed w-full transform transition-all duration-500 md:hidden lg:hidden z-50 ${
+      className={`fixed w-full transform transition-all duration-500 md:hidden lg:hidden z-20 ${
         isNavbarVisible ? "-bottom-0" : "-bottom-20"
       }`}
     >
