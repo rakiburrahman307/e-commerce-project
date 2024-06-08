@@ -100,18 +100,18 @@ const ProductDetail = () => {
     try {
       const res = await addToCartProduct(cart).unwrap();
       if (res?.success) {
-        ShowSuccessMessage(res?.success?.message || "Product added successfully");
+        ShowSuccessMessage(
+          res?.success?.message || "Product added successfully"
+        );
       }
-    }  catch (error) {
+    } catch (error) {
       if (error.data?.error) {
         ShowErrorMessage(error?.data?.error?.message || "Something went wrong");
       } else {
         ShowErrorMessage(error?.message || "An unexpected error occurred");
       }
     }
-    
   };
-
 
   return (
     <section className='w-full md:w-11/12 lg:w-11/12 mx-auto min-h-screen pb-5'>
@@ -173,6 +173,12 @@ const ProductDetail = () => {
                     Brand:{" "}
                     <span className='text-blue-500'>{product?.brand}</span>
                   </p>
+                  <p className='dark:text-secondary-text-dark'>
+                    Stock:{" "}
+                  {
+                    product?.stock > 0 ?   <span className='text-blue-500'>{product?.availabilityStatus || "In stock"}</span>:  <span className='text-blue-500'>{product?.availabilityStatus || "Out of stock"}</span>
+                  }
+                  </p>
                 </div>
                 <div>
                   {heartFill ? (
@@ -232,24 +238,28 @@ const ProductDetail = () => {
                   </button>
                 </div>
               </div>
-                <ProtectedRoutes>
-              <div className='flex justify-between md:justify-start gap-2 md:gap-5 mt-14 mx-auto'>
-                <button
-                  className={`rounded-sm hover:scale-95 w-42 md:w-full border border-blue-500 px-8 py-3 text-base md:text-xl text-blue-500 duration-300 hover:bg-blue-500 hover:text-white`}
-                >
-                  Buy Now
-                </button>
-               <button
-                  onClick={() => handleAddToCarts(product)}
-                  className={`rounded-sm hover:scale-95 w-42 md:w-full border ${borderColor} px-6 py-3 text-base md:text-xl ${textColor} duration-300 hover:${selectedColor} hover:text-white`}
-                >
-                  Add To Cart
-                </button>
-              </div>
-               </ProtectedRoutes>
+              <ProtectedRoutes>
+                <div className='flex justify-between md:justify-start gap-2 md:gap-5 mt-14 mx-auto'>
+                  <button
+                    className={`rounded-sm hover:scale-95 w-42 md:w-full border border-blue-500 px-8 py-3 text-base md:text-xl text-blue-500 duration-300 hover:bg-blue-500 hover:text-white`}
+                  >
+                    Buy Now
+                  </button>
+                  <button
+                    onClick={() => handleAddToCarts(product)}
+                    className={`rounded-sm hover:scale-95 w-42 md:w-full border ${borderColor} px-6 py-3 text-base md:text-xl ${textColor} duration-300 hover:${selectedColor} hover:text-white`}
+                  >
+                    Add To Cart
+                  </button>
+                </div>
+              </ProtectedRoutes>
             </div>
             <div className='w-full border-l-2 py-3 px-0 lg:px-2'>
-              <DeliveryDetails />
+              <DeliveryDetails
+                returnPolicy={product?.returnPolicy}
+                warrantyInformation={product?.warrantyInformation}
+                shippingInformation={product?.shippingInformation}
+              />
             </div>
           </div>
         )}
@@ -258,6 +268,7 @@ const ProductDetail = () => {
       <DescriptionAndRating
         description={product?.description}
         productId={product?._id}
+        keyPoint={product?.keyPoint}
       />
       <RelatedProduct category={product?.category} />
     </section>

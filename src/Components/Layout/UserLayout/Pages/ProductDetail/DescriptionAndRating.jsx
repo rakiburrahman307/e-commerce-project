@@ -15,7 +15,7 @@ import { useState } from "react";
 import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
 import { useGetUserQuery } from "../../../../Features/authApiSlice";
 
-const DescriptionAndRating = ({ description, productId }) => {
+const DescriptionAndRating = ({ description, productId, keyPoint }) => {
   const { textColor, borderColor, selectedColor } = useContextInfo();
   const [openModal, setOpenModal] = useState(false);
   const [comment, setComment] = useState("");
@@ -77,8 +77,21 @@ const DescriptionAndRating = ({ description, productId }) => {
         ))}
       </TabList>
       <TabPanel className='mt-5'>
-        <div className='bg-white p-3 dark:bg-semi-dark shadow-lg'>
-          <p>{description}</p>
+        <div className='bg-white p-3 dark:bg-semi-dark shadow-lg min-h-[500px] px-5'>
+          <p className="text-justify">{description}</p>
+          <ul className="mt-10 list-disc">
+            <h3 className="text-2xl font-bold mb-3 ml-2">Key Feature</h3>
+          {
+            keyPoint?.map((point, index) => {
+              return (
+                <li key={index} className='flex items-center'>
+                  <p className='ml-2 font-semibold'>{index +1}.</p>
+                  <p className='ml-2 font-semibold text-justify'>{point?.name}:</p>
+                  <p className='ml-2 font-medium text-justify'>{point?.point}</p>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </TabPanel>
       <TabPanel>
@@ -206,6 +219,7 @@ const DescriptionAndRating = ({ description, productId }) => {
 DescriptionAndRating.propType = {
   description: PropTypes.string,
   productId: PropTypes.string,
+  keyPoint: PropTypes.array,
 };
 
 export default DescriptionAndRating;

@@ -1,25 +1,33 @@
-
+import React from "react";
 import { IoIosAdd } from "react-icons/io";
 import { RiSubtractFill } from "react-icons/ri";
+import PropTypes from "prop-types";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 
 const FilterSection = ({
   section,
   isOpen,
   toggleSection,
-  handlePriceChange,
-  priceRange,
-  selectedPrice,
-  handleSelectPrice,
-  selectedCategory,
-  handleSelectCategory,
+  handleMinPriceChange,
+  handleMaxPriceChange,
+  minPrice,
+  maxPrice,
   selectedColor,
-  handleSelectColor,
+  selectedCategories,
   selectedSize,
-  handleSelectSize,
   selectedBrand,
-  handleSelectBrand,
   selectedRating,
+  handleSelectBrand,
+  handleSelectCategory,
+  handleSelectColor,
+  handleSelectSize,
   handleSelectRating,
+  handleDoubleClickRating,
+  handleDoubleClickSize,
+  handleDoubleClickCategory,
+  handleDoubleClickColor,
+  handleDoubleClickBrand,
+
 }) => (
   <div className='border-b border-gray-200 py-6'>
     <h3 className='-my-3 flow-root'>
@@ -37,69 +45,76 @@ const FilterSection = ({
       </button>
     </h3>
     <div
-      className={`overflow-hidden transition-all duration-500 ${
-        isOpen ? 'max-h-96' : 'max-h-0'
+      className={`overflow-y-scroll transition-all duration-500 ${
+        isOpen ? "max-h-72" : "max-h-0"
       }`}
     >
-      <div className={`pt-6 space-y-4 ${isOpen ? 'block' : 'hidden'}`}>
-        {section?.key === 'price' ? (
-          section?.options.map((option, index) => (
-            <div key={index} className='flex items-center'>
-              <input
-                id={`filter-${section?.key}-${index}`}
-                name='price'
-                type='radio'
-                value={option}
-                onChange={handleSelectPrice}
-                checked={selectedPrice === option}
-                className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
-              />
-              <label
-                htmlFor={`filter-${section?.key}-${index}`}
-                className='ml-3 text-sm text-secondary-text dark:text-secondary-text-dark cursor-pointer'
-              >
-                {option}
-              </label>
-            </div>
-          ))
-        ) : section?.key === 'priceRange' ? (
+      <div className={`pt-6 space-y-4 ${isOpen ? "block" : "hidden"}`}>
+        {section?.key === "price" ? (
           <div>
-            <div className='flex items-center justify-between'>
-              <span className='text-sm text-secondary-text dark:text-secondary-text-dark'>
-                ${priceRange[0]}
-              </span>
-              <span className='text-sm text-secondary-text dark:text-secondary-text-dark'>
-                ${priceRange[1]}
-              </span>
-            </div>
-            <div className='flex items-center h-6'>
-              <input
-                name='max'
-                type='range'
-                min='0'
-                max='1000'
-                step='10'
-                value={priceRange[1]}
-                onChange={handlePriceChange}
-                className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer'
-                style={{
-                  background: `linear-gradient(to right, #4B9CE2 0%, #4B9CE2 ${
-                    (priceRange[1] / 1000) * 100
-                  }%, #ccc ${(priceRange[1] / 1000) * 100}%, #ccc 100%)`,
-                }}
-              />
+            <div className='flex flex-col'>
+              <div className='flex flex-col items-center min-h-62 gap-5 mb-3'>
+                <span className='text-sm flex item-center gap-1 text-secondary-text dark:text-secondary-text-dark'>
+                  Min:
+                  <FaBangladeshiTakaSign /> {minPrice}
+                </span>
+                <input
+                  name='minPrice'
+                  type='range'
+                  min='0'
+                  max='50000'
+                  value={minPrice}
+                  onChange={handleMinPriceChange}
+                  className='w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700'
+                />
+                <span className='text-sm flex item-center gap-1 text-secondary-text dark:text-secondary-text-dark'>
+                  Max:
+                  <FaBangladeshiTakaSign /> {maxPrice}
+                </span>
+                <input
+                  name='maxPrice'
+                  type='range'
+                  min='0'
+                  max='200000'
+                  value={maxPrice}
+                  onChange={handleMaxPriceChange}
+                  className='w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700'
+                />
+              </div>
             </div>
           </div>
-        ) : section?.key === 'categories' ? (
-          section.options.map((option, index) => (
+        ) : section?.key === "categories" ? (
+          section?.options?.map((option, index) => (
             <div key={index} className='flex items-center'>
               <input
                 id={`filter-${section?.key}-${index}`}
-                name={`${section?.key}[]`}
-                value={option.toLowerCase()}
-                type='checkbox'
-                checked={selectedCategory === option.toLowerCase()}
-                onChange={() => handleSelectCategory(option.toLowerCase())}
+                name={`categories`}
+                value={option?.value?.toLowerCase()}
+                type='radio'
+                onChange={handleSelectCategory}
+                onDoubleClick={handleDoubleClickCategory}
+                checked={selectedCategories === option?.value?.toLowerCase()}
+                className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
+              />
+              <label
+                htmlFor={`filter-${section?.key}-${index}`}
+                className='ml-3 text-sm text-secondary-text dark:text-secondary-text-dark cursor-pointer'
+              >
+                {option?.name}
+              </label>
+            </div>
+          ))
+        ) : section?.key === "color" ? (
+          section?.options?.map((option, index) => (
+            <div key={index} className='flex items-center'>
+              <input
+                id={`filter-${section?.key}-${index}`}
+                name={`color`}
+                value={option?.toLowerCase()}
+                type='radio'
+                onChange={handleSelectColor}
+                onDoubleClick={handleDoubleClickColor}
+                checked={selectedColor === option?.toLowerCase()}
                 className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
               />
               <label
@@ -110,16 +125,17 @@ const FilterSection = ({
               </label>
             </div>
           ))
-        ) : section?.key === 'color' ? (
-          section.options.map((option, index) => (
+        ) : section?.key === "size" ? (
+          section?.options?.map((option, index) => (
             <div key={index} className='flex items-center'>
               <input
                 id={`filter-${section?.key}-${index}`}
-                name={`${section?.key}[]`}
-                value={option.toLowerCase()}
-                type='checkbox'
-                checked={selectedColor === option.toLowerCase()}
-                onChange={() => handleSelectColor(option.toLowerCase())}
+                name={`size`}
+                value={option?.toLowerCase()}
+                type='radio'
+                onChange={handleSelectSize}
+                onDoubleClick={handleDoubleClickSize}
+                checked={selectedSize === option?.toLowerCase()}
                 className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
               />
               <label
@@ -130,16 +146,17 @@ const FilterSection = ({
               </label>
             </div>
           ))
-        ) : section?.key === 'size' ? (
-          section.options.map((option, index) => (
+        ) : section?.key === "brand" ? (
+          section?.options?.map((option, index) => (
             <div key={index} className='flex items-center'>
               <input
                 id={`filter-${section?.key}-${index}`}
-                name={`${section?.key}[]`}
-                value={option.toLowerCase()}
-                type='checkbox'
-                checked={selectedSize === option.toLowerCase()}
-                onChange={() => handleSelectSize(option.toLowerCase())}
+                name={`brand`}
+                value={option?.toLowerCase()}
+                type='radio'
+                onChange={handleSelectBrand}
+                onDoubleClick={handleDoubleClickBrand}
+                checked={selectedBrand === option?.toLowerCase()}
                 className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
               />
               <label
@@ -150,16 +167,17 @@ const FilterSection = ({
               </label>
             </div>
           ))
-        ) : section?.key === 'brand' ? (
-          section.options.map((option, index) => (
+        ) : section?.key === "rating" ? (
+          section?.options?.map((option, index) => (
             <div key={index} className='flex items-center'>
               <input
                 id={`filter-${section?.key}-${index}`}
-                name={`${section?.key}[]`}
-                value={option.toLowerCase()}
-                type='checkbox'
-                checked={selectedBrand === option.toLowerCase()}
-                onChange={() => handleSelectBrand(option.toLowerCase())}
+                name={`rating`}
+                value={option?.toLowerCase()}
+                type='radio'
+                onChange={handleSelectRating}
+                onDoubleClick={handleDoubleClickRating}
+                checked={selectedRating === option?.toLowerCase()}
                 className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
               />
               <label
@@ -170,49 +188,33 @@ const FilterSection = ({
               </label>
             </div>
           ))
-        ) : section?.key === 'rating' ? (
-          section.options.map((option, index) => (
-            <div key={index} className='flex items-center'>
-              <input
-                id={`filter-${section?.key}-${index}`}
-                name={`${section?.key}[]`}
-                value={option.toLowerCase()}
-                type='checkbox'
-                checked={selectedRating === option.toLowerCase()}
-                onChange={() => handleSelectRating(option.toLowerCase())}
-                className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
-                />
-                <label
-                  htmlFor={`filter-${section?.key}-${index}`}
-                  className='ml-3 text-sm text-secondary-text dark:text-secondary-text-dark cursor-pointer'
-                >
-                  {option}
-                </label>
-              </div>
-            ))
-          ) : (
-            section?.options?.map((option, index) => (
-              <div key={index} className='flex items-center'>
-                <input
-                  id={`filter-${section?.key}-${index}`}
-                  name={`${section?.key}[]`}
-                  value={option.toLowerCase()}
-                  type='checkbox'
-                  className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
-                />
-                <label
-                  htmlFor={`filter-${section?.key}-${index}`}
-                  className='ml-3 text-sm text-secondary-text dark:text-secondary-text-dark cursor-pointer'
-                >
-                  {option}
-                </label>
-              </div>
-            ))
-          )}
-        </div>
+        ) : null}
       </div>
     </div>
-  );
-  
-  export default FilterSection;
-  
+  </div>
+);
+FilterSection.propTypes = {
+  section: PropTypes.object,
+  isOpen: PropTypes.bool,
+  toggleSection: PropTypes.func,
+  handleMinPriceChange: PropTypes.func,
+  handleMaxPriceChange: PropTypes.func,
+  minPrice: PropTypes.number,
+  maxPrice: PropTypes.number,
+  selectedColor: PropTypes.string,
+  selectedCategories: PropTypes.string,
+  selectedSize: PropTypes.string,
+  selectedBrand: PropTypes.string,
+  selectedRating: PropTypes.string,
+  handleSelectBrand: PropTypes.func,
+  handleSelectCategory: PropTypes.func,
+  handleSelectColor: PropTypes.func,
+  handleSelectSize: PropTypes.func,
+  handleSelectRating: PropTypes.func,
+  handleDoubleClickRating:PropTypes.func,
+  handleDoubleClickSize:PropTypes.func,
+  handleDoubleClickCategory:PropTypes.func,
+  handleDoubleClickColor:PropTypes.func,
+  handleDoubleClickBrand:PropTypes.func,
+};
+export default FilterSection;

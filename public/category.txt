@@ -1,0 +1,36 @@
+beauty
+fragrances
+furniture
+smartphones
+groceries
+laptops
+mens-shirts
+mens-shoes
+mobile-accessories
+tablets
+womens-bags
+womens-dresses
+sunglasses
+home-decoration
+tops
+womens-watches
+mens-watches
+skin-care
+womens-shoes
+
+
+
+[
+
+
+
+
+
+  "kitchen-accessories",
+  "motorcycle",
+  "sports-accessories",
+  "vehicle"
+  "womens-jewellery",
+,
+
+]

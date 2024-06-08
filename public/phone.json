@@ -1,0 +1,1554 @@
+[
+  {
+    "title": "iPhone 5s",
+    "description": "The iPhone 5s is a classic smartphone known for its compact design and advanced features during its release. While it's an older model, it still provides a reliable user experience.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 60000,
+    "discountPercentage": 11.85,
+    "rating": 3.92,
+    "stock": 65,
+    "tags": ["smartphones", "apple"],
+    "brand": "Apple",
+
+    "sku": "AZ1L68SM",
+    "weight": 4,
+    "dimensions": {
+      "width": 8.49,
+      "height": 25.34,
+      "depth": 18.12
+    },
+    "warrantyInformation": "1 week warranty",
+    "shippingInformation": "Ships in 1 week",
+    "availabilityStatus": "In Stock",
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "returnPolicy": "No return policy",
+    "minimumOrderQuantity": 2,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "2903942810911",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/iPhone%205s/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/iPhone%205s/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/iPhone%205s/3.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/iPhone%205s/thumbnail.png"
+  },
+  {
+    "title": "iPhone 6",
+    "description": "The iPhone 6 is a stylish and capable smartphone with a larger display and improved performance. It introduced new features and design elements, making it a popular choice in its time.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 40000,
+    "discountPercentage": 0,
+    "rating": 3.76,
+    "stock": 99,
+
+    "tags": ["smartphones", "apple"],
+    "brand": "Apple",
+    "sku": "ZPXH3X9J",
+    "weight": 8,
+    "dimensions": {
+      "width": 16.21,
+      "height": 22.94,
+      "depth": 5.63
+    },
+    "warrantyInformation": "3 year warranty",
+    "shippingInformation": "Ships overnight",
+    "availabilityStatus": "In Stock",
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "returnPolicy": "60 days return policy",
+    "minimumOrderQuantity": 3,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "2517230562429",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/iPhone%206/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/iPhone%206/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/iPhone%206/3.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/iPhone%206/thumbnail.png"
+  },
+  {
+    "title": "iPhone 13 Pro",
+    "description": "The iPhone 13 Pro is a cutting-edge smartphone with a powerful camera system, high-performance chip, and stunning display. It offers advanced features for users who demand top-notch technology.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 90000,
+    "discountPercentage": 18.3,
+    "rating": 3.42,
+    "stock": 26,
+
+    "tags": ["smartphones", "apple"],
+    "brand": "Apple",
+    "sku": "YGQKHPGK",
+    "weight": 8,
+    "dimensions": {
+      "width": 22.39,
+      "height": 9.77,
+      "depth": 19.6
+    },
+    "warrantyInformation": "1 year warranty",
+    "shippingInformation": "Ships in 2 weeks",
+    "availabilityStatus": "In Stock",
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "returnPolicy": "7 days return policy",
+    "minimumOrderQuantity": 1,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "2986724589988",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/iPhone%2013%20Pro/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/iPhone%2013%20Pro/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/iPhone%2013%20Pro/3.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/iPhone%2013%20Pro/thumbnail.png"
+  },
+  {
+    "title": "iPhone X",
+    "description": "The iPhone X is a flagship smartphone featuring a bezel-less OLED display, facial recognition technology (Face ID), and impressive performance. It represents a milestone in iPhone design and innovation.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 30000,
+    "discountPercentage": 14.19,
+    "rating": 4.96,
+    "stock": 99,
+
+    "tags": ["smartphones", "apple"],
+    "brand": "Apple",
+    "sku": "9QN3UDUD",
+    "weight": 10,
+    "dimensions": {
+      "width": 27.86,
+      "height": 8.53,
+      "depth": 17.07
+    },
+    "warrantyInformation": "3 months warranty",
+    "shippingInformation": "Ships in 1 month",
+    "availabilityStatus": "In Stock",
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "returnPolicy": "30 days return policy",
+    "minimumOrderQuantity": 2,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "4331405454760",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/iPhone%20X/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/iPhone%20X/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/iPhone%20X/3.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/iPhone%20X/thumbnail.png"
+  },
+  {
+    "title": "Oppo A57",
+    "description": "The Oppo A57 is a mid-range smartphone known for its sleek design and capable features. It offers a balance of performance and affordability, making it a popular choice.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 25000,
+    "discountPercentage": 0,
+    "rating": 3.1,
+    "stock": 76,
+    "tags": ["smartphones", "oppo"],
+    "brand": "Oppo",
+    "sku": "J1NO9ULG",
+    "weight": 3,
+    "dimensions": {
+      "width": 29.52,
+      "height": 11.25,
+      "depth": 14.41
+    },
+    "warrantyInformation": "No warranty",
+    "shippingInformation": "Ships in 1 month",
+    "availabilityStatus": "In Stock",
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "returnPolicy": "30 days return policy",
+    "minimumOrderQuantity": 5,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "1743445108634",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20A57/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20A57/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20A57/3.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20A57/thumbnail.png"
+  },
+  {
+    "title": "Oppo F19 Pro+",
+    "description": "The Oppo F19 Pro+ is a feature-rich smartphone with a focus on camera capabilities. It boasts advanced photography features and a powerful performance for a premium user experience.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 35000,
+    "discountPercentage": 15.62,
+    "rating": 2.57,
+    "stock": 92,
+    "tags": ["smartphones", "oppo"],
+    "brand": "Oppo",
+    "sku": "H2TTGWXB",
+    "weight": 2,
+    "dimensions": {
+      "width": 20.35,
+      "height": 16.4,
+      "depth": 13.31
+    },
+    "warrantyInformation": "3 year warranty",
+    "shippingInformation": "Ships in 1-2 business days",
+    "availabilityStatus": "In Stock",
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "returnPolicy": "30 days return policy",
+    "minimumOrderQuantity": 5,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "7451360954140",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20F19%20Pro+/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20F19%20Pro+/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20F19%20Pro+/3.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20F19%20Pro+/thumbnail.png"
+  },
+  {
+    "title": "Oppo K1",
+    "description": "The Oppo K1 series offers a range of smartphones with various features and specifications. Known for their stylish design and reliable performance, the Oppo K1 series caters to diverse user preferences.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 40000,
+    "discountPercentage": 0,
+    "rating": 3.39,
+    "stock": 61,
+
+    "tags": ["smartphones", "oppo"],
+    "brand": "Oppo",
+    "sku": "ELZ94HM3",
+    "weight": 2,
+    "dimensions": {
+      "width": 21.83,
+      "height": 27.83,
+      "depth": 27.47
+    },
+    "warrantyInformation": "2 year warranty",
+    "shippingInformation": "Ships in 2 weeks",
+    "availabilityStatus": "In Stock",
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "returnPolicy": "No return policy",
+    "minimumOrderQuantity": 1,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "7535531820285",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20K1/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20K1/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20K1/3.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20K1/4.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20K1/thumbnail.png"
+  },
+  {
+    "title": "Realme C35",
+    "description": "The Realme C35 is a budget-friendly smartphone with a focus on providing essential features for everyday use. It offers a reliable performance and user-friendly experience.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 20000,
+    "discountPercentage": 16.47,
+    "rating": 2.56,
+    "stock": 81,
+
+    "tags": ["smartphones", "realme"],
+    "brand": "Realme",
+    "sku": "25KENV7J",
+    "weight": 6,
+    "dimensions": {
+      "width": 21.74,
+      "height": 28.75,
+      "depth": 22.22
+    },
+    "warrantyInformation": "Lifetime warranty",
+    "shippingInformation": "Ships in 1 week",
+    "availabilityStatus": "In Stock",
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "returnPolicy": "30 days return policy",
+    "minimumOrderQuantity": 1,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "3119744926904",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/Realme%20C35/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Realme%20C35/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Realme%20C35/3.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/Realme%20C35/thumbnail.png"
+  },
+  {
+    "title": "Realme X",
+    "description": "The Realme X is a mid-range smartphone known for its sleek design and impressive display. It offers a good balance of performance and camera capabilities for users seeking a quality device.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 33000,
+    "discountPercentage": 0,
+    "rating": 4.42,
+    "stock": 87,
+    "tags": ["smartphones", "realme"],
+    "brand": "Realme",
+    "sku": "5E11C5C4",
+    "weight": 1,
+    "dimensions": {
+      "width": 29.32,
+      "height": 16.3,
+      "depth": 24.12
+    },
+    "warrantyInformation": "1 month warranty",
+    "shippingInformation": "Ships in 3-5 business days",
+    "availabilityStatus": "In Stock",
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "returnPolicy": "7 days return policy",
+    "minimumOrderQuantity": 1,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "0139612574728",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/Realme%20X/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Realme%20X/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Realme%20X/3.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/Realme%20X/thumbnail.png"
+  },
+  {
+    "title": "Realme XT",
+    "description": "The Realme XT is a feature-rich smartphone with a focus on camera technology. It comes equipped with advanced camera sensors, delivering high-quality photos and videos for photography enthusiasts.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 45000,
+    "discountPercentage": 3.03,
+    "rating": 4.14,
+    "stock": 53,
+    "tags": ["smartphones", "realme"],
+    "brand": "Realme",
+    "sku": "GHDMRAP2",
+    "weight": 4,
+    "dimensions": {
+      "width": 28.82,
+      "height": 23.44,
+      "depth": 6.21
+    },
+    "warrantyInformation": "1 week warranty",
+    "shippingInformation": "Ships in 1 month",
+    "availabilityStatus": "In Stock",
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "returnPolicy": "60 days return policy",
+    "minimumOrderQuantity": 5,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "3985844484131",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/Realme%20XT/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Realme%20XT/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Realme%20XT/3.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/Realme%20XT/thumbnail.png"
+  },
+  {
+    "title": "Samsung Galaxy S7",
+    "description": "The Samsung Galaxy S7 is a flagship smartphone known for its sleek design and advanced features. It features a high-resolution display, powerful camera, and robust performance.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 30000,
+    "discountPercentage": 0,
+    "rating": 4.9,
+    "stock": 55,
+
+    "tags": ["smartphones", "samsung galaxy"],
+    "brand": "Samsung",
+    "sku": "VZF4Z58Z",
+    "weight": 8,
+    "dimensions": {
+      "width": 23.33,
+      "height": 27.33,
+      "depth": 27.02
+    },
+    "warrantyInformation": "1 month warranty",
+    "shippingInformation": "Ships in 2 weeks",
+    "availabilityStatus": "In Stock",
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "returnPolicy": "No return policy",
+    "minimumOrderQuantity": 1,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "8841359359362",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/Samsung%20Galaxy%20S7/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Samsung%20Galaxy%20S7/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Samsung%20Galaxy%20S7/3.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/Samsung%20Galaxy%20S7/thumbnail.png"
+  },
+  {
+    "title": "Samsung Galaxy S8",
+    "description": "The Samsung Galaxy S8 is a premium smartphone with an Infinity Display, offering a stunning visual experience. It boasts advanced camera capabilities and cutting-edge technology.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 18000,
+    "discountPercentage": 0,
+    "rating": 3.69,
+
+    "stock": 75,
+    "tags": ["smartphones", "samsung galaxy"],
+    "brand": "Samsung",
+    "sku": "GLXQQKBF",
+    "weight": 6,
+    "dimensions": {
+      "width": 6.88,
+      "height": 8.96,
+      "depth": 18.13
+    },
+    "warrantyInformation": "Lifetime warranty",
+    "shippingInformation": "Ships in 3-5 business days",
+    "availabilityStatus": "In Stock",
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "returnPolicy": "No return policy",
+    "minimumOrderQuantity": 1,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "1337599403784",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/Samsung%20Galaxy%20S8/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Samsung%20Galaxy%20S8/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Samsung%20Galaxy%20S8/3.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/Samsung%20Galaxy%20S8/thumbnail.png"
+  },
+  {
+    "title": "Samsung Galaxy S10",
+    "description": "The Samsung Galaxy S10 is a flagship device featuring a dynamic AMOLED display, versatile camera system, and powerful performance. It represents innovation and excellence in smartphone technology.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 70000,
+    "discountPercentage": 0,
+    "rating": 2.81,
+    "stock": 40,
+
+    "tags": ["smartphones", "samsung galaxy"],
+    "brand": "Samsung",
+    "sku": "5GJFL98I",
+    "weight": 3,
+    "dimensions": {
+      "width": 28.23,
+      "height": 7.35,
+      "depth": 10.68
+    },
+    "warrantyInformation": "1 month warranty",
+    "shippingInformation": "Ships overnight",
+    "availabilityStatus": "In Stock",
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "returnPolicy": "No return policy",
+    "minimumOrderQuantity": 1,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "0311929399881",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/Samsung%20Galaxy%20S10/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Samsung%20Galaxy%20S10/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Samsung%20Galaxy%20S10/3.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/Samsung%20Galaxy%20S10/thumbnail.png"
+  },
+  {
+    "title": "Vivo S1",
+    "description": "The Vivo S1 is a stylish and mid-range smartphone offering a blend of design and performance. It features a vibrant display, capable camera system, and reliable functionality.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 24000,
+    "discountPercentage": 0,
+    "rating": 2.83,
+
+    "stock": 13,
+    "tags": ["smartphones", "vivo"],
+    "brand": "Vivo",
+    "sku": "BG6974E7",
+    "weight": 1,
+    "dimensions": {
+      "width": 28.83,
+      "height": 26.69,
+      "depth": 23.12
+    },
+    "warrantyInformation": "1 week warranty",
+    "shippingInformation": "Ships overnight",
+    "availabilityStatus": "In Stock",
+
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "returnPolicy": "7 days return policy",
+    "minimumOrderQuantity": 3,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "4070349673041",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/Vivo%20S1/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Vivo%20S1/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Vivo%20S1/3.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/Vivo%20S1/thumbnail.png"
+  },
+  {
+    "title": "Vivo V9",
+    "description": "The Vivo V9 is a smartphone known for its sleek design and emphasis on capturing high-quality selfies. It features a notch display, dual-camera setup, and a modern design.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 29000,
+    "discountPercentage": 14.57,
+    "rating": 3.1,
+    "stock": 19,
+    "tags": ["smartphones", "vivo"],
+    "brand": "Vivo",
+    "sku": "N9WFE2WH",
+    "weight": 5,
+    "dimensions": {
+      "width": 27.29,
+      "height": 9.73,
+      "depth": 14.79
+    },
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "warrantyInformation": "1 week warranty",
+    "shippingInformation": "Ships overnight",
+    "availabilityStatus": "In Stock",
+    "returnPolicy": "No return policy",
+    "minimumOrderQuantity": 2,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "1506104702332",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/Vivo%20V9/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Vivo%20V9/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Vivo%20V9/3.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/Vivo%20V9/thumbnail.png"
+  },
+  {
+    "title": "Vivo X21",
+    "description": "The Vivo X21 is a premium smartphone with a focus on cutting-edge technology. It features an in-display fingerprint sensor, a high-resolution display, and advanced camera capabilities.We are thrilled to introduce our latest innovation, the Product, designed to revolutionize the market. With cutting-edge technology and user-centric features, this product promises to deliver unparalleled performance and value.Utilizing state-of-the-art technology, the Product provides superior functionality and efficiency. Its intuitive and easy-to-use interface enhances the user experience, making it accessible for all. Built with sustainability in mind, this eco-friendly product reduces environmental impact while delivering exceptional performance with robust and reliable operations. Moreover, it offers great value for money without compromising on quality, ensuring long-term durability and cost-effectiveness.The Product is set to transform the [industry/market] with its innovative features and exceptional benefits. Stay tuned for the official launch date and be among the first to experience the future of field",
+    "category": "smartphones",
+    "price": 40000,
+    "discountPercentage": 0,
+    "rating": 2.75,
+    "stock": 0,
+
+    "tags": ["smartphones", "vivo"],
+    "brand": "Vivo",
+    "sku": "KSF00BOC",
+    "weight": 7,
+    "dimensions": {
+      "width": 5.72,
+      "height": 16.47,
+      "depth": 27.76
+    },
+    "warrantyInformation": "1 week warranty",
+    "shippingInformation": "Ships overnight",
+    "availabilityStatus": "Out of Stock",
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Snapdragon 888"
+      },
+      {
+        "name": "Body",
+        "point": "Glass front and back, aluminum frame"
+      },
+      {
+        "name": "RAM",
+        "point": "8GB"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Display",
+        "point": "6.5 inch AMOLED"
+      },
+      {
+        "name": "Battery",
+        "point": "4500mAh"
+      },
+      {
+        "name": "Camera",
+        "point": "108MP main camera"
+      }
+    ],
+    "returnPolicy": "30 days return policy",
+    "minimumOrderQuantity": 4,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.625Z",
+      "updatedAt": "2024-05-23T08:56:21.625Z",
+      "barcode": "2543504494043",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/smartphones/Vivo%20X21/1.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Vivo%20X21/2.png",
+      "https://cdn.dummyjson.com/products/images/smartphones/Vivo%20X21/3.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/smartphones/Vivo%20X21/thumbnail.png"
+  },
+  {
+    "title": "iPhone 9",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+    "price": 49999,
+    "discountPercentage": 15,
+    "rating": 4.8,
+    "stock": 50,
+    "brand": "Apple",
+    "tags": ["Smartphone", "Electronics"],
+    "weight": 180,
+    "dimensions": {
+      "width": 70,
+      "height": 150,
+      "depth": 8
+    },
+    "warrantyInformation": "1 year warranty",
+    "shippingInformation": "Ships in 1-2 business days",
+    "availabilityStatus": "In Stock",
+    "returnPolicy": "30 days return policy",
+    "minimumOrderQuantity": 1,
+    "meta": {
+      "createdAt": "2024-06-07T08:00:00.000Z",
+      "updatedAt": "2024-06-07T08:00:00.000Z",
+      "barcode": "1234567890123",
+      "qrCode": "https://example.com/qr-code.png"
+    },
+    "keyPoint": [
+      {
+        "name": "Material",
+        "point": "Metal frame, glass top"
+      },
+      {
+        "name": "Finish",
+        "point": "Black powder-coated frame"
+      },
+      {
+        "name": "Dimensions",
+        "point": "140 x 70 x 75 cm"
+      },
+      {
+        "name": "Weight Capacity",
+        "point": "50 kg"
+      },
+      {
+        "name": "Assembly",
+        "point": "Tools included for assembly"
+      },
+      {
+        "name": "Warranty",
+        "point": "1 year warranty"
+      }
+    ],
+    "category": "smartphones",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/1/1.jpg",
+      "https://cdn.dummyjson.com/product-images/1/2.jpg",
+      "https://cdn.dummyjson.com/product-images/1/3.jpg",
+      "https://cdn.dummyjson.com/product-images/1/4.jpg",
+      "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
+    ]
+  },
+  {
+    "title": "iPhone X",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+    "price": 59999,
+    "discountPercentage": 0,
+    "rating": 4.5,
+    "brand": "Apple",
+    "stock": 30,
+    "tags": ["Smartphone", "Electronics"],
+
+    "weight": 170,
+    "dimensions": {
+      "width": 75,
+      "height": 155,
+      "depth": 9
+    },
+    "warrantyInformation": "1 year warranty",
+    "shippingInformation": "Ships in 1-2 business days",
+    "availabilityStatus": "In Stock",
+    "returnPolicy": "30 days return policy",
+    "minimumOrderQuantity": 1,
+    "meta": {
+      "createdAt": "2024-06-07T08:00:00.000Z",
+      "updatedAt": "2024-06-07T08:00:00.000Z",
+      "barcode": "1234567890124",
+      "qrCode": "https://example.com/qr-code.png"
+    },
+    "keyPoint": [
+      {
+        "name": "Material",
+        "point": "Metal frame, glass top"
+      },
+      {
+        "name": "Finish",
+        "point": "Black powder-coated frame"
+      },
+      {
+        "name": "Dimensions",
+        "point": "140 x 70 x 75 cm"
+      },
+      {
+        "name": "Weight Capacity",
+        "point": "50 kg"
+      },
+      {
+        "name": "Assembly",
+        "point": "Tools included for assembly"
+      },
+      {
+        "name": "Warranty",
+        "point": "1 year warranty"
+      }
+    ],
+    "category": "smartphones",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/2/1.jpg",
+      "https://cdn.dummyjson.com/product-images/2/2.jpg",
+      "https://cdn.dummyjson.com/product-images/2/3.jpg",
+      "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+    ]
+  },
+  {
+    "title": "OPPOF19",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+    "price": 449.99,
+    "discountPercentage": 20,
+    "rating": 4.9,
+    "stock": 60,
+    "tags": ["Smartphone", "Electronics"],
+    "sku": "SMRT3PHN",
+    "weight": 190,
+    "dimensions": {
+      "width": 72,
+      "height": 148,
+      "depth": 7
+    },
+    "warrantyInformation": "1 year warranty",
+    "shippingInformation": "Ships in 1-2 business days",
+    "availabilityStatus": "In Stock",
+    "returnPolicy": "30 days return policy",
+    "minimumOrderQuantity": 1,
+    "meta": {
+      "createdAt": "2024-06-07T08:00:00.000Z",
+      "updatedAt": "2024-06-07T08:00:00.000Z",
+      "barcode": "1234567890125",
+      "qrCode": "https://example.com/qr-code.png"
+    },
+    "keyPoint": [
+      {
+        "name": "Material",
+        "point": "Metal frame, glass top"
+      },
+      {
+        "name": "Finish",
+        "point": "Black powder-coated frame"
+      },
+      {
+        "name": "Dimensions",
+        "point": "140 x 70 x 75 cm"
+      },
+      {
+        "name": "Weight Capacity",
+        "point": "50 kg"
+      },
+      {
+        "name": "Assembly",
+        "point": "Tools included for assembly"
+      },
+      {
+        "name": "Warranty",
+        "point": "1 year warranty"
+      }
+    ],
+    "brand": "OPPO",
+    "category": "smartphones",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/4/1.jpg",
+      "https://cdn.dummyjson.com/product-images/4/2.jpg",
+      "https://cdn.dummyjson.com/product-images/4/3.jpg",
+      "https://cdn.dummyjson.com/product-images/4/4.jpg",
+      "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg"
+    ]
+  },
+  {
+    "title": "Huawei P30",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+    "price": 699.99,
+    "discountPercentage": 0,
+    "rating": 4.7,
+    "stock": 40,
+    "tags": ["Smartphone", "Electronics"],
+    "sku": "SMRT4PHN",
+
+    "weight": 175,
+    "dimensions": {
+      "width": 68,
+      "height": 152,
+      "depth": 8
+    },
+    "warrantyInformation": "1 year warranty",
+    "shippingInformation": "Ships in 1-2 business days",
+    "availabilityStatus": "In Stock",
+    "returnPolicy": "30 days return policy",
+    "minimumOrderQuantity": 1,
+    "meta": {
+      "createdAt": "2024-06-07T08:00:00.000Z",
+      "updatedAt": "2024-06-07T08:00:00.000Z",
+      "barcode": "1234567890126",
+      "qrCode": "https://example.com/qr-code.png"
+    },
+    "keyPoint": [
+      {
+        "name": "Material",
+        "point": "Metal frame, glass top"
+      },
+      {
+        "name": "Finish",
+        "point": "Black powder-coated frame"
+      },
+      {
+        "name": "Dimensions",
+        "point": "140 x 70 x 75 cm"
+      },
+      {
+        "name": "Weight Capacity",
+        "point": "50 kg"
+      },
+      {
+        "name": "Assembly",
+        "point": "Tools included for assembly"
+      },
+      {
+        "name": "Warranty",
+        "point": "1 year warranty"
+      }
+    ],
+    "brand": "Huawei",
+    "category": "smartphones",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/5/thumbnail.jpg",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/5/1.jpg",
+      "https://cdn.dummyjson.com/product-images/5/2.jpg",
+      "https://cdn.dummyjson.com/product-images/5/3.jpg"
+    ]
+  },
+  {
+    "title": "Samsung Galaxy Book",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+    "price": 799.99,
+    "discountPercentage": 12,
+    "rating": 4.6,
+    "stock": 35,
+    "tags": ["Smartphone", "Electronics"],
+    "sku": "SMRT5PHN",
+    "weight": 185,
+    "dimensions": {
+      "width": 71,
+      "height": 151,
+      "depth": 7
+    },
+    "keyPoint": [
+      {
+        "name": "Material",
+        "point": "Metal frame, glass top"
+      },
+      {
+        "name": "Finish",
+        "point": "Black powder-coated frame"
+      },
+      {
+        "name": "Dimensions",
+        "point": "140 x 70 x 75 cm"
+      },
+      {
+        "name": "Weight Capacity",
+        "point": "50 kg"
+      },
+      {
+        "name": "Assembly",
+        "point": "Tools included for assembly"
+      },
+      {
+        "name": "Warranty",
+        "point": "1 year warranty"
+      }
+    ],
+    "warrantyInformation": "1 year warranty",
+    "shippingInformation": "Ships in 1-2 business days",
+    "availabilityStatus": "In Stock",
+    "returnPolicy": "30 days return policy",
+    "minimumOrderQuantity": 1,
+    "meta": {
+      "createdAt": "2024-06-07T08:00:00.000Z",
+      "updatedAt": "2024-06-07T08:00:00.000Z",
+      "barcode": "1234567890127",
+      "qrCode": "https://example.com/qr-code.png"
+    },
+    "brand": "Samsung",
+    "category": "laptops",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/7/1.jpg",
+      "https://cdn.dummyjson.com/product-images/7/2.jpg",
+      "https://cdn.dummyjson.com/product-images/7/3.jpg",
+      "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+    ]
+  },
+
+  {
+    "title": "iPad Mini 2021 Starlight",
+    "description": "The iPad Mini 2021 in Starlight is a compact and powerful tablet from Apple. Featuring a stunning Retina display, powerful A-series chip, and a sleek design, it offers a premium tablet experience.",
+    "category": "tablets",
+    "price": 49999,
+    "discountPercentage": 19.48,
+    "rating": 3.87,
+    "stock": 32,
+    "tags": ["electronics", "tablets"],
+    "brand": "Apple",
+    "sku": "L5CSWLNS",
+    "weight": 3,
+    "dimensions": {
+      "width": 24.9,
+      "height": 11.83,
+      "depth": 17.08
+    },
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Apple A12 Bionic"
+      },
+      {
+        "name": "Display",
+        "point": "10.2 inch Retina display"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Battery Life",
+        "point": "Up to 10 hours"
+      },
+      {
+        "name": "Operating System",
+        "point": "iPadOS"
+      },
+      {
+        "name": "Connectivity",
+        "point": "Wi-Fi, Bluetooth 5.0"
+      }
+    ],
+    "warrantyInformation": "3 months warranty",
+    "shippingInformation": "Ships in 2 weeks",
+    "availabilityStatus": "In Stock",
+
+    "returnPolicy": "No return policy",
+    "minimumOrderQuantity": 3,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.626Z",
+      "updatedAt": "2024-05-23T08:56:21.626Z",
+      "barcode": "6190943900668",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/tablets/iPad%20Mini%202021%20Starlight/1.png",
+      "https://cdn.dummyjson.com/products/images/tablets/iPad%20Mini%202021%20Starlight/2.png",
+      "https://cdn.dummyjson.com/products/images/tablets/iPad%20Mini%202021%20Starlight/3.png",
+      "https://cdn.dummyjson.com/products/images/tablets/iPad%20Mini%202021%20Starlight/4.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/tablets/iPad%20Mini%202021%20Starlight/thumbnail.png"
+  },
+  {
+    "title": "Samsung Galaxy Tab S8 Plus Grey",
+    "description": "The Samsung Galaxy Tab S8 Plus in Grey is a high-performance Android tablet by Samsung. With a large AMOLED display, powerful processor, and S Pen support, it's ideal for productivity and entertainment.",
+    "category": "tablets",
+    "price": 599.99,
+    "discountPercentage": 8.11,
+    "rating": 3.43,
+    "stock": 76,
+    "tags": ["electronics", "tablets"],
+    "brand": "Samsung",
+    "sku": "1SIVLPFN",
+    "weight": 10,
+    "dimensions": {
+      "width": 18.5,
+      "height": 24.49,
+      "depth": 10.45
+    },
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Apple A12 Bionic"
+      },
+      {
+        "name": "Display",
+        "point": "10.2 inch Retina display"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Battery Life",
+        "point": "Up to 10 hours"
+      },
+      {
+        "name": "Operating System",
+        "point": "iPadOS"
+      },
+      {
+        "name": "Connectivity",
+        "point": "Wi-Fi, Bluetooth 5.0"
+      }
+    ],
+    "warrantyInformation": "6 months warranty",
+    "shippingInformation": "Ships in 1-2 business days",
+    "availabilityStatus": "In Stock",
+    "returnPolicy": "30 days return policy",
+    "minimumOrderQuantity": 1,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.626Z",
+      "updatedAt": "2024-05-23T08:56:21.626Z",
+      "barcode": "7204800760083",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/tablets/Samsung%20Galaxy%20Tab%20S8%20Plus%20Grey/1.png",
+      "https://cdn.dummyjson.com/products/images/tablets/Samsung%20Galaxy%20Tab%20S8%20Plus%20Grey/2.png",
+      "https://cdn.dummyjson.com/products/images/tablets/Samsung%20Galaxy%20Tab%20S8%20Plus%20Grey/3.png",
+      "https://cdn.dummyjson.com/products/images/tablets/Samsung%20Galaxy%20Tab%20S8%20Plus%20Grey/4.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/tablets/Samsung%20Galaxy%20Tab%20S8%20Plus%20Grey/thumbnail.png"
+  },
+  {
+    "title": "Samsung Galaxy Tab White",
+    "description": "The Samsung Galaxy Tab in White is a sleek and versatile Android tablet. With a vibrant display, long-lasting battery, and a range of features, it offers a great user experience for various tasks.",
+    "category": "tablets",
+    "price": 349.99,
+    "discountPercentage": 0,
+    "rating": 3.7,
+    "stock": 0,
+    "tags": ["electronics", "tablets"],
+    "brand": "Samsung",
+    "sku": "AKJPAPFO",
+    "weight": 8,
+    "dimensions": {
+      "width": 12.42,
+      "height": 10.22,
+      "depth": 23.37
+    },
+    "keyPoint": [
+      {
+        "name": "Processor",
+        "point": "Apple A12 Bionic"
+      },
+      {
+        "name": "Display",
+        "point": "10.2 inch Retina display"
+      },
+      {
+        "name": "Storage",
+        "point": "128GB"
+      },
+      {
+        "name": "Battery Life",
+        "point": "Up to 10 hours"
+      },
+      {
+        "name": "Operating System",
+        "point": "iPadOS"
+      },
+      {
+        "name": "Connectivity",
+        "point": "Wi-Fi, Bluetooth 5.0"
+      }
+    ],
+    "warrantyInformation": "3 months warranty",
+    "shippingInformation": "Ships in 1-2 business days",
+    "availabilityStatus": "Out of Stock",
+    "returnPolicy": "60 days return policy",
+    "minimumOrderQuantity": 1,
+    "meta": {
+      "createdAt": "2024-05-23T08:56:21.626Z",
+      "updatedAt": "2024-05-23T08:56:21.626Z",
+      "barcode": "1952499482706",
+      "qrCode": "https://dummyjson.com/public/qr-code.png"
+    },
+    "images": [
+      "https://cdn.dummyjson.com/products/images/tablets/Samsung%20Galaxy%20Tab%20White/1.png",
+      "https://cdn.dummyjson.com/products/images/tablets/Samsung%20Galaxy%20Tab%20White/2.png",
+      "https://cdn.dummyjson.com/products/images/tablets/Samsung%20Galaxy%20Tab%20White/3.png",
+      "https://cdn.dummyjson.com/products/images/tablets/Samsung%20Galaxy%20Tab%20White/4.png"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/products/images/tablets/Samsung%20Galaxy%20Tab%20White/thumbnail.png"
+  }
+]

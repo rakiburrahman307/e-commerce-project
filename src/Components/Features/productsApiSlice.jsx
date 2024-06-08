@@ -17,7 +17,7 @@ const productApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ["Products"],
     }),
-      // get product by category name
+    // get product by category name
     relatedProduct: builder.query({
       query: (category) => ({
         url: `product/related/${category}`,
@@ -25,15 +25,15 @@ const productApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ["Products"],
     }),
-      // get product by filtered data
+    // get product by filtered data
     filterProducts: builder.query({
       query: ({
         categories,
         color,
         size,
         brand,
-        price,
-        priceRange,
+        minPrice,
+        maxPrice,
         rating,
       }) => ({
         url: "product/filter",
@@ -42,9 +42,9 @@ const productApiSlice = apiSlice.injectEndpoints({
           categories,
           color,
           size,
+          minPrice,
+          maxPrice,
           brand,
-          price,
-          priceRange,
           rating,
         },
       }),

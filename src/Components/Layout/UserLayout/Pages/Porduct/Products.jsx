@@ -12,18 +12,17 @@ const Products = () => {
     color: false,
     size: false,
     brand: false,
-    price: false,
     priceRange: false,
     rating: false,
   });
 
-  const [priceRange, setPriceRange] = useState([0, 1000]);
-  const [selectedPrice, setSelectedPrice] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [selectedColor, setSelectedColor] = useState([]);
-  const [selectedSize, setSelectedSize] = useState([]);
-  const [selectedBrand, setSelectedBrand] = useState([]);
-  const [selectedRating, setSelectedRating] = useState([]);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(0);
+  const [selectedCategories, setSelectedCategories] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedBrand, setSelectedBrand] = useState("");
+  const [selectedRating, setSelectedRating] = useState("");
   const [openSideBar, setOpenSideBar] = useState(false);
 
   const toggleSection = (sectionKey) => {
@@ -32,73 +31,33 @@ const Products = () => {
       [sectionKey]: !prev[sectionKey],
     }));
   };
-
-  const handlePriceChange = (e) => {
-    const { value } = e.target;
-    setPriceRange([0, value]);
-  };
-
-  const handleSelectPrice = (e) => {
-    setSelectedPrice(e.target.value);
-  };
-
-  const handleSelectCategory = (e) => {
-    const { value } = e.target;
-    setSelectedCategories((prev) =>
-      prev.includes(value)
-        ? prev.filter((item) => item !== value)
-        : [...prev, value]
-    );
-  };
-
-  const handleSelectColor = (e) => {
-    const { value } = e.target;
-    setSelectedColor((prev) =>
-      prev.includes(value)
-        ? prev.filter((item) => item !== value)
-        : [...prev, value]
-    );
-  };
-
-  const handleSelectSize = (e) => {
-    const { value } = e.target;
-    setSelectedSize((prev) =>
-      prev.includes(value)
-        ? prev.filter((item) => item !== value)
-        : [...prev, value]
-    );
-  };
-
-  const handleSelectBrand = (e) => {
-    const { value } = e.target;
-    setSelectedBrand((prev) =>
-      prev.includes(value)
-        ? prev.filter((item) => item !== value)
-        : [...prev, value]
-    );
-  };
-
-  const handleSelectRating = (e) => {
-    const { value } = e.target;
-    setSelectedRating((prev) =>
-      prev.includes(value)
-        ? prev.filter((item) => item !== value)
-        : [...prev, value]
-    );
-  };
+  const handleMinPriceChange = (e) => setMinPrice(e?.target?.value);
+  const handleMaxPriceChange = (e) => setMaxPrice(e?.target?.value);
+  const handleSelectCategory = (e) => setSelectedCategories(e?.target?.value);
+  const handleSelectColor = (e) => setSelectedColor(e?.target?.value);
+  const handleSelectSize = (e) => setSelectedSize(e?.target?.value);
+  const handleSelectBrand = (e) => setSelectedBrand(e?.target?.value);
+  const handleSelectRating = (e) => setSelectedRating(e?.target?.value);
+//   Double Clicked to reset the value function 
+  const handleDoubleClickRating =()=>setSelectedRating("");
+  const handleDoubleClickSize =()=>setSelectedSize("");
+  const handleDoubleClickCategory =()=>setSelectedCategories("");
+  const handleDoubleClickColor =()=> setSelectedColor("");
+  const handleDoubleClickBrand =()=>setSelectedBrand("");
 
   const {
     data: filteredProducts,
     isLoading: isFilterLoading,
     error: FilterError,
   } = useFilterProductsQuery({
-    categories: selectedCategories.length ? selectedCategories : null,
-    color: selectedColor.length ? selectedColor : null,
-    size: selectedSize.length ? selectedSize : null,
-    brand: selectedBrand.length ? selectedBrand : null,
-    price: selectedPrice,
-    priceRange: priceRange,
-    rating: selectedRating.length ? selectedRating : null,
+    categories: selectedCategories === 'all-category' ? null : selectedCategories || null,
+    color: selectedColor === "All Color" ? null: selectedColor || null,
+    size: selectedSize === "All Size" ? null : selectedSize || null,
+    brand: selectedBrand === "All Brand" ? null : selectedBrand || null,
+    rating: selectedRating === "All Rating" ? null : selectedRating || null,
+    minPrice: minPrice || null,
+    maxPrice: maxPrice || null,
+   
   });
 
   const sectionsData = [
@@ -106,26 +65,36 @@ const Products = () => {
       key: "categories",
       title: "Categories",
       options: [
-        "Totes",
-        "Backpacks",
-        "Travel Bags",
-        "Hip Bags",
-        "Laptop Sleeves",
-      ],
+        { value: "all-category", name: "All Category" },
+        { value: "smartphones", name: "Smart phones" },
+        { value: "womens-shoes", name: "Womens Shoes" },
+        { value: "beauty", name: "Beauty" },
+        { value: "fragrances", name: "Fragrances" },
+        { value: "furniture", name: "Furniture" },
+        { value: "groceries", name: "Groceries" },
+        { value: "laptops", name: "Laptops" },
+        { value: "mens-shirts", name: "Mens Shirts" },
+        { value: "mens-shoes", name: "Mens Shoes" },
+        { value: "mobile-accessories", name: "Mobile Accessories" },
+        { value: "tablets", "name": "Tablets" },
+        { value: "womens-bags", name: "Womens Bags" },
+        { value: "womens-dresses", name: "Womens Dresses" },
+        { value: "sunglasses", name: "Sunglasses" },
+        { value: "home-decoration", name: "Home Decoration" },
+        { value: "tops", name: "Tops" },
+        { value: "womens-watches", name: "Womens Watches" },
+        { value: "mens-watches", name: "Mens Watches" },
+        { value: "skin-care", name: "Skin Care" }
+      ]
     },
-    { key: "color", title: "Color", options: ["White", "Black", "Red"] },
-    { key: "size", title: "Size", options: ["S", "M", "L", "XL"] },
-    { key: "brand", title: "Brand", options: ["Nike", "Adidas", "Puma"] },
-    {
-      key: "price",
-      title: "Price",
-      options: ["$0-$50", "$50-$100", "$100-$150", "$150-$200"],
-    },
-    { key: "priceRange", title: "Price Range", options: [] },
+    { key: "price", title: "Price", options: [] },
+    { key: "color", title: "Color", options: ["All Color","White", "Black", "Red"] },
+    { key: "size", title: "Size", options: ["All Size","S", "M", "L", "XL"] },
+    { key: "brand", title: "Brand", options: ["All Brand", "Nike", "Adidas", "Puma"] },
     {
       key: "rating",
       title: "Rating",
-      options: ["1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars"],
+      options: ["All Rating","1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars"],
     },
   ];
 
@@ -165,10 +134,10 @@ const Products = () => {
                   section={section}
                   isOpen={sections[section?.key]}
                   toggleSection={toggleSection}
-                  handlePriceChange={handlePriceChange}
-                  priceRange={priceRange}
-                  selectedPrice={selectedPrice}
-                  handleSelectPrice={handleSelectPrice}
+                  minPrice={minPrice}
+                  maxPrice={maxPrice}
+                  handleMinPriceChange={handleMinPriceChange}
+                  handleMaxPriceChange={handleMaxPriceChange}
                   selectedCategories={selectedCategories}
                   handleSelectCategory={handleSelectCategory}
                   selectedColor={selectedColor}
@@ -179,6 +148,11 @@ const Products = () => {
                   handleSelectBrand={handleSelectBrand}
                   selectedRating={selectedRating}
                   handleSelectRating={handleSelectRating}
+                  handleDoubleClickRating={handleDoubleClickRating}
+                  handleDoubleClickSize={handleDoubleClickSize}
+                  handleDoubleClickCategory={handleDoubleClickCategory}
+                  handleDoubleClickColor={handleDoubleClickColor}
+                  handleDoubleClickBrand={handleDoubleClickBrand}
                 />
               ))}
             </div>
@@ -227,10 +201,10 @@ const Products = () => {
                     section={section}
                     isOpen={sections[section?.key]}
                     toggleSection={toggleSection}
-                    handlePriceChange={handlePriceChange}
-                    priceRange={priceRange}
-                    selectedPrice={selectedPrice}
-                    handleSelectPrice={handleSelectPrice}
+                    minPrice={minPrice}
+                    maxPrice={maxPrice}
+                    handleMinPriceChange={handleMinPriceChange}
+                    handleMaxPriceChange={handleMaxPriceChange}
                     selectedCategories={selectedCategories}
                     handleSelectCategory={handleSelectCategory}
                     selectedColor={selectedColor}
@@ -241,20 +215,53 @@ const Products = () => {
                     handleSelectBrand={handleSelectBrand}
                     selectedRating={selectedRating}
                     handleSelectRating={handleSelectRating}
+                    handleDoubleClickRating={handleDoubleClickRating}
+                    handleDoubleClickSize={handleDoubleClickSize}
+                    handleDoubleClickCategory={handleDoubleClickCategory}
+                    handleDoubleClickColor={handleDoubleClickColor}
+                    handleDoubleClickBrand={handleDoubleClickBrand}
+
                   />
                 ))}
               </div>
             </form>
-            <div className='lg:col-span-3 max-h-[95vh] overflow-y-auto bg-white dark:bg-primary-dark rounded-xl'>
+            <div className='lg:col-span-3 max-h-[95vh] overflow-y-auto bg-white dark:bg-primary-dark rounded-xl p-5'>
               {/* Render filtered products here */}
               {isFilterLoading ? (
-                <div>Loading...</div>
+                <div className='flex justify-center items-center h-full'>
+                  <div className='text-gray-500 dark:text-gray-400'>
+                    Loading...
+                  </div>
+                </div>
               ) : FilterError ? (
-                <div>Error: {FilterError.message}</div>
+                <div className='text-red-500'>Error: {FilterError.message}</div>
               ) : (
-                <div>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
                   {filteredProducts?.map((product) => (
-                    <div key={product.id}>{product.name}</div>
+                    <div
+                      key={product?._id}
+                      className='flex flex-col items-center p-4 border rounded-lg shadow-md dark:border-gray-700 dark:bg-gray-800'
+                    >
+                      <img
+                        src={product?.thumbnail}
+                        alt={product?.title}
+                        className='w-full h-48 object-cover mb-4'
+                      />
+                      <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
+                        {product.title}
+                      </h3>
+                      <p className='text-gray-500 dark:text-gray-400'>
+                        ${product.price}
+                      </p>
+                      <div className='flex items-center'>
+                        <span className='text-yellow-500'>
+                          {product.rating}
+                        </span>
+                        <span className='text-gray-500 dark:text-gray-400'>
+                          /5
+                        </span>
+                      </div>
+                    </div>
                   ))}
                 </div>
               )}

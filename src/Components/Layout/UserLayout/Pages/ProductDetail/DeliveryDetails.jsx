@@ -3,8 +3,10 @@ import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { IoCashOutline, IoLocationOutline } from "react-icons/io5";
 import { MdVerifiedUser } from "react-icons/md";
 import useContextInfo from "../../Hooks/useContextInfo";
+import PropTypes from "prop-types";
+import { LiaShippingFastSolid } from "react-icons/lia";
 
-const DeliveryDetails = () => {
+const DeliveryDetails = ({returnPolicy, warrantyInformation, shippingInformation}) => {
   const { textColor } = useContextInfo();
   return (
     <div className='dark:text-secondary-text-dark mt-2'>
@@ -33,6 +35,12 @@ const DeliveryDetails = () => {
         </div>
         <div className='flex gap-2 justify-between mt-5'>
           <div className='flex gap-1 items-center'>
+            <LiaShippingFastSolid size={25} />
+            <p className='text-sm'>{shippingInformation}</p>
+          </div>
+        </div>
+        <div className='flex gap-2 justify-between mt-5'>
+          <div className='flex gap-1 items-center'>
             <IoCashOutline size={25} />
             <p className='text-sm'>Standard Delivery Available</p>
           </div>
@@ -49,18 +57,22 @@ const DeliveryDetails = () => {
         <div className='flex gap-2 justify-between mt-5'>
           <div className='flex gap-1 items-center'>
             <CiDeliveryTruck size={25} />
-            <p className='text-sm'>14 days free & easy return</p>
+            <p className='text-sm'>{returnPolicy}</p>
           </div>
         </div>
         <div className='flex gap-2 justify-between mt-5'>
           <div className='flex gap-1 items-center'>
             <IoCashOutline size={25} />
-            <p className='text-sm'>Warranty not available</p>
+            <p className='text-sm'>{warrantyInformation}</p>
           </div>
         </div>
       </div>
     </div>
   );
 };
-
+DeliveryDetails.propType = {
+  returnPolicy: PropTypes.string,
+  warrantyInformation:PropTypes.string,
+  shippingInformation:PropTypes.string,
+};
 export default DeliveryDetails;

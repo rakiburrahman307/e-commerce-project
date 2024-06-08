@@ -4,14 +4,14 @@ import Title from "../../Hooks/Title";
 import CardLoadingSkeleton from "../../Utilities/CardLoadingSkeleton/cardLoadingSkeleton";
 import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
 import { useState, useEffect } from "react";
-import BigSpinner from "../../../BigSpinner/BigSpinner";
+
 
 const JustForYou = () => {
   const [page, setPage] = useState(1);
   const [allProducts, setAllProducts] = useState([]);
   const [totalFetched, setTotalFetched] = useState(0);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
-  const limit = 10;
+  const limit = 12;
   const skip = (page - 1) * limit;
 
   const { data, isLoading, error } = useGetProductsQuery({ skip, limit });
