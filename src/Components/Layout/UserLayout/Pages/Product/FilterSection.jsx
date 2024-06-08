@@ -43,37 +43,41 @@ const FilterSection = ({
         isOpen ? "max-h-52" : "max-h-0"
       }`}
     >
-      <div className={`pt-6 space-y-4 ${isOpen ? "block" : "hidden"}`}>
+      <div className={`pt-6 w-full space-y-4 ${isOpen ? "block" : "hidden"}`}>
         {section?.key === "price" ? (
           <div>
             <div className='flex flex-col'>
-              <div className='flex flex-col items-center min-h-62 gap-5 mb-3'>
-                <span className='text-sm flex item-center gap-1 text-secondary-text dark:text-secondary-text-dark'>
-                  Min:
-                  <FaBangladeshiTakaSign /> {minPrice}
-                </span>
-                <input
-                  name='minPrice'
-                  type='range'
-                  min='0'
-                  max='50000'
-                  value={minPrice}
-                  onChange={handleMinPriceChange}
-                  className='w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700'
-                />
-                <span className='text-sm flex item-center gap-1 text-secondary-text dark:text-secondary-text-dark'>
-                  Max:
-                  <FaBangladeshiTakaSign /> {maxPrice}
-                </span>
-                <input
-                  name='maxPrice'
-                  type='range'
-                  min='0'
-                  max='200000'
-                  value={maxPrice}
-                  onChange={handleMaxPriceChange}
-                  className='w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700'
-                />
+              <div className=' flex flex-col items-center gap-5 w-full min-h-62 mb-3'>
+                <div className='w-full'>
+                  <span className='text-sm flex item-center gap-1 text-secondary-text dark:text-secondary-text-dark'>
+                    Min:
+                    <FaBangladeshiTakaSign /> {minPrice}
+                  </span>
+                  <input
+                    name='minPrice'
+                    type='range'
+                    min='0'
+                    max='50000'
+                    value={minPrice}
+                    onChange={handleMinPriceChange}
+                    className='w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700'
+                  />
+                </div>
+                <div className='w-full'>
+                  <span className='text-sm flex item-center gap-1 text-secondary-text dark:text-secondary-text-dark'>
+                    Max:
+                    <FaBangladeshiTakaSign /> {maxPrice}
+                  </span>
+                  <input
+                    name='maxPrice'
+                    type='range'
+                    min='0'
+                    max='200000'
+                    value={maxPrice}
+                    onChange={handleMaxPriceChange}
+                    className='w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700'
+                  />
+                </div>
               </div>
             </div>
           </div>

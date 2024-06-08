@@ -28,14 +28,11 @@ const SortDropDown = ({
         className='group inline-flex items-center gap-2 justify-center text-sm font-medium text-gray-700 dark:text-secondary-text-dark hover:text-gray-900'
       >
         Sort
-        {
-            open ? (
-                <BsArrowDown className='-rotate-180 scale-105 duration-500' />
-                ) : (
-                <BsArrowDown className='rotate-0 duration-500'/>
-            )
-  
-        }
+        {open ? (
+          <BsArrowDown className='-rotate-180 scale-105 duration-500' />
+        ) : (
+          <BsArrowDown className='rotate-0 duration-500' />
+        )}
       </button>
       <div
         className={`${
@@ -43,9 +40,14 @@ const SortDropDown = ({
         } absolute top-12 z-50 w-full space-y-1 rounded-sm`}
       >
         {sortSection?.options?.map((item, index) => (
-          <div key={index} 
-          style={{ transform: `translateX(${open ? 0 : (index + 1) * 20}px)`}}
-          className={`flex items-center rounded-sm ${selectedColor} p-2 ${open ? 'opacity-100 duration-500' : 'opacity-0 duration-200'} hover:${selectedColor}/90 w-52`}
+          <div
+            key={index}
+            style={{
+              transform: `translateX(${open ? 0 : (index + 1) * 20}px)`,
+            }}
+            className={`flex items-center rounded-sm ${selectedColor} p-2 ${
+              open ? "opacity-100 duration-500" : "opacity-0 duration-200"
+            } hover:${selectedColor}/90 w-52`}
           >
             <input
               id={`filter-${item?.key}-${index}`}

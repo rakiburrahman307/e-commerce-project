@@ -1,4 +1,3 @@
-
 import { IoGrid } from "react-icons/io5";
 import { FaFilter, FaList } from "react-icons/fa6";
 import { useState } from "react";
@@ -9,6 +8,7 @@ import useContextInfo from "../../Hooks/useContextInfo";
 import BigSpinner from "../../../BigSpinner/BigSpinner";
 import emptyBox from "../../../../../assets/svg/empty-box.svg";
 import SortDropDown from "./SortDropDown";
+import Card from "../../Utilities/Card/Card";
 
 const Products = () => {
   const { textColor } = useContextInfo();
@@ -128,7 +128,7 @@ const Products = () => {
   ];
 
   return (
-    <div className='bg-root-bg dark:bg-primary-dark'>
+    <div className='bg-root-bg mx-auto dark:bg-primary-dark'>
       <div
         className={`fixed inset-0 z-40 ${
           openSideBar ? "opacity-100 visible" : "opacity-0 invisible"
@@ -183,7 +183,7 @@ const Products = () => {
           </form>
         </div>
       </div>
-      <main className='mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 dark:bg-semi-dark p-2 mt-10'>
+      <main className='mx-auto w-full lg:max-w-7xl px-4 sm:px-6 lg:px-8 dark:bg-semi-dark p-2 mt-10'>
         <div className='flex flex-col md:flex-row items-baseline justify-between border-b border-gray-200 pb-4 pt-4'>
           <h1 className='text-4xl font-bold tracking-tight text-secondary-text pb-5 md:pb-0'>
             Products{" "}
@@ -191,25 +191,25 @@ const Products = () => {
           </h1>
           <div className='flex flex-wrap items-center gap-5'>
             {/* pass the all sectionsData array  */}
-             <SortDropDown
-                sectionsData={sectionsData}
-                handleSelectedSorting={handleSelectedSorting}
-                selectedSorting={selectedSorting}
-              />
+            <SortDropDown
+              sectionsData={sectionsData}
+              handleSelectedSorting={handleSelectedSorting}
+              selectedSorting={selectedSorting}
+            />
             <div className='flex items-center gap-3'>
               <span className='text-secondary-text dark:text-secondary-text-dark text-sm'>
                 View:
               </span>
-              <button className='text-gray-400 flex items-center hover:text-gray-500 ml-3 sm:ml-7'>
+              <button className='text-gray-400 flex items-center hover:text-gray-500'>
                 <IoGrid size={20} />
               </button>
-              <button className='text-gray-400 flex items-center hover:text-gray-500 ml-3 sm:ml-7'>
+              <button className='text-gray-400 flex items-center hover:text-gray-500'>
                 <FaList size={20} />
               </button>
             </div>
             <button
               onClick={() => setOpenSideBar(!openSideBar)}
-              className='-m-2 ml-2 p-2 text-gray-400 hover:text-gray-500 sm:ml-3 lg:hidden'
+              className='text-gray-400 hover:text-gray-500 sm:ml-3 lg:hidden'
             >
               <span className='sr-only'>Filters</span>
               <FaFilter size={30} />
@@ -246,7 +246,7 @@ const Products = () => {
                 ))}
               </div>
             </form>
-            <div className='lg:col-span-3 max-h-[95vh] overflow-y-auto bg-white dark:bg-primary-dark rounded-xl p-5'>
+            <div className='lg:col-span-3 max-h-[95vh] overflow-y-auto bg-white dark:bg-primary-dark rounded-xl lg:p-5'>
               {/* Render filtered products here */}
               {isFilterLoading ? (
                 <div className='flex justify-center items-center h-full'>
@@ -257,32 +257,9 @@ const Products = () => {
               ) : FilterError ? (
                 <div className='text-red-500'>Error: {FilterError?.error}</div>
               ) : filteredProducts?.length > 0 ? (
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-5 gap-6'>
                   {filteredProducts?.map((product) => (
-                    <div
-                      key={product?._id}
-                      className='flex flex-col items-center p-4 border rounded-lg shadow-md dark:border-gray-700 dark:bg-gray-800'
-                    >
-                      <img
-                        src={product?.thumbnail}
-                        alt={product?.title}
-                        className='w-full h-48 object-cover mb-4'
-                      />
-                      <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
-                        {product.title}
-                      </h3>
-                      <p className='text-gray-500 dark:text-gray-400'>
-                        ${product.price}
-                      </p>
-                      <div className='flex items-center'>
-                        <span className='text-yellow-500'>
-                          {product.rating}
-                        </span>
-                        <span className='text-gray-500 dark:text-gray-400'>
-                          /5
-                        </span>
-                      </div>
-                    </div>
+                    <Card {...product}></Card>
                   ))}
                 </div>
               ) : (
