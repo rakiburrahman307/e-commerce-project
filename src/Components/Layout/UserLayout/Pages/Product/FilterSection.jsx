@@ -22,15 +22,9 @@ const FilterSection = ({
   handleSelectColor,
   handleSelectSize,
   handleSelectRating,
-  handleDoubleClickRating,
-  handleDoubleClickSize,
-  handleDoubleClickCategory,
-  handleDoubleClickColor,
-  handleDoubleClickBrand,
-
 }) => (
   <div className='border-b border-gray-200 py-6'>
-    <h3 className='-my-3 flow-root'>
+    <h3 className='-my-3 flow-root mb-3'>
       <button
         type='button'
         onClick={() => toggleSection(section?.key)}
@@ -46,7 +40,7 @@ const FilterSection = ({
     </h3>
     <div
       className={`overflow-y-scroll transition-all duration-500 ${
-        isOpen ? "max-h-72" : "max-h-0"
+        isOpen ? "max-h-52" : "max-h-0"
       }`}
     >
       <div className={`pt-6 space-y-4 ${isOpen ? "block" : "hidden"}`}>
@@ -92,7 +86,6 @@ const FilterSection = ({
                 value={option?.value?.toLowerCase()}
                 type='radio'
                 onChange={handleSelectCategory}
-                onDoubleClick={handleDoubleClickCategory}
                 checked={selectedCategories === option?.value?.toLowerCase()}
                 className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
               />
@@ -113,7 +106,6 @@ const FilterSection = ({
                 value={option?.toLowerCase()}
                 type='radio'
                 onChange={handleSelectColor}
-                onDoubleClick={handleDoubleClickColor}
                 checked={selectedColor === option?.toLowerCase()}
                 className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
               />
@@ -134,7 +126,6 @@ const FilterSection = ({
                 value={option?.toLowerCase()}
                 type='radio'
                 onChange={handleSelectSize}
-                onDoubleClick={handleDoubleClickSize}
                 checked={selectedSize === option?.toLowerCase()}
                 className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
               />
@@ -155,7 +146,6 @@ const FilterSection = ({
                 value={option?.toLowerCase()}
                 type='radio'
                 onChange={handleSelectBrand}
-                onDoubleClick={handleDoubleClickBrand}
                 checked={selectedBrand === option?.toLowerCase()}
                 className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
               />
@@ -176,7 +166,6 @@ const FilterSection = ({
                 value={option?.toLowerCase()}
                 type='radio'
                 onChange={handleSelectRating}
-                onDoubleClick={handleDoubleClickRating}
                 checked={selectedRating === option?.toLowerCase()}
                 className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
               />
@@ -211,10 +200,5 @@ FilterSection.propTypes = {
   handleSelectColor: PropTypes.func,
   handleSelectSize: PropTypes.func,
   handleSelectRating: PropTypes.func,
-  handleDoubleClickRating:PropTypes.func,
-  handleDoubleClickSize:PropTypes.func,
-  handleDoubleClickCategory:PropTypes.func,
-  handleDoubleClickColor:PropTypes.func,
-  handleDoubleClickBrand:PropTypes.func,
 };
 export default FilterSection;

@@ -1,12 +1,17 @@
-import { BsArrowDown } from "react-icons/bs";
+
 import { IoGrid } from "react-icons/io5";
 import { FaFilter, FaList } from "react-icons/fa6";
 import { useState } from "react";
 import FilterSection from "./FilterSection";
 import { MdClose } from "react-icons/md";
 import { useFilterProductsQuery } from "../../../../Features/productsApiSlice";
+import useContextInfo from "../../Hooks/useContextInfo";
+import BigSpinner from "../../../BigSpinner/BigSpinner";
+import emptyBox from "../../../../../assets/svg/empty-box.svg";
+import SortDropDown from "./SortDropDown";
 
 const Products = () => {
+  const { textColor } = useContextInfo();
   const [sections, setSections] = useState({
     categories: true,
     color: false,
@@ -23,8 +28,8 @@ const Products = () => {
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedRating, setSelectedRating] = useState("");
+  const [selectedSorting, setSelectedSorting] = useState("");
   const [openSideBar, setOpenSideBar] = useState(false);
-
   const toggleSection = (sectionKey) => {
     setSections((prev) => ({
       ...prev,
@@ -38,26 +43,22 @@ const Products = () => {
   const handleSelectSize = (e) => setSelectedSize(e?.target?.value);
   const handleSelectBrand = (e) => setSelectedBrand(e?.target?.value);
   const handleSelectRating = (e) => setSelectedRating(e?.target?.value);
-//   Double Clicked to reset the value function 
-  const handleDoubleClickRating =()=>setSelectedRating("");
-  const handleDoubleClickSize =()=>setSelectedSize("");
-  const handleDoubleClickCategory =()=>setSelectedCategories("");
-  const handleDoubleClickColor =()=> setSelectedColor("");
-  const handleDoubleClickBrand =()=>setSelectedBrand("");
+  const handleSelectedSorting = (e) => setSelectedSorting(e?.target?.value);
 
   const {
     data: filteredProducts,
     isLoading: isFilterLoading,
     error: FilterError,
   } = useFilterProductsQuery({
-    categories: selectedCategories === 'all-category' ? null : selectedCategories || null,
-    color: selectedColor === "All Color" ? null: selectedColor || null,
+    categories:
+      selectedCategories === "all_category" ? null : selectedCategories || null,
+    color: selectedColor === "All Color" ? null : selectedColor || null,
     size: selectedSize === "All Size" ? null : selectedSize || null,
     brand: selectedBrand === "All Brand" ? null : selectedBrand || null,
     rating: selectedRating === "All Rating" ? null : selectedRating || null,
     minPrice: minPrice || null,
     maxPrice: maxPrice || null,
-   
+    sort: selectedSorting === "all_products" ? null : selectedSorting || null,
   });
 
   const sectionsData = [
@@ -65,7 +66,7 @@ const Products = () => {
       key: "categories",
       title: "Categories",
       options: [
-        { value: "all-category", name: "All Category" },
+        { value: "all_category", name: "All Category" },
         { value: "smartphones", name: "Smart phones" },
         { value: "womens-shoes", name: "Womens Shoes" },
         { value: "beauty", name: "Beauty" },
@@ -76,7 +77,7 @@ const Products = () => {
         { value: "mens-shirts", name: "Mens Shirts" },
         { value: "mens-shoes", name: "Mens Shoes" },
         { value: "mobile-accessories", name: "Mobile Accessories" },
-        { value: "tablets", "name": "Tablets" },
+        { value: "tablets", name: "Tablets" },
         { value: "womens-bags", name: "Womens Bags" },
         { value: "womens-dresses", name: "Womens Dresses" },
         { value: "sunglasses", name: "Sunglasses" },
@@ -84,17 +85,45 @@ const Products = () => {
         { value: "tops", name: "Tops" },
         { value: "womens-watches", name: "Womens Watches" },
         { value: "mens-watches", name: "Mens Watches" },
-        { value: "skin-care", name: "Skin Care" }
-      ]
+        { value: "skin-care", name: "Skin Care" },
+      ],
     },
     { key: "price", title: "Price", options: [] },
-    { key: "color", title: "Color", options: ["All Color","White", "Black", "Red"] },
-    { key: "size", title: "Size", options: ["All Size","S", "M", "L", "XL"] },
-    { key: "brand", title: "Brand", options: ["All Brand", "Nike", "Adidas", "Puma"] },
+    {
+      key: "color",
+      title: "Color",
+      options: ["All Color", "White", "Black", "Red"],
+    },
+    { key: "size", title: "Size", options: ["All Size", "S", "M", "L", "XL"] },
+    {
+      key: "brand",
+      title: "Brand",
+      options: ["All Brand", "Nike", "Adidas", "Puma"],
+    },
     {
       key: "rating",
       title: "Rating",
-      options: ["All Rating","1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars"],
+      options: [
+        "All Rating",
+        "1 Star",
+        "2 Stars",
+        "3 Stars",
+        "4 Stars",
+        "5 Stars",
+      ],
+    },
+    {
+      key: "sort",
+      title: "Sort",
+      options: [
+        { name: "All Product", value: "all_products" },
+        { name: "New Arrivals", value: "newest" },
+        { name: "Ascending A To Z", value: "a_to_z" },
+        { name: "Descending Z To A", value: "z_to_a" },
+        { name: "Best Rating", value: "best_rating" },
+        { name: "Price High To Low", value: "price_high_to_low" },
+        { name: "Price Low To High", value: "price_low_to_high" },
+      ],
     },
   ];
 
@@ -148,11 +177,6 @@ const Products = () => {
                   handleSelectBrand={handleSelectBrand}
                   selectedRating={selectedRating}
                   handleSelectRating={handleSelectRating}
-                  handleDoubleClickRating={handleDoubleClickRating}
-                  handleDoubleClickSize={handleDoubleClickSize}
-                  handleDoubleClickCategory={handleDoubleClickCategory}
-                  handleDoubleClickColor={handleDoubleClickColor}
-                  handleDoubleClickBrand={handleDoubleClickBrand}
                 />
               ))}
             </div>
@@ -162,13 +186,16 @@ const Products = () => {
       <main className='mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 dark:bg-semi-dark p-2 mt-10'>
         <div className='flex flex-col md:flex-row items-baseline justify-between border-b border-gray-200 pb-4 pt-4'>
           <h1 className='text-4xl font-bold tracking-tight text-secondary-text pb-5 md:pb-0'>
-            Products
+            Products{" "}
+            <span className={`${textColor}`}>{filteredProducts?.length}</span>
           </h1>
           <div className='flex flex-wrap items-center gap-5'>
-            <button className='group inline-flex items-center gap-2 justify-center text-sm font-medium text-gray-700 dark:text-secondary-text-dark hover:text-gray-900'>
-              Sort
-              <BsArrowDown />
-            </button>
+            {/* pass the all sectionsData array  */}
+             <SortDropDown
+                sectionsData={sectionsData}
+                handleSelectedSorting={handleSelectedSorting}
+                selectedSorting={selectedSorting}
+              />
             <div className='flex items-center gap-3'>
               <span className='text-secondary-text dark:text-secondary-text-dark text-sm'>
                 View:
@@ -215,12 +242,6 @@ const Products = () => {
                     handleSelectBrand={handleSelectBrand}
                     selectedRating={selectedRating}
                     handleSelectRating={handleSelectRating}
-                    handleDoubleClickRating={handleDoubleClickRating}
-                    handleDoubleClickSize={handleDoubleClickSize}
-                    handleDoubleClickCategory={handleDoubleClickCategory}
-                    handleDoubleClickColor={handleDoubleClickColor}
-                    handleDoubleClickBrand={handleDoubleClickBrand}
-
                   />
                 ))}
               </div>
@@ -230,12 +251,12 @@ const Products = () => {
               {isFilterLoading ? (
                 <div className='flex justify-center items-center h-full'>
                   <div className='text-gray-500 dark:text-gray-400'>
-                    Loading...
+                    <BigSpinner />
                   </div>
                 </div>
               ) : FilterError ? (
-                <div className='text-red-500'>Error: {FilterError.message}</div>
-              ) : (
+                <div className='text-red-500'>Error: {FilterError?.error}</div>
+              ) : filteredProducts?.length > 0 ? (
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
                   {filteredProducts?.map((product) => (
                     <div
@@ -263,6 +284,14 @@ const Products = () => {
                       </div>
                     </div>
                   ))}
+                </div>
+              ) : (
+                <div className='flex justify-center items-center h-full my-20'>
+                  <img
+                    src={emptyBox}
+                    alt='No Product Found'
+                    className='w-1/2'
+                  />
                 </div>
               )}
             </div>
