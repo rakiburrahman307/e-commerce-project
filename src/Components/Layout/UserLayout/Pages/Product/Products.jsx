@@ -9,6 +9,7 @@ import BigSpinner from "../../../BigSpinner/BigSpinner";
 import emptyBox from "../../../../../assets/svg/empty-box.svg";
 import SortDropDown from "./SortDropDown";
 import Card from "../../Utilities/Card/Card";
+import ListCard from "../../Utilities/Card/ListCard";
 
 const Products = () => {
   const { textColor } = useContextInfo();
@@ -20,7 +21,7 @@ const Products = () => {
     priceRange: false,
     rating: false,
   });
-
+  const [listOption, setListOption] = useState(false);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
   const [selectedCategories, setSelectedCategories] = useState("");
@@ -200,10 +201,14 @@ const Products = () => {
               <span className='text-secondary-text dark:text-secondary-text-dark text-sm'>
                 View:
               </span>
-              <button className='text-gray-400 flex items-center hover:text-gray-500'>
+              <button
+              onClick={()=> setListOption(false)}
+              className={`${listOption ? "text-gray-400" : textColor}  flex items-center hover:${textColor}`}>
                 <IoGrid size={20} />
               </button>
-              <button className='text-gray-400 flex items-center hover:text-gray-500'>
+              <button 
+              onClick={()=>setListOption(true)}
+              className={`${listOption ? textColor :"text-gray-400"}  flex items-center hover:${textColor}`}>
                 <FaList size={20} />
               </button>
             </div>
@@ -247,31 +252,36 @@ const Products = () => {
               </div>
             </form>
             <div className='lg:col-span-3 max-h-[95vh] overflow-y-auto bg-white dark:bg-primary-dark rounded-xl lg:p-5'>
-              {/* Render filtered products here */}
-              {isFilterLoading ? (
-                <div className='flex justify-center items-center h-full'>
-                  <div className='text-gray-500 dark:text-gray-400'>
-                    <BigSpinner />
-                  </div>
-                </div>
-              ) : FilterError ? (
-                <div className='text-red-500'>Error: {FilterError?.error}</div>
-              ) : filteredProducts?.length > 0 ? (
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-5 gap-6'>
-                  {filteredProducts?.map((product) => (
-                    <Card {...product}></Card>
-                  ))}
-                </div>
-              ) : (
-                <div className='flex justify-center items-center h-full my-20'>
-                  <img
-                    src={emptyBox}
-                    alt='No Product Found'
-                    className='w-1/2'
-                  />
-                </div>
-              )}
-            </div>
+  {/* Render filtered products here */}
+  {isFilterLoading ? (
+    <div className='flex justify-center items-center h-full'>
+      <div className='text-gray-500 dark:text-gray-400'>
+        <BigSpinner />
+      </div>
+    </div>
+  ) : FilterError ? (
+    <div className='text-red-500'>Error: {FilterError?.error}</div>
+  ) : filteredProducts?.length > 0 ? (
+    <div className={`${listOption ? "grid grid-cols-1": "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-5 gap-6"}`}>
+      {filteredProducts?.map((product) =>
+        listOption ? (
+          <ListCard key={product._id} {...product} />
+        ) : (
+          <Card key={product._id} {...product} />
+        )
+      )}
+    </div>
+  ) : (
+    <div className='flex justify-center items-center h-full my-20'>
+      <img
+        src={emptyBox}
+        alt='No Product Found'
+        className='w-1/2'
+      />
+    </div>
+  )}
+</div>
+
           </div>
         </section>
       </main>

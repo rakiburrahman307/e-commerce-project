@@ -8,7 +8,7 @@ const SortDropDown = ({
   handleSelectedSorting,
   selectedSorting,
 }) => {
-  const { selectedColor } = useContextInfo();
+  const { selectedColor, textColor } = useContextInfo();
   const [open, setOpen] = useState(false);
   const dropDownRef = useRef(null);
   const sortSection = sectionsData.find((section) => section.key === "sort");
@@ -29,7 +29,7 @@ const SortDropDown = ({
       >
         Sort
         {open ? (
-          <BsArrowDown className='-rotate-180 scale-105 duration-500' />
+          <BsArrowDown className={`-rotate-180 scale-105 duration-500 ${textColor}`} />
         ) : (
           <BsArrowDown className='rotate-0 duration-500' />
         )}
