@@ -1,21 +1,28 @@
 import { IoGrid } from "react-icons/io5";
 import { FaFilter, FaList } from "react-icons/fa6";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import FilterSection from "./FilterSection";
 import { MdClose } from "react-icons/md";
 import { useFilterProductsQuery } from "../../../../Features/productsApiSlice";
 import useContextInfo from "../../Hooks/useContextInfo";
-import BigSpinner from "../../../BigSpinner/BigSpinner";
 import emptyBox from "../../../../../assets/svg/empty-box.svg";
 import SortDropDown from "./SortDropDown";
 import Card from "../../Utilities/Card/Card";
 import ListCard from "../../Utilities/Card/ListCard";
-import SkeletonListCard from "../../Utilities/CardLoadingSkeleton/ListCardLoadingSkeleton";
 import CardLoadingSkeleton from "../../Utilities/CardLoadingSkeleton/CardLoadingSkeleton";
 import ListCardLoadingSkeleton from "../../Utilities/CardLoadingSkeleton/ListCardLoadingSkeleton";
+import sectionsData from "../../../../../../public/data.json";
+import useIntersectionObserver from "../../Hooks/useIntersectionObserver";
+import BigSpinner from "../../../BigSpinner/BigSpinner";
+import LoadingSpinner from "../../../BigSpinner/LoadingSpinner";
 
 const Products = () => {
-  const { textColor } = useContextInfo();
+  const { textColor, borderColor } = useContextInfo();
+  const [page, setPage] = useState(1);
+  const [listOption, setListOption] = useState(false);
+  const [openSideBar, setOpenSideBar] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [sections, setSections] = useState({
     categories: true,
     color: false,
@@ -24,30 +31,88 @@ const Products = () => {
     priceRange: false,
     rating: false,
   });
-  const [listOption, setListOption] = useState(false);
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
-  const [selectedCategories, setSelectedCategories] = useState("");
-  const [selectedColor, setSelectedColor] = useState("");
-  const [selectedSize, setSelectedSize] = useState("");
-  const [selectedBrand, setSelectedBrand] = useState("");
-  const [selectedRating, setSelectedRating] = useState("");
-  const [selectedSorting, setSelectedSorting] = useState("");
-  const [openSideBar, setOpenSideBar] = useState(false);
+
+  const [filters, setFilters] = useState({
+    categories: "",
+    color: "",
+    size: "",
+    brand: "",
+    rating: "",
+    minPrice: 0,
+    maxPrice: 0,
+    sorting: "",
+  });
+
   const toggleSection = (sectionKey) => {
     setSections((prev) => ({
       ...prev,
       [sectionKey]: !prev[sectionKey],
     }));
   };
-  const handleMinPriceChange = (e) => setMinPrice(e?.target?.value);
-  const handleMaxPriceChange = (e) => setMaxPrice(e?.target?.value);
-  const handleSelectCategory = (e) => setSelectedCategories(e?.target?.value);
-  const handleSelectColor = (e) => setSelectedColor(e?.target?.value);
-  const handleSelectSize = (e) => setSelectedSize(e?.target?.value);
-  const handleSelectBrand = (e) => setSelectedBrand(e?.target?.value);
-  const handleSelectRating = (e) => setSelectedRating(e?.target?.value);
-  const handleSelectedSorting = (e) => setSelectedSorting(e?.target?.value);
+
+  const handleMinPriceChange = (e) => {
+    const value = e.target.value;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      minPrice: value,
+    }));
+  };
+
+  const handleMaxPriceChange = (e) => {
+    const value = e.target.value;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      maxPrice: value,
+    }));
+  };
+
+  const handleSelectCategory = (e) => {
+    const value = e.target.value;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      categories: value,
+    }));
+  };
+
+  const handleSelectColor = (e) => {
+    const value = e.target.value;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      color: value,
+    }));
+  };
+
+  const handleSelectSize = (e) => {
+    const value = e.target.value;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      size: value,
+    }));
+  };
+
+  const handleSelectBrand = (e) => {
+    const value = e.target.value;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      brand: value,
+    }));
+  };
+
+  const handleSelectRating = (e) => {
+    const value = e.target.value;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      rating: value,
+    }));
+  };
+
+  const handleSelectedSorting = (e) => {
+    const value = e.target.value;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      sorting: value,
+    }));
+  };
 
   const {
     data: filteredProducts,
@@ -55,81 +120,35 @@ const Products = () => {
     error: FilterError,
   } = useFilterProductsQuery({
     categories:
-      selectedCategories === "all_category" ? null : selectedCategories || null,
-    color: selectedColor === "All Color" ? null : selectedColor || null,
-    size: selectedSize === "All Size" ? null : selectedSize || null,
-    brand: selectedBrand === "All Brand" ? null : selectedBrand || null,
-    rating: selectedRating === "All Rating" ? null : selectedRating || null,
-    minPrice: minPrice || null,
-    maxPrice: maxPrice || null,
-    sort: selectedSorting === "all_products" ? null : selectedSorting || null,
+      filters?.categories === "all_category"
+        ? null
+        : filters?.categories || null,
+    color: filters?.color === "All Color" ? null : filters?.color || null,
+    size: filters?.size === "All Size" ? null : filters?.size || null,
+    brand: filters?.brand === "All Brand" ? null : filters?.brand || null,
+    rating: filters?.rating === "All Rating" ? null : filters?.rating || null,
+    minPrice: filters?.minPrice || null,
+    maxPrice: filters?.maxPrice || null,
+    sort: filters?.sorting === "all_products" ? null : filters?.sorting || null,
+    page,
   });
 
-  const sectionsData = [
-    {
-      key: "categories",
-      title: "Categories",
-      options: [
-        { value: "all_category", name: "All Category" },
-        { value: "smartphones", name: "Smart phones" },
-        { value: "womens-shoes", name: "Womens Shoes" },
-        { value: "beauty", name: "Beauty" },
-        { value: "fragrances", name: "Fragrances" },
-        { value: "furniture", name: "Furniture" },
-        { value: "groceries", name: "Groceries" },
-        { value: "laptops", name: "Laptops" },
-        { value: "mens-shirts", name: "Mens Shirts" },
-        { value: "mens-shoes", name: "Mens Shoes" },
-        { value: "mobile-accessories", name: "Mobile Accessories" },
-        { value: "tablets", name: "Tablets" },
-        { value: "womens-bags", name: "Womens Bags" },
-        { value: "womens-dresses", name: "Womens Dresses" },
-        { value: "sunglasses", name: "Sunglasses" },
-        { value: "home-decoration", name: "Home Decoration" },
-        { value: "tops", name: "Tops" },
-        { value: "womens-watches", name: "Womens Watches" },
-        { value: "mens-watches", name: "Mens Watches" },
-        { value: "skin-care", name: "Skin Care" },
-      ],
+  useEffect(() => {
+    if (filteredProducts && filteredProducts.length > 0 && !isFilterLoading) {
+      setProducts((prevProducts) => [...prevProducts, ...filteredProducts]);
+      setIsLoadingMore(false);
+    }
+  }, [filteredProducts, isFilterLoading]);
+
+  const observerRef = useIntersectionObserver(
+    () => {
+      if (!isLoadingMore) {
+        setIsLoadingMore(true);
+        setPage((prevPage) => prevPage + 1);
+      }
     },
-    { key: "price", title: "Price", options: [] },
-    {
-      key: "color",
-      title: "Color",
-      options: ["All Color", "White", "Black", "Red"],
-    },
-    { key: "size", title: "Size", options: ["All Size", "S", "M", "L", "XL"] },
-    {
-      key: "brand",
-      title: "Brand",
-      options: ["All Brand", "Nike", "Adidas", "Puma"],
-    },
-    {
-      key: "rating",
-      title: "Rating",
-      options: [
-        "All Rating",
-        "1 Star",
-        "2 Stars",
-        "3 Stars",
-        "4 Stars",
-        "5 Stars",
-      ],
-    },
-    {
-      key: "sort",
-      title: "Sort",
-      options: [
-        { name: "All Product", value: "all_products" },
-        { name: "New Arrivals", value: "newest" },
-        { name: "Ascending A To Z", value: "a_to_z" },
-        { name: "Descending Z To A", value: "z_to_a" },
-        { name: "Best Rating", value: "best_rating" },
-        { name: "Price High To Low", value: "price_high_to_low" },
-        { name: "Price Low To High", value: "price_low_to_high" },
-      ],
-    },
-  ];
+    { threshold: 1 }
+  );
 
   return (
     <div className='bg-root-bg mx-auto dark:bg-primary-dark'>
@@ -167,19 +186,19 @@ const Products = () => {
                   section={section}
                   isOpen={sections[section?.key]}
                   toggleSection={toggleSection}
-                  minPrice={minPrice}
-                  maxPrice={maxPrice}
+                  minPrice={filters?.minPrice}
+                  maxPrice={filters?.maxPrice}
                   handleMinPriceChange={handleMinPriceChange}
                   handleMaxPriceChange={handleMaxPriceChange}
-                  selectedCategories={selectedCategories}
+                  selectedCategories={filters?.categories}
                   handleSelectCategory={handleSelectCategory}
-                  selectedColor={selectedColor}
+                  selectedColor={filters?.color}
                   handleSelectColor={handleSelectColor}
-                  selectedSize={selectedSize}
+                  selectedSize={filters?.size}
                   handleSelectSize={handleSelectSize}
-                  selectedBrand={selectedBrand}
+                  selectedBrand={filters?.brand}
                   handleSelectBrand={handleSelectBrand}
-                  selectedRating={selectedRating}
+                  selectedRating={filters?.rating}
                   handleSelectRating={handleSelectRating}
                 />
               ))}
@@ -190,15 +209,13 @@ const Products = () => {
       <main className='mx-auto w-full lg:max-w-7xl px-4 sm:px-6 lg:px-8 dark:bg-semi-dark p-2 mt-10'>
         <div className='flex flex-col md:flex-row items-baseline justify-between border-b border-gray-200 pb-4 pt-4'>
           <h1 className='text-4xl font-bold tracking-tight text-secondary-text pb-5 md:pb-0'>
-            Products{" "}
-            <span className={`${textColor}`}>{filteredProducts?.length}</span>
+            Products <span className={`${textColor}`}>{products.length}</span>
           </h1>
           <div className='flex flex-wrap items-center gap-5'>
-            {/* pass the all sectionsData array  */}
             <SortDropDown
               sectionsData={sectionsData}
               handleSelectedSorting={handleSelectedSorting}
-              selectedSorting={selectedSorting}
+              selectedSorting={filters?.sorting}
             />
             <div className='flex items-center gap-3'>
               <span className='text-secondary-text dark:text-secondary-text-dark text-sm'>
@@ -208,7 +225,7 @@ const Products = () => {
                 onClick={() => setListOption(false)}
                 className={`${
                   listOption ? "text-gray-400" : textColor
-                }  flex items-center hover:${textColor}`}
+                } flex items-center hover:${textColor}`}
               >
                 <IoGrid size={20} />
               </button>
@@ -216,7 +233,7 @@ const Products = () => {
                 onClick={() => setListOption(true)}
                 className={`${
                   listOption ? textColor : "text-gray-400"
-                }  flex items-center hover:${textColor}`}
+                } flex items-center hover:${textColor}`}
               >
                 <FaList size={20} />
               </button>
@@ -242,26 +259,26 @@ const Products = () => {
                     section={section}
                     isOpen={sections[section?.key]}
                     toggleSection={toggleSection}
-                    minPrice={minPrice}
-                    maxPrice={maxPrice}
+                    minPrice={filters?.minPrice}
+                    maxPrice={filters?.maxPrice}
                     handleMinPriceChange={handleMinPriceChange}
                     handleMaxPriceChange={handleMaxPriceChange}
-                    selectedCategories={selectedCategories}
+                    selectedCategories={filters?.categories}
                     handleSelectCategory={handleSelectCategory}
-                    selectedColor={selectedColor}
+                    selectedColor={filters?.color}
                     handleSelectColor={handleSelectColor}
-                    selectedSize={selectedSize}
+                    selectedSize={filters?.size}
                     handleSelectSize={handleSelectSize}
-                    selectedBrand={selectedBrand}
+                    selectedBrand={filters?.brand}
                     handleSelectBrand={handleSelectBrand}
-                    selectedRating={selectedRating}
+                    selectedRating={filters?.rating}
                     handleSelectRating={handleSelectRating}
                   />
                 ))}
               </div>
             </form>
             <div className='lg:col-span-3 max-h-[95vh] overflow-y-auto bg-white dark:bg-primary-dark rounded-xl lg:p-5'>
-              {isFilterLoading ? (
+              {isFilterLoading && page === 1 ? (
                 <div
                   className={`${
                     listOption
@@ -275,13 +292,13 @@ const Products = () => {
                         .map((_, index) => (
                           <ListCardLoadingSkeleton key={index} />
                         ))
-                    : Array(12)
+                    : Array(9)
                         .fill(null)
                         .map((_, index) => <CardLoadingSkeleton key={index} />)}
                 </div>
               ) : FilterError ? (
                 <div className='text-red-500'>Error: {FilterError?.error}</div>
-              ) : filteredProducts?.length > 0 ? (
+              ) : products.length > 0 ? (
                 <div
                   className={`${
                     listOption
@@ -289,7 +306,7 @@ const Products = () => {
                       : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-5 gap-6"
                   }`}
                 >
-                  {filteredProducts?.map((product) =>
+                  {products?.map((product) =>
                     listOption ? (
                       <ListCard key={product._id} {...product} />
                     ) : (
@@ -306,6 +323,12 @@ const Products = () => {
                   />
                 </div>
               )}
+              {isLoadingMore && (
+                <div className='flex justify-center items-center mt-16 mb-5'>
+                  <LoadingSpinner />
+                </div>
+              )}
+              <div ref={observerRef} />
             </div>
           </div>
         </section>

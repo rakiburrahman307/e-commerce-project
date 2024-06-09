@@ -35,7 +35,8 @@ const productApiSlice = apiSlice.injectEndpoints({
         minPrice,
         maxPrice,
         rating,
-        sort
+        sort,
+        page
       }) => ({
         url: "product/filter",
         method: "POST",
@@ -47,7 +48,8 @@ const productApiSlice = apiSlice.injectEndpoints({
           maxPrice,
           brand,
           rating,
-          sort
+          sort,
+          page
         },
       }),
       providesTags: ["Products"],

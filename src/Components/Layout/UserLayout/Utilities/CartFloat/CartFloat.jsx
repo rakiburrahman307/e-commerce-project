@@ -9,11 +9,11 @@ import {
   useResetCartQuantityMutation,
 } from "../../../../Features/cartApiSlice";
 import FloatCartItem from "./FloatCartItem";
-import { calculateTotalCartPrice } from "../../Pages/Carts/calculationItemPrices";
 import useContextInfo from "../../Hooks/useContextInfo";
 import emptyCart from "../../../../../assets/svg/empty-cart.svg";
 import "./style.css";
 import LoadingItemSkeleton from "../Wishlist/LoadingItemSkeleton";
+import { calculateTotalCartPrice } from "../../Pages/Carts/calculationItemPrices";
 
 const CartFloat = ({ carts, cartsLoading, userLoading }) => {
   const [openLeftSidebar, setLeftSidebar] = useState(false);

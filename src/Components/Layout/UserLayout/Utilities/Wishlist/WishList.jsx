@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import useContextInfo from "../../Hooks/useContextInfo";
 import { IoMdClose } from "react-icons/io";
 import { TbBasketHeart } from "react-icons/tb";
-import { calculateTotalCartPrice } from "../../Pages/Carts/calculationItemPrices";
 import CartItem from "./CartItem";
 import emptyCart from "../../../../../assets/svg/empty-cart.svg";
 import LoadingItemSkeleton from "./LoadingItemSkeleton";
 import { useAddWishListToCartMutation } from "../../../../Features/cartWishListApiSlice";
+import { calculateTotalCartPrice } from "../../Pages/Carts/calculationItemPrices";
 const WishList = ({ wishListData, WishListLoading, userLoading }) => {
   const [openLeftSidebar, setLeftSidebar] = useState(false);
   const { textColor } = useContextInfo();

@@ -1,0 +1,87 @@
+[
+    {
+      key: "categories",
+      title: "Categories",
+      options: [
+        { value: "all_category", name: "All Category" },
+        { value: "smartphones", name: "Smart phones" },
+        { value: "womens-shoes", name: "Womens Shoes" },
+        { value: "beauty", name: "Beauty" },
+        { value: "fragrances", name: "Fragrances" },
+        { value: "furniture", name: "Furniture" },
+        { value: "groceries", name: "Groceries" },
+        { value: "laptops", name: "Laptops" },
+        { value: "mens-shirts", name: "Mens Shirts" },
+        { value: "mens-shoes", name: "Mens Shoes" },
+        { value: "mobile-accessories", name: "Mobile Accessories" },
+        { value: "tablets", name: "Tablets" },
+        { value: "womens-bags", name: "Womens Bags" },
+        { value: "womens-dresses", name: "Womens Dresses" },
+        { value: "sunglasses", name: "Sunglasses" },
+        { value: "home-decoration", name: "Home Decoration" },
+        { value: "tops", name: "Tops" },
+        { value: "womens-watches", name: "Womens Watches" },
+        { value: "mens-watches", name: "Mens Watches" },
+        { value: "skin-care", name: "Skin Care" },
+      ],
+    },
+    { key: "price", title: "Price", options: [] },
+    {
+      key: "color",
+      title: "Color",
+      options: ["All Color", "White", "Black", "Red"],
+    },
+    { key: "size", title: "Size", options: ["All Size", "S", "M", "L", "XL"] },
+    {
+      key: "brand",
+      title: "Brand",
+      options: ["All Brand", "Nike", "Adidas", "Puma"],
+    },
+    {
+      key: "rating",
+      title: "Rating",
+      options: [
+        "All Rating",
+        "1 Star",
+        "2 Stars",
+        "3 Stars",
+        "4 Stars",
+        "5 Stars",
+      ],
+    },
+    {
+      key: "sort",
+      title: "Sort",
+      options: [
+        { name: "All Product", value: "all_products" },
+        { name: "New Arrivals", value: "newest" },
+        { name: "Ascending A To Z", value: "a_to_z" },
+        { name: "Descending Z To A", value: "z_to_a" },
+        { name: "Best Rating", value: "best_rating" },
+        { name: "Price High To Low", value: "price_high_to_low" },
+        { name: "Price Low To High", value: "price_low_to_high" },
+      ],
+    }
+  ]
+
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setPage((prevPage) => prevPage + 1);
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    if (sentinelRef.current) {
+      observer.observe(sentinelRef.current);
+    }
+
+    return () => {
+      if (sentinelRef.current) {
+        observer.unobserve(sentinelRef.current);
+      }
+    };
+  }, []);
