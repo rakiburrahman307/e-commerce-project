@@ -10,6 +10,9 @@ import emptyBox from "../../../../../assets/svg/empty-box.svg";
 import SortDropDown from "./SortDropDown";
 import Card from "../../Utilities/Card/Card";
 import ListCard from "../../Utilities/Card/ListCard";
+import SkeletonListCard from "../../Utilities/CardLoadingSkeleton/ListCardLoadingSkeleton";
+import CardLoadingSkeleton from "../../Utilities/CardLoadingSkeleton/CardLoadingSkeleton";
+import ListCardLoadingSkeleton from "../../Utilities/CardLoadingSkeleton/ListCardLoadingSkeleton";
 
 const Products = () => {
   const { textColor } = useContextInfo();
@@ -202,13 +205,19 @@ const Products = () => {
                 View:
               </span>
               <button
-              onClick={()=> setListOption(false)}
-              className={`${listOption ? "text-gray-400" : textColor}  flex items-center hover:${textColor}`}>
+                onClick={() => setListOption(false)}
+                className={`${
+                  listOption ? "text-gray-400" : textColor
+                }  flex items-center hover:${textColor}`}
+              >
                 <IoGrid size={20} />
               </button>
-              <button 
-              onClick={()=>setListOption(true)}
-              className={`${listOption ? textColor :"text-gray-400"}  flex items-center hover:${textColor}`}>
+              <button
+                onClick={() => setListOption(true)}
+                className={`${
+                  listOption ? textColor : "text-gray-400"
+                }  flex items-center hover:${textColor}`}
+              >
                 <FaList size={20} />
               </button>
             </div>
@@ -252,36 +261,52 @@ const Products = () => {
               </div>
             </form>
             <div className='lg:col-span-3 max-h-[95vh] overflow-y-auto bg-white dark:bg-primary-dark rounded-xl lg:p-5'>
-  {/* Render filtered products here */}
-  {isFilterLoading ? (
-    <div className='flex justify-center items-center h-full'>
-      <div className='text-gray-500 dark:text-gray-400'>
-        <BigSpinner />
-      </div>
-    </div>
-  ) : FilterError ? (
-    <div className='text-red-500'>Error: {FilterError?.error}</div>
-  ) : filteredProducts?.length > 0 ? (
-    <div className={`${listOption ? "grid grid-cols-1": "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-5 gap-6"}`}>
-      {filteredProducts?.map((product) =>
-        listOption ? (
-          <ListCard key={product._id} {...product} />
-        ) : (
-          <Card key={product._id} {...product} />
-        )
-      )}
-    </div>
-  ) : (
-    <div className='flex justify-center items-center h-full my-20'>
-      <img
-        src={emptyBox}
-        alt='No Product Found'
-        className='w-1/2'
-      />
-    </div>
-  )}
-</div>
-
+              {isFilterLoading ? (
+                <div
+                  className={`${
+                    listOption
+                      ? "grid grid-cols-1"
+                      : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-5 gap-6"
+                  }`}
+                >
+                  {listOption
+                    ? Array(12)
+                        .fill(null)
+                        .map((_, index) => (
+                          <ListCardLoadingSkeleton key={index} />
+                        ))
+                    : Array(12)
+                        .fill(null)
+                        .map((_, index) => <CardLoadingSkeleton key={index} />)}
+                </div>
+              ) : FilterError ? (
+                <div className='text-red-500'>Error: {FilterError?.error}</div>
+              ) : filteredProducts?.length > 0 ? (
+                <div
+                  className={`${
+                    listOption
+                      ? "grid grid-cols-1"
+                      : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-5 gap-6"
+                  }`}
+                >
+                  {filteredProducts?.map((product) =>
+                    listOption ? (
+                      <ListCard key={product._id} {...product} />
+                    ) : (
+                      <Card key={product._id} {...product} />
+                    )
+                  )}
+                </div>
+              ) : (
+                <div className='flex justify-center items-center h-full my-20'>
+                  <img
+                    src={emptyBox}
+                    alt='No Product Found'
+                    className='w-1/2'
+                  />
+                </div>
+              )}
+            </div>
           </div>
         </section>
       </main>

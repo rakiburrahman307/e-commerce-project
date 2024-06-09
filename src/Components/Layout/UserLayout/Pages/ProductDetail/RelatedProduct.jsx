@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import CardLoadingSkeleton from "../../Utilities/CardLoadingSkeleton/cardLoadingSkeleton";
+import CardLoadingSkeleton from "../../Utilities/CardLoadingSkeleton/CardLoadingSkeleton";
 import Card from "../../Utilities/Card/Card";
 import Title from "../../Hooks/Title";
 import { useRelatedProductQuery } from "../../../../Features/productsApiSlice";

@@ -9,11 +9,17 @@ const Card = ({ _id, title, price, rating, brand, thumbnail }) => {
   const { textColor } = useContextInfo();
 
   return (
-    <Link to={`/product/${_id}`} className="mx-auto">
+    <Link to={`/product/${_id}`} className='mx-auto'>
       <div className='max-w-[400px] space-y-4 rounded-lg bg-white p-2 shadow-lg dark:bg-[#18181B] duration-500 hover:scale-105'>
         <div className='relative'>
-          <LazyImage src={thumbnail} alt={title} className='w-full rounded-lg' />
-          <span className="absolute top-2 left-2 rounded-full bg-yellow-200 px-2 text-xs font-semibold text-yellow-600">{brand}</span>
+          <LazyImage
+            src={thumbnail}
+            alt={title}
+            className='w-full rounded-lg'
+          />
+          <span className='absolute top-2 left-2 rounded-full bg-yellow-200 px-2 text-xs font-semibold text-yellow-600'>
+            {brand}
+          </span>
           <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 hover:opacity-100 rounded-lg'></div>
         </div>
         <div className='grid gap-1'>
@@ -44,12 +50,12 @@ const Card = ({ _id, title, price, rating, brand, thumbnail }) => {
 };
 
 Card.propTypes = {
-  _id: PropTypes.string.isRequired,
-  thumbnail: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  rating: PropTypes.number.isRequired,
-  brand: PropTypes.string.isRequired,
+  _id: PropTypes.string,
+  thumbnail: PropTypes.string,
+  title: PropTypes.string,
+  price: PropTypes.number,
+  rating: PropTypes.number,
+  brand: PropTypes.string,
 };
 
 export default Card;
