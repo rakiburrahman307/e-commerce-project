@@ -28,7 +28,7 @@ const FilterSection = ({
       <button
         type='button'
         onClick={() => toggleSection(section?.key)}
-        className='flex w-full items-center justify-between py-3 text-sm text-gray-400 hover:text-gray-500'
+        className='flex w-full items-center justify-between pt-2 text-sm text-gray-400 hover:text-gray-500'
       >
         <span className='font-medium text-gray-900 dark:text-secondary-text-dark'>
           {section?.title}

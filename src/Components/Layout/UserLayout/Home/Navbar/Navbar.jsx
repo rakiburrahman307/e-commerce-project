@@ -9,6 +9,9 @@ import MobileNavbar from "./MobileNavbar";
 import { BiLeftArrowAlt } from "react-icons/bi";
 import { useGetUserQuery } from "../../../../Features/authApiSlice";
 import { useGetCartsQuery } from "../../../../Features/cartApiSlice";
+import SearchBoxAdvance from "../../Utilities/SearchBoxAdvance/SearchBoxAdvance";
+import { useSearchQueryQuery } from "../../../../Features/searchQuerySlice";
+import getBaseURL from "../../../../Features/BaseURL/BaseURL";
 
 const Navbar = () => {
   const { selectedColor, textColor } = useContextInfo();
@@ -36,14 +39,36 @@ const Navbar = () => {
     };
   }, [lastScrollY]);
 
-  const inputField = (
-    <input
-      className='border-none w-full py-2 rounded-lg text-secondary-text focus:ring-0 dark:text-secondary-text-dark dark:bg-primary-dark'
-      type='text'
-      placeholder='Search in Daraz'
-    />
-  );
-
+  // const inputField = (
+  //   <input
+  //     className='border-none w-full py-2 rounded-lg text-secondary-text focus:ring-0 dark:text-secondary-text-dark dark:bg-primary-dark'
+  //     type='text'
+  //     placeholder='Search in Daraz'
+  //   />
+  // );
+ 
+  const fetchSuggestions = async (value) => {
+    try {
+      const baseURL = getBaseURL();
+      const url = `${baseURL}/product/search/query?title=${value}`;
+      console.log("Fetching suggestions from URL:", url);
+      
+      const res = await fetch(url);
+      
+      if (!res.ok) {
+        throw new Error(`Network response was not ok: ${res.status} ${res.statusText}`);
+      }
+      
+      const data = await res.json();
+      console.log("Fetched suggestions:", data);
+      return data;
+    } catch (error) {
+      console.error('Failed to fetch suggestions:', error);
+      throw error;
+    }
+  };
+  
+  
   const navSubLinks = (
     <>
       <Link to='#'>
@@ -76,8 +101,20 @@ const Navbar = () => {
             {/* This is brand name end here  */}
             {/* -------------------------  */}
             {/* Search Box start here */}
-            <div className='hidden w-full md:flex md:mx-auto lg:flex lg:mx-auto xl:mx-auto 2xl:mx-auto'>
-              {inputField}
+            <div className='hidden relative w-full md:flex md:mx-auto lg:flex lg:mx-auto xl:mx-auto 2xl:mx-auto'>
+              <SearchBoxAdvance
+                placeholder={"Search in Daraz"}
+                inputFieldCssClass={"border-none w-full py-2 rounded-lg text-secondary-text focus:ring-0 dark:text-secondary-text-dark dark:bg-primary-dark"}
+                fetchSuggestions={fetchSuggestions}
+                staticData={[]}
+                dataKey={"title"}
+                splitTextStyle={`${textColor} text-semibold`}
+                searchLoading={<>Loading....</>}
+                onSelect={(res) => console.log(res)}
+                onChange={(e) => {}}
+                onBlur={(e) => {}}
+                onFocus={(e) => {}}
+              ></SearchBoxAdvance>
             </div>
             {/* Search Box end here */}
             {/* --------------------------------------------  */}
