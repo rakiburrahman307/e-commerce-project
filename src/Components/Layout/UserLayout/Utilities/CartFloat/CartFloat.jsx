@@ -46,6 +46,7 @@ const CartFloat = ({ carts, cartsLoading, userLoading }) => {
         className={`fixed z-[100] inset-0 bg-black/20 backdrop-blur-sm duration-100 ${
           openLeftSidebar ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
+        onClick={()=>setLeftSidebar(false)}
       >
         <div
           className={`absolute right-0 min-w-96 rounded-lg bg-white pb-5 text-center drop-shadow-2xl dark:bg-gray-800 dark:text-white ${

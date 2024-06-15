@@ -1,21 +1,25 @@
-import { PropTypes } from 'prop-types';
+import { PropTypes } from "prop-types";
+import { Link } from "react-router-dom";
 
 const SuggestionList = ({
   suggestions = [],
   highlight,
   dataKey,
   onSuggestionClick,
-  splitTextStyle
+  splitTextStyle,
+  linkTo,
 }) => {
   const getHighlightText = (text, highlight) => {
-    const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
+    const parts = text.split(new RegExp(`(${highlight})`, "gi"));
 
     return (
       <span>
         {parts.map((part, idx) => {
           const isHighlighted = part.toLowerCase() === highlight.toLowerCase();
           return isHighlighted ? (
-            <span key={idx} className={splitTextStyle}>{part}</span>
+            <span key={idx} className={splitTextStyle}>
+              {part}
+            </span>
           ) : (
             <span key={idx}>{part}</span>
           );
@@ -30,15 +34,20 @@ const SuggestionList = ({
         const currentSuggestion = dataKey ? suggestion[dataKey] : suggestion;
 
         return (
-          <li
-            key={idx}
-            onClick={() => onSuggestionClick(suggestion)}
-            className="py-3.5 px-2 w-full flex items-center text-blue-500 hover:text-blue-700 hover:bg-blue-50"
-            style={{ transform: `translateY(${idx * 10}px)` }}
-          >
-            <span className="ml-5 mr-2.5 w-1 h-7 bg-blue-500 rounded-r-md"></span>
-            {getHighlightText(currentSuggestion, highlight)}
-          </li>
+          <Link key={suggestion?._id} to={`/product/${suggestion?._id}`}>
+            <li
+              onClick={() => onSuggestionClick(suggestion)}
+              className='py-3.5 px-2 w-full flex items-center gap-3 text-black/80 hover:text-black hover:bg-blue-50'
+              style={{ transform: `translateY(${idx * 10}px)` }}
+            >
+              <img
+                src={suggestion?.thumbnail}
+                alt={suggestion?.title}
+                className=' mr-2.5 w-12 h-10 bg-blue-500 rounded-md'
+              />
+              {getHighlightText(currentSuggestion, highlight)}
+            </li>
+          </Link>
         );
       })}
     </>
@@ -49,8 +58,9 @@ SuggestionList.propTypes = {
   suggestions: PropTypes.array,
   highlight: PropTypes.string,
   dataKey: PropTypes.string,
+  linkTo: PropTypes.string,
   splitTextStyle: PropTypes.string,
-  onSuggestionClick: PropTypes.func
+  onSuggestionClick: PropTypes.func,
 };
 
 export default SuggestionList;

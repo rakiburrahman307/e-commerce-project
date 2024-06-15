@@ -10,7 +10,6 @@ import { BiLeftArrowAlt } from "react-icons/bi";
 import { useGetUserQuery } from "../../../../Features/authApiSlice";
 import { useGetCartsQuery } from "../../../../Features/cartApiSlice";
 import SearchBoxAdvance from "../../Utilities/SearchBoxAdvance/SearchBoxAdvance";
-import { useSearchQueryQuery } from "../../../../Features/searchQuerySlice";
 import getBaseURL from "../../../../Features/BaseURL/BaseURL";
 
 const Navbar = () => {
@@ -46,29 +45,33 @@ const Navbar = () => {
   //     placeholder='Search in Daraz'
   //   />
   // );
- 
+
   const fetchSuggestions = async (value) => {
     try {
       const baseURL = getBaseURL();
       const url = `${baseURL}/product/search/query?title=${value}`;
-      console.log("Fetching suggestions from URL:", url);
-      
+
       const res = await fetch(url);
-      
+
       if (!res.ok) {
-        throw new Error(`Network response was not ok: ${res.status} ${res.statusText}`);
+        if (res.status === 404) {
+          return [];
+        } else {
+          // Handle other errors
+          throw new Error(
+            `Network response was not ok: ${res.status} ${res.statusText}`
+          );
+        }
       }
-      
+
       const data = await res.json();
-      console.log("Fetched suggestions:", data);
       return data;
     } catch (error) {
-      console.error('Failed to fetch suggestions:', error);
-      throw error;
+      console.error("Failed to fetch suggestions:", error);
+      return [];
     }
   };
-  
-  
+
   const navSubLinks = (
     <>
       <Link to='#'>
@@ -104,16 +107,14 @@ const Navbar = () => {
             <div className='hidden relative w-full md:flex md:mx-auto lg:flex lg:mx-auto xl:mx-auto 2xl:mx-auto'>
               <SearchBoxAdvance
                 placeholder={"Search in Daraz"}
-                inputFieldCssClass={"border-none w-full py-2 rounded-lg text-secondary-text focus:ring-0 dark:text-secondary-text-dark dark:bg-primary-dark"}
+                inputFieldCssClass={
+                  "border-none w-full py-2 rounded-lg text-secondary-text focus:ring-0 dark:text-secondary-text-dark dark:bg-primary-dark"
+                }
                 fetchSuggestions={fetchSuggestions}
                 staticData={[]}
                 dataKey={"title"}
                 splitTextStyle={`${textColor} text-semibold`}
-                searchLoading={<>Loading....</>}
-                onSelect={(res) => console.log(res)}
-                onChange={(e) => {}}
-                onBlur={(e) => {}}
-                onFocus={(e) => {}}
+                linkTo={"/product/"}
               ></SearchBoxAdvance>
             </div>
             {/* Search Box end here */}
@@ -134,7 +135,19 @@ const Navbar = () => {
                     size={25}
                     className=' text-white hover:scale-150 hover:duration-300 dark:text-secondary-text-dark'
                   />
-                  {searchBoxClick && inputField}
+                  {searchBoxClick && 
+                  <SearchBoxAdvance
+                  placeholder={"Search in Daraz"}
+                  inputFieldCssClass={
+                    "border-none w-full py-2 rounded-lg text-secondary-text focus:ring-0 dark:text-secondary-text-dark dark:bg-primary-dark"
+                  }
+                  fetchSuggestions={fetchSuggestions}
+                  staticData={[]}
+                  dataKey={"title"}
+                  splitTextStyle={`${textColor} text-semibold`}
+                  linkTo={"/product/"}
+                ></SearchBoxAdvance>
+                }
                 </div>
               )}
             </div>
