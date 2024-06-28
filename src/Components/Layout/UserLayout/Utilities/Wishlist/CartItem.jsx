@@ -2,8 +2,41 @@ import PropTypes from "prop-types";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { RiDeleteBinLine } from "react-icons/ri";
 import Swal from "sweetalert2";
-const CartItem = ({ cart, itemTotalPrices, addWishListToCart }) => {
+import { cleanTitle } from "../UtilitiesFile/cleanTitle";
+
+const CartItem = ({
+  cart,
+  itemTotalPrices,
+  addWishListToCart,
+  deleteItemToWishList,
+}) => {
   const { _id, title, thumbnail, price, quantity: totalQuantity } = cart;
+
+  const handleDeleteItem = (id) => {
+    try {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const res = await deleteItemToWishList(id).unwrap();
+          Swal.fire({
+            title: "Deleted!",
+            text: res?.message,
+            icon: "success",
+          });
+        }
+      });
+    } catch (error) {
+      console.error(error);
+      ShowErrorMessage(error?.data?.error);
+    }
+  };
 
   const handleAddWishListToCart = (cart) => {
     try {
@@ -30,17 +63,18 @@ const CartItem = ({ cart, itemTotalPrices, addWishListToCart }) => {
       ShowErrorMessage(error?.data?.error);
     }
   };
+
   return (
     <div className='flex gap-4 bg-white p-4 rounded shadow-[0_2px_15px_-5px_rgba(6,81,237,0.3)] dark:bg-primary-dark hover:scale-105 duration-200'>
-      <div className='flex gap-4'>
+      <div className='flex gap-4 w-64'>
         <div className='w-36 h-36 max-sm:w-24 max-sm:h-24 shrink-0'>
           <img src={thumbnail} className='w-full h-full object-contain' />
         </div>
 
         <div className='flex flex-col gap-3'>
           <div>
-            <h3 className='sm:text-lg text-base font-bold text text-gray-800 dark:text-white/60'>
-              {title}
+            <h3 className='sm:text-lg line-clamp-1 text-base text-start font-bold text text-gray-800 dark:text-white/60'>
+              {cleanTitle(title)}
             </h3>
             <p className='text-sm font-semibold text-gray-500 mt-2 flex items-center gap-2'>
               Price: <span className='inline-block w-5 h-5'>{price}</span>
@@ -79,6 +113,7 @@ CartItem.propTypes = {
   title: PropTypes.string,
   price: PropTypes.number,
   addWishListToCart: PropTypes.func,
+  deleteItemToWishList: PropTypes.func,
   _id: PropTypes.string,
   itemTotalPrices: PropTypes.object,
 };

@@ -19,8 +19,15 @@ const cartWishListApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["WishList", "Carts"],
     }),
+    deleteItemToWishList: builder.mutation({
+      query: (id) => ({
+        url: `wish/delete/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["WishList"],
+    })
   }),
 });
 
-export const { useGetWishListQuery, useAddWishListToCartMutation } =
+export const { useGetWishListQuery, useAddWishListToCartMutation, useDeleteItemToWishListMutation } =
   cartWishListApiSlice;

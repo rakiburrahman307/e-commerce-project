@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import PropTypes from "prop-types";
 import useContextInfo from "../../Hooks/useContextInfo";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
+import { cleanTitle } from "../UtilitiesFile/cleanTitle";
 
 const FloatCartItem = ({
   cart,
@@ -100,17 +101,18 @@ const FloatCartItem = ({
       }
     });
   };
+
   return (
     <div className='flex gap-4 bg-white p-4 rounded shadow-[0_2px_15px_-5px_rgba(6,81,237,0.3)] dark:bg-primary-dark hover:scale-105 duration-200'>
-      <div className='flex gap-4'>
+      <div className='flex gap-4 w-80'>
         <div className='w-36 h-36 max-sm:w-24 max-sm:h-24 shrink-0'>
           <img src={thumbnail} className='w-full h-full object-contain' />
         </div>
 
         <div className='flex flex-col gap-4'>
           <div>
-            <h3 className='sm:text-lg text-base font-bold text text-gray-800 dark:text-white/60'>
-              {title}
+            <h3 className='sm:text-lg text-base text-left text-wrap font-bold text text-gray-800 dark:text-white/60'>
+              {cleanTitle(title)}
             </h3>
             <p className='text-sm font-semibold text-gray-500 mt-2 flex items-center gap-2'>
               Price: <span className='inline-block w-5 h-5'>{price}</span>

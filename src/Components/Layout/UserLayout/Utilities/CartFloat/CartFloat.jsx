@@ -49,7 +49,7 @@ const CartFloat = ({ carts, cartsLoading, userLoading }) => {
         onClick={()=>setLeftSidebar(false)}
       >
         <div
-          className={`absolute right-0 min-w-96 rounded-lg bg-white pb-5 text-center drop-shadow-2xl dark:bg-gray-800 dark:text-white ${
+          className={`absolute right-0 max-w-[500px] rounded-lg bg-white pb-5 text-center drop-shadow-2xl dark:bg-gray-800 dark:text-white ${
             openLeftSidebar
               ? "-translate-x-0 opacity-100 duration-700"
               : "translate-x-full opacity-0 duration-300"
@@ -60,7 +60,8 @@ const CartFloat = ({ carts, cartsLoading, userLoading }) => {
             className='font-extrabold my-5 ml-2 hover:scale-110 duration-200 hover:text-red-500'
             size={30}
           />
-          <h1 className='mb-5 text-center text-2xl font-bold'>Cart Items</h1>
+          <h1 className={`mb-5 text-3xl font-bold text-left border-b-2 ml-5 ${textColor}`}>Carts</h1>
+
           <div className='rounded-lg w-full p-4 max-h-[500px] overflow-y-auto'>
             {userLoading || cartsLoading ? (
               <LoadingItemSkeleton />

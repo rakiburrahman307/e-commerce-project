@@ -4,10 +4,10 @@ import useContextInfo from "../../Hooks/useContextInfo";
 import ReactStars from "react-rating-stars-component";
 import LazyImage from "../LazyImgLoading/LazyImage";
 import { Link } from "react-router-dom";
+import { cleanTitle } from "../UtilitiesFile/cleanTitle";
 
 const Card = ({ _id, title, price, rating, brand, thumbnail }) => {
   const { textColor } = useContextInfo();
-
   return (
     <Link to={`/product/${_id}`} className='mx-auto'>
       <div className='max-w-[400px] space-y-4 rounded-lg bg-white p-2 shadow-lg dark:bg-[#18181B] duration-500 hover:scale-105'>
@@ -23,8 +23,8 @@ const Card = ({ _id, title, price, rating, brand, thumbnail }) => {
           <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 hover:opacity-100 rounded-lg'></div>
         </div>
         <div className='grid gap-1'>
-          <h1 className='text-base font-semibold dark:text-white/60'>
-            {title?.length > 20 ? title?.slice(0, 22) : title}
+          <h1 className='text-base line-clamp-1 font-semibold text-left text-wrap dark:text-white/60'>
+            {cleanTitle(title)}
           </h1>
           <p className='text-sm text-gray-500 dark:text-white/60'>{brand}</p>
           <div className='flex'>

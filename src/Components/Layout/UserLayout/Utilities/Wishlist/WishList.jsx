@@ -6,7 +6,10 @@ import { TbBasketHeart } from "react-icons/tb";
 import CartItem from "./CartItem";
 import emptyCart from "../../../../../assets/svg/empty-cart.svg";
 import LoadingItemSkeleton from "./LoadingItemSkeleton";
-import { useAddWishListToCartMutation } from "../../../../Features/cartWishListApiSlice";
+import {
+  useAddWishListToCartMutation,
+  useDeleteItemToWishListMutation,
+} from "../../../../Features/cartWishListApiSlice";
 import { calculateTotalCartPrice } from "../../Pages/Carts/calculationItemPrices";
 const WishList = ({ wishListData, WishListLoading, userLoading }) => {
   const [openLeftSidebar, setLeftSidebar] = useState(false);
@@ -14,6 +17,8 @@ const WishList = ({ wishListData, WishListLoading, userLoading }) => {
   const { itemTotalPrices, updatedCarts } =
     calculateTotalCartPrice(wishListData);
   const [addWishListToCart] = useAddWishListToCartMutation();
+  const [deleteItemToWishList, { isLoading: deleteLoading }] =
+    useDeleteItemToWishListMutation();
 
   return (
     <div className='dark:bg-semi-dark'>
@@ -53,9 +58,13 @@ const WishList = ({ wishListData, WishListLoading, userLoading }) => {
             className='font-extrabold my-5 ml-2 hover:scale-110 duration-200 hover:text-red-500'
             size={30}
           />
-          <h1 className='mb-5 text-center text-2xl font-bold'>Wish List</h1>
+          <h1
+            className={`mb-5 text-3xl font-bold text-left border-b-2 ml-5 ${textColor}`}
+          >
+            WishList
+          </h1>
           <div className='rounded-lg w-full p-4 max-h-[500px] overflow-y-auto'>
-            {userLoading || WishListLoading ? (
+            {userLoading || WishListLoading || deleteLoading ? (
               <LoadingItemSkeleton />
             ) : updatedCarts?.length > 0 ? (
               updatedCarts?.map((cart) => (
@@ -64,6 +73,7 @@ const WishList = ({ wishListData, WishListLoading, userLoading }) => {
                   cart={cart}
                   itemTotalPrices={itemTotalPrices}
                   addWishListToCart={addWishListToCart}
+                  deleteItemToWishList={deleteItemToWishList}
                 />
               ))
             ) : (

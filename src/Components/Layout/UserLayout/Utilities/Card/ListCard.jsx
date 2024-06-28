@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import LazyImage from "../LazyImgLoading/LazyImage";
 import useContextInfo from "../../Hooks/useContextInfo";
+import { cleanTitle } from "../UtilitiesFile/cleanTitle";
 
 const ListCard = ({
   _id,
@@ -33,8 +34,8 @@ const ListCard = ({
         <div className='col-span-3 flex flex-col space-y-3 pr-8 text-left'>
           <div className='flex flex-col md:flex-row justify-between items-start md:items-center'>
             <div className='flex flex-col'>
-              <h2 className='mt-3 overflow-hidden text-lg font-semibold'>
-                {title.substring(0, 28)}
+              <h2 className='mt-3 overflow-hidden line-clamp-1 text-left text-lg font-semibold'>
+                {cleanTitle(title)}
               </h2>
               <div className='flex justify-start items-center gap-2'>
                 <ReactStars
