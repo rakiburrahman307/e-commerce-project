@@ -3,6 +3,7 @@ import { IoIosAdd } from "react-icons/io";
 import { RiSubtractFill } from "react-icons/ri";
 import PropTypes from "prop-types";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
+import useContextInfo from "../../Hooks/useContextInfo";
 
 const FilterSection = ({
   section,
@@ -23,6 +24,7 @@ const FilterSection = ({
   handleSelectSize,
   handleSelectRating,
 }) => {
+  const { selectedColor: bgColor, borderColor } = useContextInfo();
   const renderOptions = useCallback(
     (key, options, handleChange, selectedValue) => {
       return options.map((option, index) => {
@@ -36,10 +38,10 @@ const FilterSection = ({
               id={`filter-${key}-${index}`}
               name={key}
               value={optionValue}
-              type='radio'
+              type='checkbox'
               onChange={handleChange}
               checked={isSelected}
-              className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
+              className={`before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:${bgColor} before:opacity-0 before:transition-opacity checked:${borderColor} checked:${bgColor} checked:before:${bgColor} hover:before:opacity-10`}
             />
             <label
               htmlFor={`filter-${key}-${index}`}

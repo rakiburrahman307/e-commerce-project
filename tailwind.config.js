@@ -13,11 +13,11 @@ export default {
     },
     {
       pattern: /bg-(orange|green|blue|indigo|purple|pink|yellow)-(100|200|300|400|500|600|700|800|900)/,
-      variants: ['lg','dark:before','dark:after', 'hover', 'group-hover', 'focus', 'lg:hover', 'md', 'md:hover', 'after', 'before', 'after:hover', 'before:hover','hover:before','hover:after'],
+      variants: ['lg','dark:before','dark:after','checked', 'hover', 'checked:before', 'group-hover', 'focus', 'lg:hover', 'md', 'md:hover', 'after', 'before', 'after:hover', 'before:hover','hover:before','hover:after'],
     },
     {
       pattern: /border-(orange|green|blue|indigo|purple|pink|yellow)-(100|200|300|400|500|600|700|800|900)/,
-      variants: ['lg','dark:before','dark:after', 'hover', 'group-hover', 'focus', 'lg:hover', 'md', 'md:hover', 'after', 'before', 'after:hover', 'before:hover','hover:before','hover:after'],
+      variants: ['lg','dark:before','dark:after', 'hover', 'checked', 'group-hover', 'focus', 'lg:hover', 'md', 'md:hover', 'after', 'before', 'after:hover', 'before:hover','hover:before','hover:after'],
     },
    
   ],
