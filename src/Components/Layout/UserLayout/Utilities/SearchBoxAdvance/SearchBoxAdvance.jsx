@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useCallback, useEffect, useState } from "react";
 import SuggestionList from "./SuggestionList";
-import { debounce } from "lodash";
+import debounce from "lodash.debounce";
 import useCache from "./useCache";
 import SearchItemSpinner from "../../../BigSpinner/SearchItemSpinner";
 

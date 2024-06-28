@@ -5,7 +5,7 @@ const CardLoadingSkeleton = ({ index }) => {
   return (
     <div
       key={`skeleton-${index}`}
-      className="mx-auto max-w-[290px] space-y-4 rounded-lg bg-white shadow-lg dark:bg-[#18181B] p-2"
+      className="mx-auto max-w-[320px] space-y-4 rounded-lg bg-white shadow-lg dark:bg-[#18181B] p-2"
     >
       <Skeleton count={1} height={160} width={280} />
       <div className="grid gap-2">
