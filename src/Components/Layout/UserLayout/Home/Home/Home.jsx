@@ -1,7 +1,7 @@
 // import About from "../../../../Pages/Tust about Us/About";
 // import Breadcrumb from "../../Utilities/Breadcrumbs/Breadcrumb";
 import Carousel from "../Swiper/Carousel";
-import HelmetTitle from "../../Hooks/HelmetTitle";
+import HelmetTitle from "../../Utilities/Helmet/HelmetTitle";
 // import FlashSale from "../FlashSale/FlashSale";
 import JustForYou from "../JustForYou/JustForYou";
 // import Services from "../ServiceCategory/Services";

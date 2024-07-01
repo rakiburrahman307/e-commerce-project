@@ -1,6 +1,6 @@
 import { useGetProductsQuery } from "../../../../Features/productsApiSlice";
 import Card from "../../Utilities/Card/Card";
-import Title from "../../Hooks/Title";
+import Title from "../../Utilities/Title/Title";
 import CardLoadingSkeleton from "../../Utilities/CardLoadingSkeleton/CardLoadingSkeleton";
 import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
 import { useState, useEffect } from "react";

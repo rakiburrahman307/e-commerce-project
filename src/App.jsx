@@ -6,6 +6,8 @@ import BigSpinner from "./Components/Layout/BigSpinner/BigSpinner";
 import TopScroll from "./Components/Layout/UserLayout/Utilities/TopScroll/TopScroll";
 import offlineImg from "../src/assets/svg/internet.svg";
 import useOffline from "./Components/Layout/UserLayout/Hooks/useOffline";
+import HelmetTitle from "./Components/Layout/UserLayout/Utilities/Helmet/HelmetTitle";
+
 
 const App = () => {
   const isOffline = useOffline();
@@ -29,6 +31,7 @@ const App = () => {
 
   return (
     <div className='bg-root-bg dark:bg-primary-dark min-h-screen'>
+      <HelmetTitle />
       <Navbar />
       <RightFloatingButton />
       <TopScroll />

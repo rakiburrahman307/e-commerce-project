@@ -1,13 +1,15 @@
+import React from 'react';
 import { CiDeliveryTruck } from "react-icons/ci";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { IoCashOutline, IoLocationOutline } from "react-icons/io5";
 import { MdVerifiedUser } from "react-icons/md";
+import { LiaShippingFastSolid } from "react-icons/lia";
 import useContextInfo from "../../Hooks/useContextInfo";
 import PropTypes from "prop-types";
-import { LiaShippingFastSolid } from "react-icons/lia";
 
-const DeliveryDetails = ({returnPolicy, warrantyInformation, shippingInformation}) => {
+const DeliveryDetails = React.memo(({ returnPolicy, warrantyInformation, shippingInformation }) => {
   const { textColor } = useContextInfo();
+
   return (
     <div className='dark:text-secondary-text-dark mt-2'>
       <div className='mt-2'>
@@ -50,8 +52,8 @@ const DeliveryDetails = ({returnPolicy, warrantyInformation, shippingInformation
         <h2 className='mb-5'>Service</h2>
         <div className='flex gap-2 justify-between'>
           <div className='flex gap-1 items-center'>
-            <MdVerifiedUser className={`${textColor}`} size={25} />
-            <p className={`${textColor}`}>Verified by me</p>
+            <MdVerifiedUser className={textColor} size={25} />
+            <p className={textColor}>Verified by me</p>
           </div>
         </div>
         <div className='flex gap-2 justify-between mt-5'>
@@ -69,10 +71,12 @@ const DeliveryDetails = ({returnPolicy, warrantyInformation, shippingInformation
       </div>
     </div>
   );
-};
-DeliveryDetails.propType = {
+});
+
+DeliveryDetails.propTypes = {
   returnPolicy: PropTypes.string,
-  warrantyInformation:PropTypes.string,
-  shippingInformation:PropTypes.string,
+  warrantyInformation: PropTypes.string,
+  shippingInformation: PropTypes.string,
 };
+
 export default DeliveryDetails;
