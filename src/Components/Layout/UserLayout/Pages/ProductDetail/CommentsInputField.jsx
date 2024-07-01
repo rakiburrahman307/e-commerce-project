@@ -8,7 +8,6 @@ import { usePostReviewMutation } from "../../../../Features/reviewApiSlice";
 import ShowSuccessMessage from "../../Utilities/SuccessMessage/ShowSuccessMessage";
 import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
 
-
 const CommentsInputField = ({ productId }) => {
   const [openModal, setOpenModal] = useState(false);
   const { textColor, selectedColor, borderColor } = useContextInfo();
@@ -16,9 +15,11 @@ const CommentsInputField = ({ productId }) => {
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
   const [postReview] = usePostReviewMutation();
+
   const submitData = async () => {
     const userId = user?.user?._id;
     const userName = user?.user?.name;
+
     const customerData = {
       productId,
       userId,
@@ -26,20 +27,21 @@ const CommentsInputField = ({ productId }) => {
       comment,
       rating,
     };
-    const response = await postReview(customerData);
 
-    if (response?.error?.status === 400) {
-      ShowErrorMessage(response?.error?.data?.message);
-    } else {
-      ShowSuccessMessage(response?.data?.message);
+    try {
+      const response = await postReview(customerData).unwrap();
+      ShowSuccessMessage(response?.message);
+    } catch (error) {
+      ShowErrorMessage(error?.data?.message);
     }
+
     setComment("");
     setRating(0);
     setOpenModal(false);
   };
 
   return (
-    <div className='flex justify-between items-center dark:bg-semi-dark my-8 rounded-lg px-2 md:px-3 lg:px-5 py-3 bg-white shadow-lg dark:text-secondary-text-dark'>
+    <div className='flex w-full justify-between items-center dark:bg-semi-dark my-8 rounded-lg px-2 md:px-3 lg:px-5 py-3 bg-white shadow-lg dark:text-secondary-text-dark'>
       <h3 className='text-sm md:text-lg lg:text-lg'>
         Please Share Your Opinion
       </h3>
@@ -56,11 +58,9 @@ const CommentsInputField = ({ productId }) => {
           } inset-0 bg-black/20 backdrop-blur-sm duration-100 px-10`}
         >
           <div
-            className={`absolute max-w-md rounded-lg bg-white p-3 pb-5 text-center drop-shadow-2xl dark:bg-gray-800 dark:text-white ${
-              openModal
-                ? "scale-1 opacity-1 duration-300"
-                : "scale-0 opacity-0 duration-150"
-            } `}
+            className={`absolute max-w-xl rounded-lg bg-white p-3 pb-5 text-center drop-shadow-2xl dark:bg-gray-800 dark:text-white ${
+              openModal ? "scale-1 opacity-1 duration-300" : "scale-0 opacity-0 duration-150"
+            }`}
           >
             <svg
               onClick={() => setOpenModal(false)}
@@ -69,11 +69,7 @@ const CommentsInputField = ({ productId }) => {
               fill='none'
               xmlns='http://www.w3.org/2000/svg'
             >
-              <g strokeWidth='0'></g>
-              <g strokeLinecap='round' strokeLinejoin='round'></g>
-              <g>
-                <path d='M6.99486 7.00636C6.60433 7.39689 6.60433 8.03005 6.99486 8.42058L10.58 12.0057L6.99486 15.5909C6.60433 15.9814 6.60433 16.6146 6.99486 17.0051C7.38538 17.3956 8.01855 17.3956 8.40907 17.0051L11.9942 13.4199L15.5794 17.0051C15.9699 17.3956 16.6031 17.3956 16.9936 17.0051C17.3841 16.6146 17.3841 15.9814 16.9936 15.5909L13.4084 12.0057L16.9936 8.42059C17.3841 8.03007 17.3841 7.3969 16.9936 7.00638C16.603 6.61585 15.9699 6.61585 15.5794 7.00638L11.9942 10.5915L8.40907 7.00636C8.01855 6.61584 7.38538 6.61584 6.99486 7.00636Z'></path>
-              </g>
+              <path d='M6.99486 7.00636C6.60433 7.39689 6.60433 8.03005 6.99486 8.42058L10.58 12.0057L6.99486 15.5909C6.60433 15.9814 6.60433 16.6146 6.99486 17.0051C7.38538 17.3956 8.01855 17.3956 8.40907 17.0051L11.9942 13.4199L15.5794 17.0051C15.9699 17.3956 16.6031 17.3956 16.9936 17.0051C17.3841 16.6146 17.3841 15.9814 16.9936 15.5909L13.4084 12.0057L16.9936 8.42059C17.3841 8.03007 17.3841 7.3969 16.9936 7.00638C16.603 6.61585 15.9699 6.61585 15.5794 7.00638L11.9942 10.5915L8.40907 7.00636C8.01855 6.61584 7.38538 6.61584 6.99486 7.00636Z'></path>
             </svg>
 
             <div className='flex flex-col justify-center items-center gap-3'>
@@ -83,7 +79,7 @@ const CommentsInputField = ({ productId }) => {
                 count={5}
                 edit={true}
                 isHalf={false}
-                onChange={(value) => setRating(value)}
+                onChange={setRating}
                 size={24}
                 activeColor='#ffd700'
               />
@@ -91,9 +87,8 @@ const CommentsInputField = ({ productId }) => {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 className={`rounded-lg border ${borderColor} bg-transparent px-4 py-2 text-black dark:text-white/90 focus:outline-none`}
-                type='text'
+                placeholder='Write your comment here...'
               />
-
               <button
                 onClick={submitData}
                 className={`rounded-full hover:scale-95 w-20 md:w-24 lg:w-28 border ${borderColor} px-1 py-1 text-base md:text-base ${textColor} duration-300 hover:${selectedColor} hover:text-white`}
@@ -107,7 +102,9 @@ const CommentsInputField = ({ productId }) => {
     </div>
   );
 };
+
 CommentsInputField.propTypes = {
-  productId: PropTypes.string,
+  productId: PropTypes.string.isRequired,
 };
+
 export default CommentsInputField;

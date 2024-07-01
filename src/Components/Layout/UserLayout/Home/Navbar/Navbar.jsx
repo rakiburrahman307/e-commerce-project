@@ -11,32 +11,16 @@ import { useGetUserQuery } from "../../../../Features/authApiSlice";
 import { useGetCartsQuery } from "../../../../Features/cartApiSlice";
 import SearchBoxAdvance from "../../Utilities/SearchBoxAdvance/SearchBoxAdvance";
 import getBaseURL from "../../../../Features/BaseURL/BaseURL";
+import useNavbarVisibility from "../../Hooks/useNavbarVisibility";
 
 const Navbar = () => {
   const { selectedColor, textColor } = useContextInfo();
   const [searchBoxClick, setSearchBoxClick] = useState(false);
   const { data: user } = useGetUserQuery();
   const { data: carts, isLoading } = useGetCartsQuery(user?.user?._id);
-  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const isNavbarVisible = useNavbarVisibility();
 
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
-    if (currentScrollY > lastScrollY) {
-      // Scrolling up
-      setIsNavbarVisible(true);
-    } else {
-      // Scrolling down
-      setIsNavbarVisible(false);
-    }
-    setLastScrollY(currentScrollY);
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [lastScrollY]);
+
 
   // const inputField = (
   //   <input

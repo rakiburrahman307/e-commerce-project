@@ -5,7 +5,6 @@ import CardLoadingSkeleton from "../../Utilities/CardLoadingSkeleton/CardLoading
 import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
 import { useState, useEffect } from "react";
 
-
 const JustForYou = () => {
   const [page, setPage] = useState(1);
   const [allProducts, setAllProducts] = useState([]);
@@ -32,7 +31,7 @@ const JustForYou = () => {
   const allProductsFetched = totalFetched >= (data?.totalProducts || 0);
 
   return (
-    <section className='mx-auto px-5 bg-root-bg mt-5 rounded-lg dark:bg-semi-dark py-5'>
+    <section className='mx-auto bg-root-bg mt-5 rounded-lg dark:bg-semi-dark py-5'>
       <div className='mb-5'>
         <Title title='Just For You'></Title>
       </div>
@@ -57,7 +56,11 @@ const JustForYou = () => {
           disabled={isFetchingMore || allProductsFetched}
           className={`bg-gradient-to-r from-blue-500 to-red-500 text-white px-4 py-2 text-xl rounded font-medium focus:ring ring-black ring-opacity-10 gradient element-to-rotate w-72`}
         >
-          {isFetchingMore ? "Loading..." : allProductsFetched ? "All Loaded" : "Load More"}
+          {isFetchingMore
+            ? "Loading..."
+            : allProductsFetched
+            ? "All Loaded"
+            : "Load More"}
         </button>
       </div>
     </section>

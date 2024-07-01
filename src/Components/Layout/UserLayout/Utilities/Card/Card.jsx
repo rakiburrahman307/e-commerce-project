@@ -10,7 +10,7 @@ const Card = ({ _id, title, price, rating, brand, thumbnail }) => {
   const { textColor } = useContextInfo();
   return (
     <Link to={`/product/${_id}`} className='mx-auto '>
-      <div className='w-[320px] h-[360px] space-y-4 rounded-lg bg-white p-2 shadow-lg dark:bg-[#18181B] duration-500 hover:scale-105'>
+      <div className='w-[280px] h-[360px] space-y-4 rounded-lg bg-white p-2 shadow-lg dark:bg-[#18181B] duration-500 hover:scale-105'>
         <div className='relative'>
           <LazyImage
             src={thumbnail}

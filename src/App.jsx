@@ -1,51 +1,46 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./Components/Layout/UserLayout/Home/Navbar/Navbar";
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import RightFloatingButton from "./Components/Layout/UserLayout/Utilities/RightFloatingButton/RightFloatingButton";
 import BigSpinner from "./Components/Layout/BigSpinner/BigSpinner";
-import TopScroll from './Components/Layout/UserLayout/Utilities/TopScroll/TopScroll';
-import Swal from "sweetalert2";
+import TopScroll from "./Components/Layout/UserLayout/Utilities/TopScroll/TopScroll";
+import offlineImg from "../src/assets/svg/internet.svg";
+import useOffline from "./Components/Layout/UserLayout/Hooks/useOffline";
 
-function App() {
-  useEffect(() => {
-    const handleOffline = () => {
-      Swal.fire({
-        title: "Oops, No Internet!",
-        text: "It looks like you're offline. Check your connection.",
-        icon: "warning",
-        confirmButtonText: "Okay",
-      });
-    };
+const App = () => {
+  const isOffline = useOffline();
+  const location = useLocation();
 
-    const handleOnline = () => {
-      Swal.fire({
-        title: "You're Back Online!",
-        text: "Great! You have reconnected to the internet.",
-        icon: "success",
-        confirmButtonText: "Awesome!",
-      });
-    };
-
-    window.addEventListener('offline', handleOffline);
-    window.addEventListener('online', handleOnline);
-
-    // Cleanup event listeners on component unmount
-    return () => {
-      window.removeEventListener('offline', handleOffline);
-      window.removeEventListener('online', handleOnline);
-    };
-  }, []);
+  if (isOffline) {
+    return (
+      <div className='bg-root-bg dark:bg-primary-dark min-h-screen'>
+        <Navbar />
+        <div className='flex flex-col md:flex-row justify-center items-center h-full my-20'>
+          <img
+            src={offlineImg}
+            alt='No internet connection'
+            className='w-52 h-52'
+          />
+          <h2 className="text-2xl">You are offline. Please check your connection.</h2>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className='dark:bg-primary-dark'>
+    <div className='bg-root-bg dark:bg-primary-dark min-h-screen'>
       <Navbar />
       <RightFloatingButton />
       <TopScroll />
       <Suspense fallback={<BigSpinner />}>
-        <Outlet />
+        {isOffline ? (
+          <Navigate to='/' state={{ from: location }} replace />
+        ) : (
+          <Outlet />
+        )}
       </Suspense>
     </div>
   );
-}
+};
 
 export default App;

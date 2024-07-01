@@ -1,13 +1,20 @@
 import { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 
-const LazyImage = ({ src, alt }) => {
+const LazyImage = ({
+  src,
+  alt,
+  handleImgChange,
+  customStyles = "rounded-lg object-cover w-[350px] h-[200px]",
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const imageRef = useRef();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
             observer.unobserve(entry.target);
@@ -17,16 +24,14 @@ const LazyImage = ({ src, alt }) => {
       { threshold: 0.5 }
     );
 
-    observer.observe(imageRef.current);
+    if (imageRef.current) {
+      observer.observe(imageRef.current);
+    }
 
     return () => {
-      if (imageRef.current) {
-        observer.unobserve(imageRef.current);
-      }
+      observer.disconnect();
     };
   }, []);
-
-  const imageRef = useRef();
 
   const handleImageLoaded = () => {
     setIsLoaded(true);
@@ -36,19 +41,25 @@ const LazyImage = ({ src, alt }) => {
     <div ref={imageRef} className='lazy-image-container'>
       {isVisible ? (
         <img
-          className={`h-[200px] w-[350px] rounded-lg object-cover hover:scale-105 hover:bg-opacity-70 duration-300 ${
+          className={`${customStyles} hover:scale-105 duration-300 ${
             isLoaded ? "visible" : "opacity-95 blur-sm"
           }`}
           src={src}
           alt={alt}
           loading='lazy'
           onLoad={handleImageLoaded}
+          onMouseEnter={() => handleImgChange()}
         />
       ) : (
-        <div className={`placeholder-pulse`}></div>
+        <div className='placeholder-pulse'></div>
       )}
     </div>
   );
 };
-
+LazyImage.propTypes = {
+  src: PropTypes.string,
+  alt: PropTypes.string,
+  handleImgChange: PropTypes.func,
+  customStyles: PropTypes.string,
+};
 export default LazyImage;

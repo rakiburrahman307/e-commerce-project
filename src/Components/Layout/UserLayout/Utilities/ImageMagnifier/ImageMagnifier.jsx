@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./style.css";
+import LazyImage from "../LazyImgLoading/LazyImage";
 
 const ImageMagnifier = ({ src, alt }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -13,13 +14,8 @@ const ImageMagnifier = ({ src, alt }) => {
     setPosition({ x, y });
   };
 
-  const handleMouseEnter = () => {
-    setShowMagnifier(true);
-  };
-
-  const handleMouseLeave = () => {
-    setShowMagnifier(false);
-  };
+  const handleMouseEnter = () => setShowMagnifier(true);
+  const handleMouseLeave = () => setShowMagnifier(false);
 
   return (
     <div className='image-magnifier-container h-70 mx-auto bg-transparent'>
@@ -30,19 +26,17 @@ const ImageMagnifier = ({ src, alt }) => {
         onMouseLeave={handleMouseLeave}
         style={{ cursor: showMagnifier ? "none" : "auto" }}
       >
-        <img src={src} alt={alt} className="h-72 w-full object-cover mx-auto"/>
+        <LazyImage src={src} alt={alt} className='h-72 w-full object-cover mx-auto' />
         {showMagnifier && (
           <div
             className='magnifier'
             style={{
-              left: position.x * 100 + "%",
-              top: position.y * 100 + "%",
+              left: `${position.x * 100}%`,
+              top: `${position.y * 100}%`,
               backgroundImage: `url(${src})`,
-              backgroundPosition: `-${position.x * 800}px -${
-                position.y * 600
-              }px`,
+              backgroundPosition: `-${position.x * 800}px -${position.y * 600}px`,
             }}
-          ></div>
+          />
         )}
       </div>
     </div>
