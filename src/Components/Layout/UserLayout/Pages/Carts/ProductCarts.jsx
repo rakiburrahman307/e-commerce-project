@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useCallback, Suspense } from "react";
 import { Link } from "react-router-dom";
 import {
   useAddCardToWishListMutation,
@@ -10,7 +10,6 @@ import {
   useResetCartQuantityMutation,
 } from "../../../../Features/cartApiSlice";
 import { useGetUserQuery } from "../../../../Features/authApiSlice";
-import CartItems from "./CartItems";
 import CartItemSkeleton from "./CartItemSkeleton";
 import "./style.css";
 import emptyCart from "../../../../../assets/svg/empty-cart.svg";
@@ -18,24 +17,26 @@ import { FaLongArrowAltLeft } from "react-icons/fa";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import useContextInfo from "../../Hooks/useContextInfo";
 import Swal from "sweetalert2";
-import { calculateTotalCartPrice } from "./calculationItemPrices";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
+import useCartCalculator from "../../Hooks/useCartCalculator";
+
+// Lazy load CartItems component
+const CartItems = React.lazy(() => import("./CartItems"));
 
 const ProductCarts = () => {
   const { textColor } = useContextInfo();
   const { data: user, isLoading: userLoading } = useGetUserQuery();
-  const { data: carts, isLoading: cartsLoading } = useGetCartsQuery(
-    user?.user?._id
-  );
+  const { data: carts, isLoading: cartsLoading } = useGetCartsQuery(user?.user?._id);
   const [deleteCartProduct] = useDeleteCartProductMutation();
   const [increaseCartQuantity] = useIncreaseCartQuantityMutation();
   const [decreaseCartQuantity] = useDecreaseCartQuantityMutation();
   const [resetCartQuantity] = useResetCartQuantityMutation();
   const [clearCart] = useClearCartMutation();
   const [addCartToWishList] = useAddCardToWishListMutation();
-  const { totalCartPrice, itemTotalPrices, updatedCarts } =
-    calculateTotalCartPrice(carts);
-  const handleClearCart = (id) => {
+  const { calculateTotalCartPrice } = useCartCalculator();
+  const { totalCartPrice, itemTotalPrices, updatedCarts } = useMemo(() => calculateTotalCartPrice(carts), [carts]);
+
+  const handleClearCart = useCallback((id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "Clear This Cart!",
@@ -59,7 +60,8 @@ const ProductCarts = () => {
         }
       }
     });
-  };
+  }, [clearCart]);
+
   return (
     <section className='container mx-auto mt-10 bg-root-bg dark:bg-primary-dark'>
       <div className='sm:flex shadow-md'>
@@ -76,18 +78,20 @@ const ProductCarts = () => {
             {userLoading || cartsLoading ? (
               <CartItemSkeleton />
             ) : updatedCarts?.length > 0 ? (
-              updatedCarts?.map((cart) => (
-                <CartItems
-                  key={cart?._id}
-                  cart={cart}
-                  deleteCartProduct={deleteCartProduct}
-                  increaseCartQuantity={increaseCartQuantity}
-                  decreaseCartQuantity={decreaseCartQuantity}
-                  resetCartQuantity={resetCartQuantity}
-                  itemTotalPrices={itemTotalPrices}
-                  addCartToWishList={addCartToWishList}
-                />
-              ))
+              <Suspense fallback={<CartItemSkeleton />}>
+                {updatedCarts.map((cart) => (
+                  <CartItems
+                    key={cart?._id}
+                    cart={cart}
+                    deleteCartProduct={deleteCartProduct}
+                    increaseCartQuantity={increaseCartQuantity}
+                    decreaseCartQuantity={decreaseCartQuantity}
+                    resetCartQuantity={resetCartQuantity}
+                    itemTotalPrices={itemTotalPrices}
+                    addCartToWishList={addCartToWishList}
+                  />
+                ))}
+              </Suspense>
             ) : (
               <div className='flex justify-center items-center h-full my-20'>
                 <img src={emptyCart} alt='empty cart' className='w-1/2' />

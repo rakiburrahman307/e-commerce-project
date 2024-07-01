@@ -3,7 +3,7 @@ import useContextInfo from "../UserLayout/Hooks/useContextInfo";
 const LazyLoading = () => {
   const { selectedColor } = useContextInfo();
   return (
-    <div className='flex justify-center h-screen'>
+    <div className='flex justify-center'>
       <div className='flex flex-row gap-2'>
         <div
           className={`w-3 h-3 rounded-full ${selectedColor} animate-bounce`}

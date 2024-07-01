@@ -13,7 +13,7 @@ import useContextInfo from "../../Hooks/useContextInfo";
 import emptyCart from "../../../../../assets/svg/empty-cart.svg";
 import "./style.css";
 import LoadingItemSkeleton from "../Wishlist/LoadingItemSkeleton";
-import { calculateTotalCartPrice } from "../../Pages/Carts/calculationItemPrices";
+import useCartCalculator from "../../Hooks/useCartCalculator";
 
 const CartFloat = ({ carts, cartsLoading, userLoading }) => {
   const [openLeftSidebar, setLeftSidebar] = useState(false);
@@ -21,6 +21,7 @@ const CartFloat = ({ carts, cartsLoading, userLoading }) => {
   const [increaseCartQuantity] = useIncreaseCartQuantityMutation();
   const [decreaseCartQuantity] = useDecreaseCartQuantityMutation();
   const [resetCartQuantity] = useResetCartQuantityMutation();
+  const { calculateTotalCartPrice } = useCartCalculator();
   const { itemTotalPrices, updatedCarts } = calculateTotalCartPrice(carts);
   const { textColor } = useContextInfo();
   return (

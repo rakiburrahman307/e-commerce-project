@@ -9,7 +9,7 @@ import { useAddToCartProductMutation } from "../../../../Features/cartApiSlice";
 import ShowSuccessMessage from "../../Utilities/SuccessMessage/ShowSuccessMessage";
 import { useGetUserQuery } from "../../../../Features/authApiSlice";
 import LazyLoading from "../../../BigSpinner/LazyLoading";
-import ItemInformation from "./ItemInformation";
+const ProductInfo = lazy(() => import("./ProductInfo"));
 const DeliveryDetails = lazy(() => import("./DeliveryDetails"));
 const CommentsInputField = lazy(() => import("./CommentsInputField"));
 const DescriptionAndRating = lazy(() => import("./DescriptionAndRating"));
@@ -77,22 +77,23 @@ const ProductDetail = () => {
   }
 
   return (
-    <section className='w-full md:w-11/12 lg:w-11/12 mx-auto min-h-screen pb-5'>
-      <Breadcrumb />
-      <div className='w-full bg-white shadow-lg rounded-lg dark:bg-semi-dark'>
-        <div className='flex flex-col px-1 md:px-3 lg:px-5 lg:flex-row my-4 gap-10 h-auto md:min-h-[500px]'>
-          <div className={`flex flex-col items-center mt-5`}>
-            <div className={`p-2 rounded-lg h-[300px] shadow-sm md:shadow-md`}>
-              <ImageMagnifier src={state.imgUrl} />
-            </div>
-            <div className='w-[320px] md:w-[300px] mx-auto mt-3 md:mt-5 lg:mt-8 px-1 md:px-2 lg:px-3'>
-              <Suspense fallback={<LazyLoading />}>
+    <Suspense fallback={<SkeletonLoader />}>
+      <section className='w-full md:w-11/12 lg:w-11/12 mx-auto min-h-screen pb-5'>
+        <Breadcrumb />
+        <div className='w-full bg-white shadow-lg rounded-lg dark:bg-semi-dark'>
+          <div className='flex flex-col px-1 md:px-3 lg:px-5 lg:flex-row my-4 gap-10 h-auto md:min-h-[500px]'>
+            <div className={`flex flex-col items-center mt-5`}>
+              <div
+                className={`p-2 rounded-lg h-[300px] shadow-sm md:shadow-md`}
+              >
+                <ImageMagnifier src={state?.imgUrl} />
+              </div>
+              <div className='w-[320px] md:w-[300px] mx-auto mt-3 md:mt-5 lg:mt-8 px-1 md:px-2 lg:px-3'>
                 <SlickSlider product={product} setState={setState} />
-              </Suspense>
+              </div>
             </div>
-          </div>
-          <Suspense fallback={<LazyLoading />}>
-            <ItemInformation
+
+            <ProductInfo
               product={product}
               state={state}
               setState={setState}
@@ -100,19 +101,16 @@ const ProductDetail = () => {
               handleIncrease={handleIncrease}
               handleAddToCarts={handleAddToCarts}
             />
-          </Suspense>
-          <div className='w-full border-l-2 py-3 px-0 lg:px-2'>
-            <Suspense fallback={<LazyLoading />}>
+            <div className='w-full border-l-2 py-3 px-0 lg:px-2'>
               <DeliveryDetails
                 returnPolicy={product?.returnPolicy}
                 warrantyInformation={product?.warrantyInformation}
                 shippingInformation={product?.shippingInformation}
               />
-            </Suspense>
+            </div>
           </div>
         </div>
-      </div>
-      <Suspense fallback={<LazyLoading />}>
+
         <CommentsInputField productId={product?._id} />
         <DescriptionAndRating
           description={product?.description}
@@ -120,8 +118,8 @@ const ProductDetail = () => {
           keyPoint={product?.keyPoint}
         />
         <RelatedProduct category={product?.category} />
-      </Suspense>
-    </section>
+      </section>
+    </Suspense>
   );
 };
 

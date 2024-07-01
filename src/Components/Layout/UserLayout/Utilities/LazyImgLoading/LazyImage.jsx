@@ -48,7 +48,7 @@ const LazyImage = ({
           alt={alt}
           loading='lazy'
           onLoad={handleImageLoaded}
-          onMouseEnter={() => handleImgChange()}
+          onMouseEnter={handleImgChange}
         />
       ) : (
         <div className='placeholder-pulse'></div>

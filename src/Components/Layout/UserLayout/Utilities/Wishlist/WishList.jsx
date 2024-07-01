@@ -10,10 +10,12 @@ import {
   useAddWishListToCartMutation,
   useDeleteItemToWishListMutation,
 } from "../../../../Features/cartWishListApiSlice";
-import { calculateTotalCartPrice } from "../../Pages/Carts/calculationItemPrices";
+import useCartCalculator from "../../Hooks/useCartCalculator";
+
 const WishList = ({ wishListData, WishListLoading, userLoading }) => {
   const [openLeftSidebar, setLeftSidebar] = useState(false);
   const { textColor } = useContextInfo();
+  const { calculateTotalCartPrice } = useCartCalculator();
   const { itemTotalPrices, updatedCarts } =
     calculateTotalCartPrice(wishListData);
   const [addWishListToCart] = useAddWishListToCartMutation();

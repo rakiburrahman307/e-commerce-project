@@ -1,9 +1,9 @@
 import { useGetProductsQuery } from "../../../../Features/productsApiSlice";
 import Card from "../../Utilities/Card/Card";
-import Title from "../../Utilities/Title/Title";
 import CardLoadingSkeleton from "../../Utilities/CardLoadingSkeleton/CardLoadingSkeleton";
 import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
 import { useState, useEffect } from "react";
+import Title from "../../Utilities/Title/Title";
 
 const JustForYou = () => {
   const [page, setPage] = useState(1);
@@ -33,7 +33,7 @@ const JustForYou = () => {
   return (
     <section className='mx-auto bg-root-bg mt-5 rounded-lg dark:bg-semi-dark py-5'>
       <div className='mb-5'>
-        <Title title='Just For You'></Title>
+        <Title>Just For You</Title>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-5 mb-10'>
         {error && ShowErrorMessage(error?.error)}

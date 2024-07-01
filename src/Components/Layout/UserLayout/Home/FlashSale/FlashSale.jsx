@@ -1,9 +1,9 @@
-import Title from "../../Hooks/Title";
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import useContextInfo from "../../Hooks/useContextInfo";
 import Button from "../../../Reuseable/Button/Button";
 import Card from "../../../Reuseable/Card/Card";
+import Title from "../../Utilities/Title/Title";
 
 
 
@@ -47,7 +47,7 @@ const FlashSale = ({ targetDate }) => {
    return (
       <section className="mx-auto bg-root-bg p-5 rounded-lg dark:bg-semi-dark">
          <div className="flex justify-between items-center">
-            <Title title='FlashSale'></Title>
+            <Title>FlashSale</Title>
             <Button to='#' className={`relative shadow-xl md:hidden lg:hidden dark:bg-primary-dark inline-block h-7 w-28 overflow-hidden border-red-500 px-5 py-1 ${textColor} dark:text-secondary-text-dark shadow-lg before:absolute before:inset-0 before:-z-10 before:block before:translate-x-[90%] before:rounded-s-full before:${selectedColor} before:duration-500 after:absolute after:inset-0 after:-z-10 after:block after:-translate-x-[90%] after:rounded-e-full after:${selectedColor} after:duration-700 hover:text-white dark:hover:text-white before:hover:translate-x-0 after:hover:translate-x-0 rounded-2xl hover:scale-100 dark:bg-primary-dark`} value='Shop More'></Button>
          </div>
          <div className="flex justify-between items-center border-b-2 dark:border-primary-dark py-3">

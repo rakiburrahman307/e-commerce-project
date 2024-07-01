@@ -1,12 +1,12 @@
 
-import { PropTypes } from "prop-types";
+import  PropTypes  from "prop-types";
 import useContextInfo from "../../Hooks/useContextInfo";
 import ProtectedRoutes from "../../../../../Router/ProtectedRoutes";
 import ReactStars from "react-rating-stars-component";
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 
-const ItemInformation = ({
+const ProductInfo = ({
   product,
   state,
   setState,
@@ -135,7 +135,7 @@ const ItemInformation = ({
     </div>
   );
 };
-ItemInformation.PropTypes = {
+ProductInfo.propTypes = {
   product: PropTypes.object,
   state: PropTypes.object,
   setState: PropTypes.func,
@@ -144,4 +144,4 @@ ItemInformation.PropTypes = {
   handleAddToCarts: PropTypes.func,
 };
 
-export default ItemInformation;
+export default ProductInfo;
