@@ -47,7 +47,7 @@ const JustForYou = () => {
                 ></CardLoadingSkeleton>
               ))
           : allProducts.map((product) => (
-              <Card key={product._id} {...product} />
+              <Card key={product?._id} {...product} />
             ))}
       </div>
       <div className='flex justify-center items-center'>
