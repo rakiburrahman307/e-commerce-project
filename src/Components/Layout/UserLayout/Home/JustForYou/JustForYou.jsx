@@ -1,9 +1,13 @@
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useGetProductsQuery } from "../../../../Features/productsApiSlice";
 import Card from "../../Utilities/Card/Card";
 import CardLoadingSkeleton from "../../Utilities/CardLoadingSkeleton/CardLoadingSkeleton";
 import ShowErrorMessage from "../../Utilities/ErrorMessage/ShowErrorMessage";
-import { useState, useEffect } from "react";
 import Title from "../../Utilities/Title/Title";
+
+// Memoize Card and LoadingSkeleton to avoid unnecessary re-renders
+const MemoizedCardLoadingSkeleton = React.memo(CardLoadingSkeleton);
+const MemoizedCard = React.memo(Card);
 
 const JustForYou = () => {
   const [page, setPage] = useState(1);
@@ -11,7 +15,7 @@ const JustForYou = () => {
   const [totalFetched, setTotalFetched] = useState(0);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
   const limit = 12;
-  const skip = (page - 1) * limit;
+  const skip = useMemo(() => (page - 1) * limit, [page, limit]);
 
   const { data, isLoading, error } = useGetProductsQuery({ skip, limit });
 
@@ -23,12 +27,12 @@ const JustForYou = () => {
     }
   }, [data]);
 
-  const handleLoadData = () => {
+  const handleLoadData = useCallback(() => {
     setIsFetchingMore(true);
     setPage((prev) => prev + 1);
-  };
+  }, []);
 
-  const allProductsFetched = totalFetched >= (data?.totalProducts || 0);
+  const allProductsFetched = useMemo(() => totalFetched >= (data?.totalProducts || 0), [totalFetched, data?.totalProducts]);
 
   return (
     <section className='mx-auto bg-root-bg mt-5 rounded-lg dark:bg-semi-dark py-5'>
@@ -36,18 +40,13 @@ const JustForYou = () => {
         <Title>Just For You</Title>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-5 mb-10'>
-        {error && ShowErrorMessage(error?.error)}
+        {error && <ShowErrorMessage error={error?.error} />}
         {isLoading && allProducts.length === 0
-          ? Array(12)
-              .fill(null)
-              .map((_, index) => (
-                <CardLoadingSkeleton
-                  key={index}
-                  index={index}
-                ></CardLoadingSkeleton>
-              ))
+          ? Array.from({ length: 12 }, (_, index) => (
+              <MemoizedCardLoadingSkeleton key={index} index={index} />
+            ))
           : allProducts.map((product) => (
-              <Card key={product?._id} {...product} />
+              <MemoizedCard key={product?._id} {...product} />
             ))}
       </div>
       <div className='flex justify-center items-center'>
@@ -67,4 +66,4 @@ const JustForYou = () => {
   );
 };
 
-export default JustForYou;
+export default React.memo(JustForYou);

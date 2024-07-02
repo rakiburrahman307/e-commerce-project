@@ -17,6 +17,7 @@ import useIntersectionObserver from "../../Hooks/useIntersectionObserver";
 import LoadingSpinner from "../../../BigSpinner/LoadingSpinner";
 import { useParams } from "react-router-dom";
 import debounce from "lodash.debounce";
+import BigSpinner from "../../../BigSpinner/BigSpinner";
 
 const FilterSection = lazy(() => import("./FilterSection"));
 const SortDropDown = lazy(() => import("./SortDropDown"));
@@ -28,8 +29,6 @@ const CardLoadingSkeleton = lazy(() =>
 const ListCardLoadingSkeleton = lazy(() =>
   import("../../Utilities/CardLoadingSkeleton/ListCardLoadingSkeleton")
 );
-
-const Loading = () => <div>Loading...</div>;
 
 const Products = () => {
   const { textColor } = useContextInfo();
@@ -175,7 +174,7 @@ const Products = () => {
   );
 
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<BigSpinner />}>
       <div className='bg-root-bg mx-auto dark:bg-primary-dark'>
         <div
           className={`fixed inset-0 z-40 ${
