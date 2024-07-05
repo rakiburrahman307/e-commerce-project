@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import { lazy } from "react";
+import ShippingAddress from "../Components/Layout/UserLayout/Pages/ShippingAddress/ShippingAddress";
 
 const ProductDetail = lazy(() =>
   import("../Components/Layout/UserLayout/Pages/ProductDetail/ProductDetail")
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: "/category",
         element: <Category />,
+      },
+      {
+        path: "/address",
+        element: <ShippingAddress />,
       },
     ],
   },
