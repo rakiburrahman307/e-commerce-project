@@ -11,9 +11,9 @@ import CategoryMenu from "../CategoryMenu/CategoryMenu";
 
 const Home = () => {
   return (
-    <div className='bg-root-bg dark:bg-primary-dark dark:text-secondary-text-dark'>
+    <div className='bg-root-bg max-w-7xl mx-auto dark:bg-primary-dark dark:text-secondary-text-dark'>
       <HelmetTitle title='Home | Daraz'></HelmetTitle>
-      <div className='flex justify-evenly items-center mt-5'>
+      <div className='flex justify-evenly max-w-7xl mx-auto items-center mt-5'>
         <div className='hidden md:flex md:w-1/4'>
           <CategoryMenu/>
         </div>

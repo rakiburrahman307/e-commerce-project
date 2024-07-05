@@ -12,15 +12,16 @@ import { useGetCartsQuery } from "../../../../Features/cartApiSlice";
 import SearchBoxAdvance from "../../Utilities/SearchBoxAdvance/SearchBoxAdvance";
 import getBaseURL from "../../../../Features/BaseURL/BaseURL";
 import useNavbarVisibility from "../../Hooks/useNavbarVisibility";
+import NavDropdown from "./NavDropdown";
+
 
 const Navbar = () => {
   const { selectedColor, textColor } = useContextInfo();
   const [searchBoxClick, setSearchBoxClick] = useState(false);
-  const { data: user } = useGetUserQuery();
+  const { data: user, isLoading: userLoading } = useGetUserQuery();
+
   const { data: carts, isLoading } = useGetCartsQuery(user?.user?._id);
   const isNavbarVisible = useNavbarVisibility();
-
-
 
   // const inputField = (
   //   <input
@@ -119,19 +120,19 @@ const Navbar = () => {
                     size={25}
                     className=' text-white hover:scale-150 hover:duration-300 dark:text-secondary-text-dark'
                   />
-                  {searchBoxClick && 
-                  <SearchBoxAdvance
-                  placeholder={"Search in Daraz"}
-                  inputFieldCssClass={
-                    "border-none w-full py-2 rounded-lg text-secondary-text focus:ring-0 dark:text-secondary-text-dark dark:bg-primary-dark"
-                  }
-                  fetchSuggestions={fetchSuggestions}
-                  staticData={[]}
-                  dataKey={"title"}
-                  splitTextStyle={`${textColor} text-semibold`}
-                  linkTo={"/product/"}
-                ></SearchBoxAdvance>
-                }
+                  {searchBoxClick && (
+                    <SearchBoxAdvance
+                      placeholder={"Search in Daraz"}
+                      inputFieldCssClass={
+                        "border-none w-full py-2 rounded-lg text-secondary-text focus:ring-0 dark:text-secondary-text-dark dark:bg-primary-dark"
+                      }
+                      fetchSuggestions={fetchSuggestions}
+                      staticData={[]}
+                      dataKey={"title"}
+                      splitTextStyle={`${textColor} text-semibold`}
+                      linkTo={"/product/"}
+                    ></SearchBoxAdvance>
+                  )}
                 </div>
               )}
             </div>
@@ -140,22 +141,28 @@ const Navbar = () => {
           {/* This is for the  nav header section start here  */}
           <div className='flex justify-between items-center gap-4'>
             <div className='hidden md:flex items-center'>
-              <Button
-                className='flex items-center justify-center gap-2 font-bold hover:scale-125 w-20 h-12 rounded-xl duration-200 dark:hover:bg-dark-color dark:text-dark-color'
-                value='Login'
-                to='/login'
-              >
-                <FaRegUser />
-                Log In
-              </Button>
-              <div className='ml-1 mr-1'>|</div>
-              <Button
-                className='flex items-center justify-center gap-2 font-bold hover:scale-125 w-20 h-12 rounded-xl duration-200 dark:hover:bg-dark-color dark:text-dark-color'
-                value='Register'
-                to='/register'
-              >
-                Register
-              </Button>
+              {user || !userLoading ? (
+                <NavDropdown />
+              ) : (
+                <>
+                  <Button
+                    className='flex items-center justify-center gap-2 font-bold hover:scale-125 w-20 h-12 rounded-xl duration-200 dark:hover:bg-dark-color dark:text-dark-color'
+                    value='Login'
+                    to='/login'
+                  >
+                    <FaRegUser />
+                    Log In
+                  </Button>
+                  <div className='ml-1 mr-1'>|</div>
+                  <Button
+                    className='flex items-center justify-center gap-2 font-bold hover:scale-125 w-20 h-12 rounded-xl duration-200 dark:hover:bg-dark-color dark:text-dark-color'
+                    value='Register'
+                    to='/register'
+                  >
+                    Register
+                  </Button>
+                </>
+              )}
             </div>
             <div className='relative hidden md:flex justify-evenly items-center gap-2'>
               <Link to='/carts'>
